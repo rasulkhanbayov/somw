@@ -1,0 +1,15 @@
+# Phase 2c decision rules (pre-registered Oct 11, 2026, before any scan result). See p2c_summarize.py.
+paths:
+  data_root: ${DATA_ROOT}
+  gen_dir: ${DATA_ROOT}/generations
+run_name: p2c_summary
+scan_run: p2c_scan
+probe_run: p2b_probe_v2     # source of true error and seed spread (same generations)
+models: [base, large]
+fidelities: [ref, coarse, coarse_cfl]
+ms: [1, 2, 4]
+primary_m: 2                # question B
+eps: [0.05, 0.10, 0.20]     # question D thresholds on err_mean (simulator units)
+primary_eps: 0.10
+seed: 0
+n_boot: 2000

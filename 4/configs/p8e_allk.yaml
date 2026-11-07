@@ -1,0 +1,14 @@
+# Pilot E1 (Oct 18, 2026; EXPLORATORY; PLAN.md "Pilots E1-E3"): the stiff-material regime. gated-V2 restarts, 8a B2 repair (M1 shadow, M2 suffix)
+paths:
+  data_root: ${DATA_ROOT}
+  ckpt_dir: ${DATA_ROOT}/checkpoints/checkpoints
+  testset_dir: ${DATA_ROOT}/testset
+  ood_dir: ${BIG_ROOT}/datasets/stiff_e1
+  gen_dir: ${BIG_ROOT}/generations
+reference_cfl: 0.3          # CFL-safe reference for very stiff materials (backend option, off by default elsewhere)
+run_name: p8e_allk
+entry_sets:
+  - {include_test_id: false, query_runs: [p8e_build], n_id_queries: 0, n_ood_per_split: 75}
+chain_k: [3, 7, 11, 15, 19]
+shadow_fidelity: {substep_dt: 8.0e-4, n_grid: 96, cfl_target: 0.5}
+restart_fidelity: {substep_dt: 4.0e-4, n_grid: 96, cfl_target: 0.5}

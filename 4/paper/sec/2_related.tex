@@ -1,0 +1,26 @@
+\section{Related work}
+\label{sec:related}
+
+\paragraph{Physics-grounded video generation.}
+One line of work drives video synthesis with explicit physics.
+PhysCtrl~\cite{wang2025physctrl} generates 3D point trajectories with a diffusion model trained on simulated data and renders them, which is fast but inherits the generator's errors.
+PSIVG~\cite{foo2026physical} and RealWonder~\cite{liu2026realwonder} instead run a physical simulator for the clip and condition the video on its output, PhysMAS~\cite{qin2026physmas} assigns part-wise materials with agents and simulates every multi-object scene in a shared MPM domain, and PhysStream~\cite{chen2026physstream} adds structured scene memory for streaming control.
+NEXUS~\cite{ying2026nexus} learns contact-rich object dynamics from energy and dissipation fields, a better prior for the collisions on which PhysCtrl fails; a certificate like ours could check such a prior as well.
+These methods either trust a learned prior or simulate every query in full; we generate once and spend the simulator only on short windows and uncertified suffixes.
+
+\paragraph{Evaluating physics in generated video.}
+Physics-IQ~\cite{motamed2025do} and VideoPhy-2~\cite{bansal2025videophy} test whether generated videos respect physical principles and commonsense, RigidBench~\cite{jain2026rigidbench} compares generated motion with a simulator rollout from the same initial state, and PhysWeep~\cite{khanbayov2026physweep} shows that a clip can look plausible while encoding the wrong value of the governing physical parameter.
+We follow the simulator-grounded view: we score 3D trajectories against the reference simulator, since plausibility alone does not reveal a wrong trajectory (\cref{sec:results}).
+
+\paragraph{Trusting learned surrogates.}
+Hybrid neural world models~\cite{lakshmanan2026hybrid} note that neural surrogates fail silently at shocks, fronts and contact, and use a per-trajectory error map to gate a fallback to a reference solver; ANCHOR~\cite{roy2025anchor} triggers classical-solver corrections of a neural-operator rollout when a residual-based error estimate grows; HyPER~\cite{srikishan2025model} learns a cost-aware policy for calling the simulator; NeuroForge~\cite{jabbary2026neuroforge} audits a CFD surrogate with its physics residual and finds the residual a reliable trust signal rather than a correction objective, in line with our negative repair results; and threshold-aware conformal routing~\cite{tan2026threshold} decides per input whether a surrogate's scalar output can be used.
+These methods gate a deterministic surrogate on a signal computed from the surrogate itself.
+We gate a stochastic generative model of a whole trajectory with reference-simulator probes restarted from lifted states, need no residual, and certify the accepted set with a finite-sample guarantee; we also compare against a residual-based gate directly (\cref{sec:results}).
+
+\paragraph{Conformal and selective prediction.}
+Split conformal prediction~\cite{angelopoulos2021gentle} gives distribution-free guarantees under exchangeability; hierarchical variants~\cite{dunn2023distribution} handle correlated groups, which motivates our object-level calibration.
+Conformal methods have been applied to neural PDE surrogates~\cite{gopakumar2024uncertainty, gopakumar2025calibrated}, to multi-tier model cascades~\cite{dou2026conformal}, and to distribution shift through adaptive recalibration~\cite{gibbs2021adaptive}, which our amortised verifier would need under drifting query streams.
+
+\paragraph{Coarse--fine coupling and constrained sampling.}
+Our repair resembles one step of Parareal-style coupling, where a cheap solver supplies states that a fine solver corrects~\cite{pamela2025neural}; it differs in being a single verification-gated restart rather than an iteration to convergence, with a learned generative prior as the predictor.
+Inference-time constraints for generative models~\cite{cohan2024flexible, utkarsh2025physics} could in principle repair a trajectory from its verified frames; for PhysCtrl, the five generative repairs we tried (three training-free, two fine-tuned) improved the error by at most 1\%, and we explain why in \cref{sec:repair}.

@@ -1,0 +1,24 @@
+<section id="takeaways" data-transition="fade" style="background:#14213D;color:#F4F1EA;font-family:'IBM Plex Sans', Arial, sans-serif;padding:112px 128px 140px;display:flex;flex-direction:column;gap:40px">
+<h2 style="font-family:'Source Serif 4', Georgia, serif;font-size:64px;font-weight:600;line-height:1.15;color:#F4F1EA">What to take away</h2>
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:32px">
+<div style="display:flex;flex-direction:column;gap:12px;background:#1F2E50;border-radius:16px;padding:32px">
+<h3 style="font-size:32px;font-weight:600;color:#E9A35B">Fast models fail silently</h3>
+<p style="font-size:26px;line-height:1.35;color:#DCE3EC">On unfamiliar queries and collisions, most generated motions are wrong, and the model cannot tell.</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:12px;background:#1F2E50;border-radius:16px;padding:32px">
+<h3 style="font-size:32px;font-weight:600;color:#E9A35B">A little simulation is enough to check</h3>
+<p style="font-size:26px;line-height:1.35;color:#DCE3EC">A few short simulator windows catch the failures, and only the failed part needs re-simulating.</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:12px;background:#1F2E50;border-radius:16px;padding:32px">
+<h3 style="font-size:32px;font-weight:600;color:#E9A35B">Safe everywhere, under full cost</h3>
+<p style="font-size:26px;line-height:1.35;color:#DCE3EC">Ours: under 2% wrong on all three test sets at 0.26–0.90× the cost of simulating everything.</p>
+</div>
+</div>
+<p style="font-size:26px;letter-spacing:3px;text-transform:uppercase;color:#E9A35B">Honest limits</p>
+<ul style="font-size:28px;line-height:1.45;color:#DCE3EC;width:1664px">
+<li>If you know the query is familiar, a tuned cheap simulator is cheaper than ours.</li>
+<li>“Correct” means PhysCtrl’s own physics simulator, not real-world motion; its step-size convergence is not yet checked.</li>
+<li>Elastic objects and PhysCtrl’s base model only; the check can miss errors on very stiff materials.</li>
+</ul>
+<aside>The one-sentence message: when you cannot know in advance whether a query is one your fast model or cheap simulator handles well, generate once, check with a few short simulator windows, and simulate only what fails. That is the only approach in our tests that stayed safe in all three settings while costing less than simulating everything. Limits, in more detail: (1) in distribution, always running the tuned setting M1 is 0.13× vs our 0.26×, and on collisions M3 is 0.50× vs our 0.90×; both fail on unfamiliar queries; (2) the reference is PhysCtrl’s MPM simulator at its own settings (it reproduces PhysCtrl’s data to 2e-6 and conserves momentum), but we have not yet shown its answers stop changing at smaller time steps; a check of about 2–3 GPU-hours is proposed; (3) in exploratory pilots at E ≥ 10^8 Pa, the check accepted 6 of 16 bad motions.</aside>
+</section>

@@ -1,0 +1,14 @@
+# Phase 4a data (added Oct 11, 2026): a fresh in-distribution set for conformal calibration and
+# held-out confirmation. The 100 released test objects x 4 independent in-distribution physics
+# draws (id_new_0..3; see p2_build_ood.py). The calibration/test split is by object
+# (p4 analysis), so the two halves never share geometry.
+paths:
+  data_root: ${DATA_ROOT}
+  ckpt_dir: ${DATA_ROOT}/checkpoints/checkpoints
+  testset_dir: ${DATA_ROOT}/testset
+  ood_dir: ${DATA_ROOT}/calib
+  gen_dir: ${DATA_ROOT}/generations
+run_name: p4_calib_build
+n_base_queries: 100
+splits: [id_new_0, id_new_1, id_new_2, id_new_3]
+mode: nosync

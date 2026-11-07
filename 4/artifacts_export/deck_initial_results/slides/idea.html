@@ -1,0 +1,26 @@
+<section id="idea" data-transition="fade" style="background:#FBFBF8;color:#14213D;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px;display:flex;flex-direction:column;gap:64px">
+<h2 style="font-family:'Source Serif 4', Georgia, serif;font-size:72px;font-weight:600;line-height:1.1">Generate once, simulate only where it is likely wrong</h2>
+<div style="display:flex;flex-direction:row;align-items:center;gap:24px">
+<div style="flex:1;display:flex;flex-direction:column;gap:16px;background:#FFFFFF;border:1px solid #D9DEE5;border-radius:16px;padding:36px">
+<p style="font-size:28px;font-weight:600;color:#2F6FB0">1 · Generate</p>
+<p style="font-size:28px;line-height:1.35;color:#4A5568">PhysCtrl's diffusion model outputs a 3D point trajectory (2,048 points, 24 frames)</p>
+</div>
+<x-shape kind="arrow-right" style="background:#C9D2DD;width:64px;height:32px"></x-shape>
+<div style="flex:1;display:flex;flex-direction:column;gap:16px;background:#FFFFFF;border:1px solid #D9DEE5;border-radius:16px;padding:36px">
+<p style="font-size:28px;font-weight:600;color:#2F6FB0">2 · Probe</p>
+<p style="font-size:28px;line-height:1.35;color:#4A5568">Short exact-simulator windows restart from states lifted out of the trajectory</p>
+</div>
+<x-shape kind="arrow-right" style="background:#C9D2DD;width:64px;height:32px"></x-shape>
+<div style="flex:1;display:flex;flex-direction:column;gap:16px;background:#FFFFFF;border:1px solid #D9DEE5;border-radius:16px;padding:36px">
+<p style="font-size:28px;font-weight:600;color:#2F6FB0">3 · Certify</p>
+<p style="font-size:28px;line-height:1.35;color:#4A5568">A conformal threshold on the window defect accepts or rejects the trajectory</p>
+</div>
+<x-shape kind="arrow-right" style="background:#C9D2DD;width:64px;height:32px"></x-shape>
+<div style="flex:1;display:flex;flex-direction:column;gap:16px;background:#FFFFFF;border:1px solid #D9DEE5;border-radius:16px;padding:36px">
+<p style="font-size:28px;font-weight:600;color:#D9762B">4 · Repair</p>
+<p style="font-size:28px;line-height:1.35;color:#4A5568">If rejected: keep the certified start, re-simulate the rest from a cheap coarse state</p>
+</div>
+</div>
+<p style="font-size:32px;line-height:1.4;color:#4A5568;width:1500px">Claim: at matched compute, this beats both always-generate and always-simulate, and it certifies what it accepts.</p>
+<aside>Defect = mean distance between the generated frames and the simulator's window from the lifted state. No PDE residual is needed. The repair in step 4 is the "gated V2" variant, the one that survived testing (slides 6–8).</aside>
+</section>

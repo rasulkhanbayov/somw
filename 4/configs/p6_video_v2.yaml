@@ -1,0 +1,17 @@
+# Paper re-render (Oct 19, 2026): the Phase 6a cases with the Phase 9 pipeline (ours-v2). GPU job 95: code/p6_video.py.
+# Same cases, seed, threshold and chain as Phase 6a; v2 adds the one-window certificate, M1 shadow and M2 suffix (Phase 9).
+paths:
+  data_root: ${DATA_ROOT}
+  ckpt_dir: ${DATA_ROOT}/checkpoints/checkpoints
+  render_dir: ${BIG_ROOT}/renders
+examples: [blanket, chair, earphone, giraffeX, penguin]     # the 5 elastic PhysCtrl examples
+force_mults: [1, 3]                                         # as given, and the ood_force_x3 transform
+seed: 0
+n_samples: 8
+tau: 0.02614
+chain_k: [3, 7, 11, 15, 19]
+defect_spec: {m: 4, fidelity_spec: {substep_dt: 8.0e-4, n_grid: 64, cfl_target: 0.5}}
+lift: {k: 12, lam: 1.0e-6, use_F: false, use_C: true}
+v2: true
+shadow_fidelity: {substep_dt: 8.0e-4, n_grid: 96, cfl_target: 0.5}     # M1, as configs/p9_allk.yaml
+restart_fidelity: {substep_dt: 4.0e-4, n_grid: 96, cfl_target: 0.5}    # M2, as configs/p9_allk.yaml

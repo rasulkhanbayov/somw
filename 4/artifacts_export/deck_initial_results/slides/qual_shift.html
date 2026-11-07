@@ -1,0 +1,19 @@
+<section id="qual_shift" data-transition="fade" style="background:#FBFBF8;color:#14213D;font-family:'IBM Plex Sans', Arial, sans-serif;padding:72px 96px 120px;display:flex;flex-direction:column;gap:16px">
+<h2 style="font-family:'Source Serif 4', Georgia, serif;font-size:54px;font-weight:600;line-height:1.1">Under shift: shortcuts drift, ours ends where the physics does</h2>
+<div style="display:flex;flex-direction:row;gap:40px;align-items:start">
+<img src="/_blob/19255944439e71ece97729bcbc1cdf8d" alt="Three shifted queries in rows: softer material, stronger force, drop onto a floor. Columns show the last frame of the exact simulation, PhysCtrl, coarse simulation only and ours, with points coloured by their distance to the exact result, plus error over time. Softer material: PhysCtrl 0.173, coarse 0.078, ours 0.018 after re-simulating from frame 3. Stronger force: PhysCtrl 0.496, coarse 0.039, ours exact. Drop: PhysCtrl 0.467, coarse 0.244, ours exact." style="width:1290px;height:825px;object-fit:contain;background:#FBFBF8">
+<div style="flex:1;display:flex;flex-direction:column;gap:22px;padding-top:24px">
+<div style="display:flex;flex-direction:column;gap:6px;border-left:4px solid #2F6FB0;padding:0 0 0 20px">
+<h3 style="font-size:26px;font-weight:600">Softer material</h3>
+<p style="font-size:23px;line-height:1.35;color:#4A5568">The check fails early; we keep the start and re-simulate the rest: 0.173 → 0.018</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:6px;border-left:4px solid #2F6FB0;padding:0 0 0 20px">
+<h3 style="font-size:26px;font-weight:600">Stronger force, drop</h3>
+<p style="font-size:23px;line-height:1.35;color:#4A5568">Rejected at the first check, so we simulate exactly. PhysCtrl is off by ~0.5; coarse misses the drop (0.244)</p>
+</div>
+<p style="font-size:21px;line-height:1.4;color:#6A7280">Colour: each point's distance to the exact result. Grey: exact shape.</p>
+</div>
+</div>
+<p style="position:absolute;left:96px;bottom:48px;width:1728px;font-size:21px;color:#6A7280">Phase 4m fresh queries; each row is the median-error query of its split, picked by a rule fixed before any figure. Our output recomputed on GPU and matched the stored test result (to 2e-7).</p>
+<aside>Last frame shown in a side view (gravity down). On the force and drop rows our output is the exact simulation because the certificate rejects at the first window, so the cost there equals always simulating; the gain is that we know to do it, while PhysCtrl and the coarse simulator give no warning. On the softer-material row the repair keeps the generated frames up to frame 3 and re-simulates the rest exactly, starting from the coarse simulation's full state.</aside>
+</section>

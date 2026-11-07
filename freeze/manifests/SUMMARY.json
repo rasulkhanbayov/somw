@@ -1,0 +1,347 @@
+{
+ "areas": {
+  "polyfem_bin": {
+   "source": "/export/hbku-research/rakh90100/somw/tools/polyfem/build_conda/PolyFEM_bin",
+   "repo": "results",
+   "path_in_repo": "tools/polyfem/PolyFEM_bin",
+   "files": 1,
+   "bytes": 144485112,
+   "symlinks": 0
+  },
+  "big_p10d": {
+   "source": "/export/hbku-research/rakh90100/somw/p10d",
+   "repo": "data",
+   "path_in_repo": "big/p10d",
+   "files": 100,
+   "bytes": 24837759,
+   "symlinks": 0
+  },
+  "big_supp_videos": {
+   "source": "/export/hbku-research/rakh90100/somw/supp_videos",
+   "repo": "data",
+   "path_in_repo": "big/supp_videos",
+   "files": 11,
+   "bytes": 5761000,
+   "symlinks": 0
+  },
+  "ckpt_p14a_ACT_L": {
+   "source": "/export/hbku-research/rakh90100/somw/checkpoints/p14a_ACT_L",
+   "repo": "ckpt",
+   "path_in_repo": "p14a_ACT_L",
+   "files": 3,
+   "bytes": 141824976,
+   "symlinks": 0
+  },
+  "results": {
+   "source": "/export/home/rakh90100/cvpr_physics_plausibility/4/results",
+   "repo": "results",
+   "path_in_repo": "results",
+   "files": 1466,
+   "bytes": 234578790,
+   "symlinks": 0
+  },
+  "logs": {
+   "source": "/export/home/rakh90100/cvpr_physics_plausibility/4/logs",
+   "repo": "results",
+   "path_in_repo": "logs",
+   "files": 814,
+   "bytes": 117459629,
+   "symlinks": 0
+  },
+  "data_calib": {
+   "source": "/export/home/rakh90100/cvpr_physics_plausibility/data/calib",
+   "repo": "data",
+   "path_in_repo": "data/calib",
+   "files": 2000,
+   "bytes": 19312816000,
+   "symlinks": 0
+  },
+  "data_fc_train": {
+   "source": "/export/home/rakh90100/cvpr_physics_plausibility/data/fc_train",
+   "repo": "data",
+   "path_in_repo": "data/fc_train",
+   "files": 3000,
+   "bytes": 28969224000,
+   "symlinks": 0
+  },
+  "data_fresh4m": {
+   "source": "/export/home/rakh90100/cvpr_physics_plausibility/data/fresh4m",
+   "repo": "data",
+   "path_in_repo": "data/fresh4m",
+   "files": 598,
+   "bytes": 5773845584,
+   "symlinks": 0
+  },
+  "data_generations": {
+   "source": "/export/home/rakh90100/cvpr_physics_plausibility/data/generations",
+   "repo": "data",
+   "path_in_repo": "data/generations",
+   "files": 4398,
+   "bytes": 20754663372,
+   "symlinks": 0
+  },
+  "data_ood": {
+   "source": "/export/home/rakh90100/cvpr_physics_plausibility/data/ood",
+   "repo": "data",
+   "path_in_repo": "data/ood",
+   "files": 398,
+   "bytes": 3842560408,
+   "symlinks": 0
+  },
+  "data_coarse_traj": {
+   "source": "/export/home/rakh90100/cvpr_physics_plausibility/data/coarse_traj",
+   "repo": "data",
+   "path_in_repo": "data/coarse_traj",
+   "files": 1798,
+   "bytes": 883525959,
+   "symlinks": 0
+  },
+  "data_dry_run": {
+   "source": "/export/home/rakh90100/cvpr_physics_plausibility/data/dry_run_results",
+   "repo": "data",
+   "path_in_repo": "data/dry_run_results",
+   "files": 87,
+   "bytes": 6609166,
+   "symlinks": 0
+  },
+  "big_datasets": {
+   "source": "/export/hbku-research/rakh90100/somw/datasets",
+   "repo": "data",
+   "path_in_repo": "big/datasets",
+   "files": 7986,
+   "bytes": 90100699504,
+   "symlinks": 0
+  },
+  "big_generations": {
+   "source": "/export/hbku-research/rakh90100/somw/generations",
+   "repo": "data",
+   "path_in_repo": "big/generations",
+   "files": 9322,
+   "bytes": 43260352192,
+   "symlinks": 0
+  },
+  "big_generations_p14a": {
+   "source": "/export/hbku-research/rakh90100/somw/generations_p14a",
+   "repo": "data",
+   "path_in_repo": "big/generations_p14a",
+   "files": 2490,
+   "bytes": 1216666085,
+   "symlinks": 0
+  },
+  "big_coarse_traj_4o": {
+   "source": "/export/hbku-research/rakh90100/somw/coarse_traj_4o",
+   "repo": "data",
+   "path_in_repo": "big/coarse_traj_4o",
+   "files": 346,
+   "bytes": 343105776,
+   "symlinks": 0
+  },
+  "big_p7b_traj": {
+   "source": "/export/hbku-research/rakh90100/somw/p7b_traj",
+   "repo": "data",
+   "path_in_repo": "big/p7b_traj",
+   "files": 100,
+   "bytes": 294436514,
+   "symlinks": 0
+  },
+  "big_p10b_traj": {
+   "source": "/export/hbku-research/rakh90100/somw/p10b_traj",
+   "repo": "data",
+   "path_in_repo": "big/p10b_traj",
+   "files": 101,
+   "bytes": 294502868,
+   "symlinks": 0
+  },
+  "big_p10c_traj": {
+   "source": "/export/hbku-research/rakh90100/somw/p10c_traj",
+   "repo": "data",
+   "path_in_repo": "big/p10c_traj",
+   "files": 732,
+   "bytes": 3655549392,
+   "symlinks": 0
+  },
+  "big_p11_examples": {
+   "source": "/export/hbku-research/rakh90100/somw/p11_examples",
+   "repo": "data",
+   "path_in_repo": "big/p11_examples",
+   "files": 50,
+   "bytes": 6960559,
+   "symlinks": 0
+  },
+  "big_p12_traj": {
+   "source": "/export/hbku-research/rakh90100/somw/p12_traj",
+   "repo": "data",
+   "path_in_repo": "big/p12_traj",
+   "files": 55,
+   "bytes": 24952488,
+   "symlinks": 0
+  },
+  "big_renders": {
+   "source": "/export/hbku-research/rakh90100/somw/renders",
+   "repo": "data",
+   "path_in_repo": "big/renders",
+   "files": 936,
+   "bytes": 657698016,
+   "symlinks": 35
+  },
+  "big_renders_p11": {
+   "source": "/export/hbku-research/rakh90100/somw/renders_p11",
+   "repo": "data",
+   "path_in_repo": "big/renders_p11",
+   "files": 3751,
+   "bytes": 1896587421,
+   "symlinks": 109
+  },
+  "ckpt_fc_base_v1": {
+   "source": "/export/home/rakh90100/cvpr_physics_plausibility/data/checkpoints/fc_base_v1",
+   "repo": "ckpt",
+   "path_in_repo": "fc_base_v1",
+   "files": 9,
+   "bytes": 1547855488,
+   "symlinks": 0
+  },
+  "ckpt_fc_base_v2": {
+   "source": "/export/home/rakh90100/cvpr_physics_plausibility/data/checkpoints/fc_base_v2",
+   "repo": "ckpt",
+   "path_in_repo": "fc_base_v2",
+   "files": 5,
+   "bytes": 264542068,
+   "symlinks": 0
+  },
+  "ckpt_p14a_ACT_F": {
+   "source": "/export/hbku-research/rakh90100/somw/checkpoints/p14a_ACT_F",
+   "repo": "ckpt",
+   "path_in_repo": "p14a_ACT_F",
+   "files": 3,
+   "bytes": 386913706,
+   "symlinks": 0
+  },
+  "ckpt_p14a_RND_F": {
+   "source": "/export/hbku-research/rakh90100/somw/checkpoints/p14a_RND_F",
+   "repo": "ckpt",
+   "path_in_repo": "p14a_RND_F",
+   "files": 3,
+   "bytes": 386913706,
+   "symlinks": 0
+  },
+  "ckpt_p14a_RND_L": {
+   "source": "/export/hbku-research/rakh90100/somw/checkpoints/p14a_RND_L",
+   "repo": "ckpt",
+   "path_in_repo": "p14a_RND_L",
+   "files": 3,
+   "bytes": 141824976,
+   "symlinks": 0
+  },
+  "private_codes": {
+   "source": "/export/home/rakh90100/cvpr_physics_plausibility/4/results/p11_study_codes",
+   "repo": "private",
+   "path_in_repo": "p11_study_codes",
+   "files": 1,
+   "bytes": 127,
+   "symlinks": 0
+  },
+  "private_session": {
+   "source": "/export/hbku-research/rakh90100/somw/freeze_private/claude_session",
+   "repo": "private",
+   "path_in_repo": "claude_session",
+   "files": 38,
+   "bytes": 181407872,
+   "symlinks": 0
+  },
+  "tp_physctrl_code": {
+   "source": "/export/home/rakh90100/cvpr_physics_plausibility/data/physctrl",
+   "repo": "third_party",
+   "path_in_repo": null,
+   "files": 323,
+   "bytes": 83899862,
+   "symlinks": 4
+  },
+  "tp_physctrl_ckpt": {
+   "source": "/export/home/rakh90100/cvpr_physics_plausibility/data/checkpoints/checkpoints",
+   "repo": "third_party",
+   "path_in_repo": null,
+   "files": 2,
+   "bytes": 447196416,
+   "symlinks": 0
+  },
+  "tp_physctrl_testset": {
+   "source": "/export/home/rakh90100/cvpr_physics_plausibility/data/testset",
+   "repo": "third_party",
+   "path_in_repo": null,
+   "files": 100,
+   "bytes": 965638000,
+   "symlinks": 0
+  },
+  "tp_physctrl_sample": {
+   "source": "/export/home/rakh90100/cvpr_physics_plausibility/data/sample",
+   "repo": "third_party",
+   "path_in_repo": null,
+   "files": 100,
+   "bytes": 1327104000,
+   "symlinks": 0
+  },
+  "tp_physctrl_zips": {
+   "source": "/export/home/rakh90100/cvpr_physics_plausibility/data/zips",
+   "repo": "third_party",
+   "path_in_repo": null,
+   "files": 2,
+   "bytes": 2181513164,
+   "symlinks": 0
+  },
+  "tp_render_ckpt": {
+   "source": "/export/hbku-research/rakh90100/somw/checkpoints/checkpoints",
+   "repo": "third_party",
+   "path_in_repo": null,
+   "files": 23,
+   "bytes": 39955846170,
+   "symlinks": 0
+  },
+  "tp_hf_models": {
+   "source": "/export/hbku-research/rakh90100/somw/hf_cache/hub",
+   "repo": "third_party",
+   "path_in_repo": null,
+   "files": 205,
+   "bytes": 83417016381,
+   "symlinks": 67
+  }
+ },
+ "repos": {
+  "results": {
+   "files": 2281,
+   "bytes": 496523531
+  },
+  "data": {
+   "files": 38259,
+   "bytes": 221325354063
+  },
+  "ckpt": {
+   "files": 26,
+   "bytes": 2869874920
+  },
+  "private": {
+   "files": 39,
+   "bytes": 181407999
+  },
+  "third_party": {
+   "files": 755,
+   "bytes": 128378213993
+  }
+ },
+ "excluded": {
+  "/export/home/rakh90100/cvpr_physics_plausibility/data/hf_cache": "contains a Hugging Face login token",
+  "/export/home/rakh90100/cvpr_physics_plausibility/data/warp_cache": "Warp kernel compile cache (rebuilt automatically)",
+  "/export/home/rakh90100/cvpr_physics_plausibility/data/checkpoints/.cache": "huggingface-cli download cache",
+  "/export/hbku-research/rakh90100/somw/checkpoints/.cache": "huggingface-cli download cache",
+  "/export/home/rakh90100/cvpr_physics_plausibility/data/physctrl_commit.txt": "copied into the GitHub repo (freeze/third_party/)",
+  "/export/home/rakh90100/cvpr_physics_plausibility/data/physctrl_requirements_somw.txt": "copied into the GitHub repo (freeze/third_party/)",
+  "/export/home/rakh90100/cvpr_physics_plausibility/data/torch_constraints.txt": "copied into the GitHub repo (freeze/third_party/)",
+  "/export/hbku-research/rakh90100/somw/tmp": "scratch of finished jobs",
+  "/export/hbku-research/rakh90100/somw/tools": "PolyFEM source + build trees (binary uploaded; rebuild recipe in freeze/polyfem)",
+  "/export/hbku-research/rakh90100/somw/hf_stage": "the symlink staging tree made by stage_hf.py",
+  "/export/hbku-research/rakh90100/somw/freeze_private": "staging for the private repo (uploaded from there)",
+  "/export/hbku-research/rakh90100/somw/freeze_verify": "scratch copy used by verify_numbers.py (its report is freeze/VERIFY.md)",
+  "/export/hbku-research/rakh90100/somw/freeze_verify.log": "log of verify_numbers.py",
+  "/export/hbku-research/rakh90100/somw/hf_upload_data.log": "log of the data upload",
+  "/export/hbku-research/rakh90100/somw/hf_cache": "third-party model cache; its hub/ is hashed as tp_hf_models, the rest is cache"
+ }
+}

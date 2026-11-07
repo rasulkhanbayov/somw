@@ -1,0 +1,29 @@
+# Phase 9 verdict, single objects (pre-registered Oct 19, 2026; PLAN.md "Phase 9"). CPU, after jobs 87-89 and the
+# probe errors (python code/p2b_probe.py --config configs/p9_gen.yaml on a dev server).
+paths:
+  data_root: ${DATA_ROOT}
+  ckpt_dir: ${DATA_ROOT}/checkpoints/checkpoints
+  testset_dir: ${DATA_ROOT}/testset
+  ood_dir: ${BIG_ROOT}/datasets/p9
+  gen_dir: ${BIG_ROOT}/generations
+summary_run_name: p9_confirm
+model: base
+defect_spec: {fidelity: coarse_cfl, m: 4, placement: spread_event}
+chain_k: [3, 7, 11, 15, 19]
+scan_run: p9_scan
+run_name: p9_allk
+probe_run: p9_errors
+build_runs: [p9_build]
+only_splits: [id_new_22, id_new_23, ood3_E_low, ood3_E_high, ood3_force, ood3_drop]
+shift_prefix: ood3_
+full_run: p9_full
+contact_build_run: p9c_scene_build
+contact_full_run: p9c_full
+tau: 0.02614
+eps: 0.10
+n_boot: 2000
+family_alpha: 0.05
+cost_fit_scan_run: p2c_scan
+shadow_rate_run: p4d_fullsim
+shadow_rate_splits_prefix: id_new_
+full_substeps: 20016

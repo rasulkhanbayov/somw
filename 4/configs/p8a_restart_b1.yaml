@@ -1,0 +1,14 @@
+# Pilot 8a part B (B1; Oct 17, 2026; EXPLORATORY, development data): gated-V2 restarts at all five chain
+# points with the suffix at M2 (dt <= 4e-4, grid 96) instead of the reference. Shadow: coarse_cfl (as 4k).
+paths:
+  data_root: ${DATA_ROOT}
+  ckpt_dir: ${DATA_ROOT}/checkpoints/checkpoints
+  testset_dir: ${DATA_ROOT}/testset
+  ood_dir: ${DATA_ROOT}/ood
+  gen_dir: ${DATA_ROOT}/generations
+run_name: p8a_restart_b1
+entry_sets:
+  - {include_test_id: true, query_runs: [p2_build_ood], n_id_queries: 100, n_ood_per_split: 50}       # Phase 2c
+chain_k: [3, 7, 11, 15, 19]
+shadow_fidelity: {substep_dt: 8.0e-4, n_grid: 64, cfl_target: 0.5}
+restart_fidelity: {substep_dt: 4.0e-4, n_grid: 96, cfl_target: 0.5}

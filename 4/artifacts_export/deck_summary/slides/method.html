@@ -1,0 +1,40 @@
+<section id="method" data-transition="fade" style="background:#FBFBF8;color:#14213D;font-family:'IBM Plex Sans', Arial, sans-serif;padding:112px 128px 140px;display:flex;flex-direction:column;gap:40px">
+<h2 style="font-family:'Source Serif 4', Georgia, serif;font-size:64px;font-weight:600;line-height:1.15">Our idea: generate once, simulate only what fails</h2>
+<div style="display:flex;flex-direction:row;gap:16px;align-items:center">
+<div style="flex:1;align-self:stretch;display:flex;flex-direction:column;gap:12px;background:#EEF1F4;border-radius:16px;padding:28px">
+<h3 style="font-size:32px;font-weight:600;color:#2F6FB0">1 · Generate</h3>
+<p style="font-size:26px;line-height:1.35;color:#4A5568">PhysCtrl predicts the motion, fast.</p>
+</div>
+<x-shape kind="arrow-right" style="width:48px;height:24px;background:#9AA3AE"></x-shape>
+<div style="flex:1;align-self:stretch;display:flex;flex-direction:column;gap:12px;background:#EEF1F4;border-radius:16px;padding:28px">
+<h3 style="font-size:32px;font-weight:600;color:#2F6FB0">2 · Check</h3>
+<p style="font-size:26px;line-height:1.35;color:#4A5568">Run the simulator for a short window from the predicted motion. If they drift apart, reject.</p>
+</div>
+<x-shape kind="arrow-right" style="width:48px;height:24px;background:#9AA3AE"></x-shape>
+<div style="flex:1;align-self:stretch;display:flex;flex-direction:column;gap:12px;background:#EEF1F4;border-radius:16px;padding:28px">
+<h3 style="font-size:32px;font-weight:600;color:#2F6FB0">3 · Repair</h3>
+<p style="font-size:26px;line-height:1.35;color:#4A5568">Keep the part that passed; re-simulate only the rest, from a cheap simulation of the true start.</p>
+</div>
+<x-shape kind="arrow-right" style="width:48px;height:24px;background:#9AA3AE"></x-shape>
+<div style="flex:1;align-self:stretch;display:flex;flex-direction:column;gap:12px;background:#EEF1F4;border-radius:16px;padding:28px">
+<h3 style="font-size:32px;font-weight:600;color:#2F6FB0">4 · Collisions</h3>
+<p style="font-size:26px;line-height:1.35;color:#4A5568">The cheap simulation sees objects approaching and hands over to an accurate setting just before they touch.</p>
+</div>
+</div>
+<p style="font-size:26px;letter-spacing:3px;text-transform:uppercase;color:#2F6FB0">Our three contributions</p>
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:28px">
+<div style="display:flex;flex-direction:column;gap:12px;border-top:4px solid #2F6FB0;padding:24px 4px 0 4px">
+<h3 style="font-size:32px;font-weight:600">A trustworthy check</h3>
+<p style="font-size:26px;line-height:1.35;color:#4A5568">Short simulator windows turn into an accept/reject certificate with a guaranteed cap on bad motions it lets through.</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:12px;border-top:4px solid #2F6FB0;padding:24px 4px 0 4px">
+<h3 style="font-size:32px;font-weight:600">Repair only what failed</h3>
+<p style="font-size:26px;line-height:1.35;color:#4A5568">Re-simulate just the unchecked part, and switch to a collision-ready setting at the right moment.</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:12px;border-top:4px solid #2F6FB0;padding:24px 4px 0 4px">
+<h3 style="font-size:32px;font-weight:600">An honest test</h3>
+<p style="font-size:26px;line-height:1.35;color:#4A5568">Every test fixed before its data existed; new benchmarks for unfamiliar queries and collisions; compared with tuned simulators.</p>
+</div>
+</div>
+<aside>Step 2 in more detail: a “window” restarts the physics simulator from a state read off the generated frames and runs it for 4 frames. If the generated motion were physically right, the simulator would follow it; how far they drift apart is the score. A threshold calibrated on separate objects (split conformal, object level) turns the score into accept/reject with a finite-sample bound on accepted failures. Step 3: the generated frames do not contain the object’s internal stress, so the repair starts from a cheap “shadow” simulation of the true initial state, which does. Step 4: at collisions the cheap grid cannot resolve the gap between objects, so the shadow detects when they come within 3 grid cells and the repair switches to a finer setting one frame earlier. Tried and failed: repairing with the generator itself (five attempts, at most 1% better), and placing check windows at the collision.</aside>
+</section>

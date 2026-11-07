@@ -1,0 +1,12 @@
+# Phase 9 (pre-registered Oct 19, 2026; PLAN.md "Phase 9"): confirmation of ours-v2 on fresh data. Contact scenes, draws 24-27.
+paths:
+  data_root: ${DATA_ROOT}
+  ckpt_dir: ${DATA_ROOT}/checkpoints/checkpoints
+  testset_dir: ${DATA_ROOT}/testset
+  ood_dir: ${BIG_ROOT}/datasets/mo
+  gen_dir: ${BIG_ROOT}/generations
+  comp_gen_dir: ${BIG_ROOT}/generations
+run_name: p9c_scene_build
+comp_build_runs: [p9c_comp_build]
+draws: [24, 25, 26, 27]
+mode: nosync

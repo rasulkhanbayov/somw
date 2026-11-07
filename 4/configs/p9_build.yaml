@@ -1,0 +1,11 @@
+# Phase 9 (pre-registered Oct 19, 2026; PLAN.md "Phase 9"): confirmation of ours-v2 on fresh data. Fresh single-object queries.
+paths:
+  data_root: ${DATA_ROOT}
+  ckpt_dir: ${DATA_ROOT}/checkpoints/checkpoints
+  testset_dir: ${DATA_ROOT}/testset
+  ood_dir: ${BIG_ROOT}/datasets/p9
+  gen_dir: ${BIG_ROOT}/generations
+run_name: p9_build
+n_base_queries: 100
+splits: [id_new_22, id_new_23, ood3_E_low, ood3_E_high, ood3_force, ood3_drop]
+mode: nosync

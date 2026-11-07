@@ -1,0 +1,57 @@
+<section id="pipeline" data-transition="fade" style="background:#FBFBF8;color:#14213D;font-family:'IBM Plex Sans', Arial, sans-serif;padding:96px 128px 140px;display:flex;flex-direction:column;gap:16px">
+<h2 style="font-family:'Source Serif 4', Georgia, serif;font-size:60px;font-weight:600;line-height:1.15">The pipeline, step by step</h2>
+<p style="font-size:26px;line-height:1.35;color:#4A5568">No new network is trained: PhysCtrl stays frozen; our parts are the physics simulator at different speeds and one calibrated threshold.</p>
+<div style="position:absolute;left:128px;top:300px;width:220px;height:230px;display:flex;flex-direction:column;gap:8px;background:#EEF1F4;border-radius:16px;padding:20px">
+<p style="font-size:28px;font-weight:600;color:#14213D">Input</p>
+<p style="font-size:24px;line-height:1.3;color:#4A5568">object points, material, push</p>
+</div>
+<div style="position:absolute;left:408px;top:300px;width:240px;height:230px;display:flex;flex-direction:column;gap:8px;background:#EEF1F4;border-radius:16px;padding:20px">
+<p style="font-size:28px;font-weight:600;color:#2F6FB0">① Generate</p>
+<p style="font-size:24px;line-height:1.3;color:#4A5568">PhysCtrl (frozen): 24 frames in 0.24 s</p>
+</div>
+<div style="position:absolute;left:708px;top:300px;width:260px;height:230px;display:flex;flex-direction:column;gap:8px;background:#EEF1F4;border-radius:16px;padding:20px">
+<p style="font-size:28px;font-weight:600;color:#2F6FB0">② Check</p>
+<p style="font-size:24px;line-height:1.3;color:#4A5568">simulator runs 4 frames from the generated motion; measure the drift</p>
+</div>
+<div style="position:absolute;left:1028px;top:300px;width:220px;height:230px;display:flex;flex-direction:column;gap:8px;background:#E3ECF6;border:3px solid #2F6FB0;border-radius:16px;padding:20px">
+<p style="font-size:28px;font-weight:600;color:#2F6FB0">③ Certify</p>
+<p style="font-size:24px;line-height:1.3;color:#14213D">drift below the calibrated threshold?</p>
+</div>
+<div style="position:absolute;left:1308px;top:300px;width:200px;height:230px;display:flex;flex-direction:column;gap:8px;background:#EEF1F4;border-radius:16px;padding:20px">
+<p style="font-size:28px;font-weight:600;color:#14213D">Accept</p>
+<p style="font-size:24px;line-height:1.3;color:#4A5568">keep the generated motion</p>
+</div>
+<div style="position:absolute;left:1568px;top:300px;width:224px;height:230px;display:flex;flex-direction:column;gap:8px;background:#14213D;border-radius:16px;padding:20px">
+<p style="font-size:28px;font-weight:600;color:#E9A35B">⑦ Render</p>
+<p style="font-size:24px;line-height:1.3;color:#DCE3EC">PhysCtrl’s video model turns the motion into a video</p>
+</div>
+<div style="position:absolute;left:1028px;top:630px;width:220px;height:250px;display:flex;flex-direction:column;gap:8px;background:#FBEFE4;border-radius:16px;padding:20px">
+<p style="font-size:28px;font-weight:600;color:#C2410C">④ Locate</p>
+<p style="font-size:24px;line-height:1.3;color:#4A5568">first failed check at frame k; keep frames before k</p>
+</div>
+<div style="position:absolute;left:1308px;top:630px;width:200px;height:250px;display:flex;flex-direction:column;gap:8px;background:#FBEFE4;border-radius:16px;padding:20px">
+<p style="font-size:28px;font-weight:600;color:#C2410C">⑤ Shadow</p>
+<p style="font-size:24px;line-height:1.3;color:#4A5568">cheap simulation from the true start up to k</p>
+</div>
+<div style="position:absolute;left:1568px;top:630px;width:224px;height:250px;display:flex;flex-direction:column;gap:8px;background:#FBEFE4;border-radius:16px;padding:20px">
+<p style="font-size:28px;font-weight:600;color:#C2410C">⑥ Re-simulate</p>
+<p style="font-size:24px;line-height:1.3;color:#4A5568">frames k–24 only; at collisions switch just before contact</p>
+</div>
+<x-connector x1="348" y1="415" x2="408" y2="415" head="end" style="color:#6A7280;border-width:3px"></x-connector>
+<x-connector x1="648" y1="415" x2="708" y2="415" head="end" style="color:#6A7280;border-width:3px"></x-connector>
+<x-connector x1="968" y1="415" x2="1028" y2="415" head="end" style="color:#6A7280;border-width:3px"></x-connector>
+<x-connector x1="1248" y1="415" x2="1308" y2="415" head="end" style="color:#2F6FB0;border-width:3px"></x-connector>
+<x-connector x1="1508" y1="415" x2="1568" y2="415" head="end" style="color:#6A7280;border-width:3px"></x-connector>
+<x-connector x1="1138" y1="530" x2="1138" y2="630" head="end" style="color:#C2410C;border-width:3px"></x-connector>
+<x-connector x1="1248" y1="755" x2="1308" y2="755" head="end" style="color:#C2410C;border-width:3px"></x-connector>
+<x-connector x1="1508" y1="755" x2="1568" y2="755" head="end" style="color:#C2410C;border-width:3px"></x-connector>
+<x-connector x1="1680" y1="630" x2="1680" y2="530" head="end" style="color:#C2410C;border-width:3px"></x-connector>
+<p style="position:absolute;left:1250px;top:350px;width:60px;font-size:24px;font-weight:600;color:#2F6FB0;text-align:center">yes</p>
+<p style="position:absolute;left:1148px;top:560px;width:120px;font-size:24px;font-weight:600;color:#C2410C">no</p>
+<div style="position:absolute;left:128px;top:630px;width:840px;height:250px;display:flex;flex-direction:column;gap:12px;border-top:4px solid #2F6FB0;padding:20px 4px 0 4px">
+<p style="font-size:26px;font-weight:600;color:#14213D">Why each step is there</p>
+<p style="font-size:24px;line-height:1.35;color:#4A5568">② needs no physics equations, only the simulator. ③ caps how many bad motions get through. ⑤ supplies the internal stress that generated frames lack. ④–⑥ simulate only what failed.</p>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#6A7280">Cost per query: generate 0.05× + one check ≈ 0.03× of a full simulation; steps ④–⑥ run only for rejected motions.</p>
+<aside>How to walk through it. The query is a 3D object (2,048 points), its material (stiffness E, Poisson ratio) and a push (where, which direction, how strong), sometimes gravity and a floor. ① PhysCtrl’s frozen diffusion model predicts the 24-frame motion in a quarter of a second. ② We read positions and velocities off the generated frames and restart the physics simulator from there for 4 frames, on a cheap 64-cubed grid. If the generated motion obeyed physics, the simulator would follow it; the drift between them is the score. For one object we use one window at the strongest event in the motion; for two objects, three windows. ③ The threshold (0.026) was calibrated on separate objects, so it comes with a guarantee: at most about 10% of bad motions pass. ④ If it fails, we walk check windows at frames 0, 3, 7, 11, 15, 19 and find the first failure, frame k; the frames before k passed and are kept. ⑤ Generated frames do not carry the object’s internal stress, so we run a cheap simulation from the true starting state up to k, which does. ⑥ From that state we re-simulate only frames k to 24 at a tuned setting (96-cubed grid). For two objects, the cheap simulation watches the gap between them and hands over to an accurate setting (125-cubed grid) one frame before they come within 3 grid cells. If the very first check fails, we simulate the whole clip. ⑦ PhysCtrl’s own tracking and video model render the final motion, unchanged.</aside>
+</section>

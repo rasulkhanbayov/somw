@@ -1,0 +1,8 @@
+# Phase 10d (pre-registered Oct 22, 2026; PLAN.md "Phase 10d"): body-preserving resolution study of the 23 shifted
+# Phase 11 items (code/p10d_strands.py; GPU job 103, A100). Simulation only; no generator.
+paths:
+  data_root: ${DATA_ROOT}
+  ckpt_dir: ${DATA_ROOT}/checkpoints/checkpoints
+  testset_dir: ${DATA_ROOT}/testset
+sim_mode: nosync
+run_name: p10d_strands

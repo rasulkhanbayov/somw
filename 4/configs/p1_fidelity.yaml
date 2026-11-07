@@ -1,0 +1,15 @@
+# Phase 1b: simulator fidelity sweep vs generator error (A100, 4-way array).
+paths:
+  data_root: ${DATA_ROOT}
+  ckpt_dir: ${DATA_ROOT}/checkpoints/checkpoints
+  testset_dir: ${DATA_ROOT}/testset
+  ood_dir: ${DATA_ROOT}/ood
+  gen_dir: ${DATA_ROOT}/generations
+n_queries: 40
+mode: nosync                # fair timing without PhysCtrl's per-substep syncs; graph mode is optional
+sweep:
+  substep_dt: [1.0e-4, 2.0e-4, 4.0e-4, 8.0e-4, 1.6e-3]
+  n_grid: [64, 96, 125]
+generator_models: [base, large]
+generator_samples: 4
+seed: 0

@@ -1,0 +1,21 @@
+# Phase 2c: exhaustive window scan (pre-registered Oct 11, 2026; questions in p2c_summarize.py).
+# Same queries and generations as Phase 2-v2; restarts use lift_noF (F = I).
+paths:
+  data_root: ${DATA_ROOT}
+  ckpt_dir: ${DATA_ROOT}/checkpoints/checkpoints
+  testset_dir: ${DATA_ROOT}/testset
+  ood_dir: ${DATA_ROOT}/ood
+  gen_dir: ${DATA_ROOT}/generations
+run_name: p2c_scan
+models: [base, large]
+include_gt: true            # the ground truth as a source gives the lift floor per fidelity and m
+n_id_queries: 100
+n_ood_per_split: 50
+ms: [1, 2, 4]               # window = 2m simulator frames
+fidelities:
+  ref: {}                                   # PhysCtrl's setting: dt 1e-4, 125^3 grid
+  coarse: {substep_dt: 8.0e-4, n_grid: 64}  # Phase 1 matched-accuracy setting (x0.13 cost)
+  coarse_cfl: {substep_dt: 8.0e-4, n_grid: 64, cfl_target: 0.5}   # added Oct 11 (A'): dt = min(8e-4, 0.5 dx/c)
+lift: {k: 12, lam: 1.0e-6, use_F: false, use_C: true}
+cfl_gate: 1.15            # added Oct 11: skip (score +inf) windows above this CFL; crashes had CFL >= 1.18, clean runs <= 1.03
+seed: 0

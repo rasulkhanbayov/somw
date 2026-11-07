@@ -1,0 +1,67 @@
+{
+  "run_name": "p8g_allk",
+  "synthetic": false,
+  "shard": "7",
+  "start_utc": "2026-10-19T07:23:34.932584+00:00",
+  "host": "crirdchpxd002",
+  "platform": "Linux-5.19.0-45-generic-x86_64-with-glibc2.35",
+  "python": "3.10.22 (main, Oct  1 2026, 20:14:04) [GCC 14.3.0]",
+  "argv": [
+    "code/p4j_allk.py",
+    "--config",
+    "configs/p8g_allk.yaml",
+    "--shard",
+    "7",
+    "--num-shards",
+    "8"
+  ],
+  "slurm_job_id": "428662",
+  "slurm_array_task_id": "3",
+  "gpus": [
+    "NVIDIA H200"
+  ],
+  "project_git_commit": null,
+  "physctrl_git_commit": "eaebd534719ce209436a610ea583ee7aee38943b",
+  "config": {
+    "paths": {
+      "data_root": "/export/home/rakh90100/cvpr_physics_plausibility/data",
+      "ckpt_dir": "/export/home/rakh90100/cvpr_physics_plausibility/data/checkpoints/checkpoints",
+      "testset_dir": "/export/home/rakh90100/cvpr_physics_plausibility/data/testset",
+      "ood_dir": "/export/hbku-research/rakh90100/somw/datasets/stiff_e1",
+      "gen_dir": "/export/hbku-research/rakh90100/somw/generations"
+    },
+    "reference_cfl": 0.3,
+    "run_name": "p8g_allk",
+    "entry_sets": [
+      {
+        "include_test_id": false,
+        "query_runs": [
+          "p8g_build"
+        ],
+        "n_id_queries": 0,
+        "n_ood_per_split": 75
+      }
+    ],
+    "chain_k": [
+      3,
+      7,
+      11,
+      15,
+      19
+    ],
+    "shadow_fidelity": {
+      "substep_dt": 0.0008,
+      "n_grid": 96,
+      "cfl_target": 0.5
+    },
+    "restart_fidelity": {
+      "substep_dt": 0.0002,
+      "n_grid": 125,
+      "cfl_target": 0.5
+    }
+  },
+  "torch": "2.5.1+cu121",
+  "warp": "1.5.0",
+  "end_utc": "2026-10-19T07:30:25.211566+00:00",
+  "status": "ok"
+}

@@ -1,0 +1,46 @@
+\section{Experimental setup}
+\label{sec:setup}
+
+\paragraph{Generator and simulator.}
+We use PhysCtrl's base trajectory model~\cite{wang2025physctrl} (2{,}048 points, 24 frames, 4 sampling steps) and its MPM simulator at PhysCtrl's own setting as the reference, so that ground truth and probes come from the same simulator.
+% src: Phase 0 (replay ~2e-6; matches PhysCtrl eval.py within 3%)
+
+\paragraph{Benchmarks.}
+All queries are elastic objects from PhysCtrl's released test set with physical parameters drawn by us; ground truth is the reference rollout.
+\begin{itemize}
+\item \emph{Calibration pool}: 1{,}200 queries (12 in-distribution draws of $E$, $\nu$ and the drag force for each of 100 objects), used only to set thresholds.
+% src: id_new_0..11
+\item \emph{In distribution}: 200 fresh draws on the same objects, two per object.
+% src: Phase 9 (id_new_22, id_new_23)
+\item \emph{Shift}: 400 fresh queries in four families of 100, each moving one parameter outside the training range: softer ($E \in 10^{[3.0, 3.9]}$\,Pa), stiffer ($10^{[7.1, 7.8]}$\,Pa), stronger drag, and a drop under gravity onto a floor 0.1--0.5 below the object, which PhysCtrl's elastic training data never contains.
+% src: Phase 9 (ood3_*: the 4m ood2 distributions, new draws)
+\item \emph{Two-object contact}: 132 scenes in which two objects collide, plus 36 control scenes in which they stay apart; PhysCtrl generates each object separately and the outputs are composed, the ground truth is a joint simulation.
+A pre-registered sanity rule on the joint simulation excluded 32 of 200 designed scenes.
+% src: Phase 9 contact (draws 24-27)
+\item \emph{Development sets} for the analyses and ablations, each also fresh when its own test ran: 800 in-distribution queries (4k), 398 shifted queries (4m), and 346 contact scenes (4o).
+\item \emph{Videos}: PhysCtrl's five elastic image examples, as given and with 3$\times$ the drag force, rendered with PhysCtrl's own pipeline.
+% src: 6a
+\end{itemize}
+
+\paragraph{Protocol.}
+Every test was pre-registered, with its decision rule and margin, before its data existed; thresholds were never refit on test data; negative outcomes are reported.
+The final configuration and its seven tests were fixed before the in-distribution, shift and contact test sets above were generated. One amendment, also made before the data, kept three windows for contact scenes and added absolute risk bounds to the relative tests.
+% src: PLAN.md Phase 9 pre-registration and amendment (Oct 19)
+Uncertainty is an object-cluster bootstrap (2{,}000 resamples), since draws of one object are correlated.
+Risk and mean error weight each object equally.
+
+\paragraph{Baselines.}
+\emph{Generate only} (PhysCtrl);
+\emph{coarse only} (the cheap simulator alone);
+\emph{always simulate at a tuned setting} $\mathrm{M1}$, $\mathrm{M2}$ or $\mathrm{M3}$ (\cref{sec:repair,sec:fidelity}), the cheapest settings of the reference solver that met the error target on development data; a learned or cheap method should be compared against a tuned solver, not only the default one~\cite{mcgreivy2024weak};
+\emph{seed-spread deferral} (8 samples, simulate if their spread exceeds a threshold calibrated like ours);
+\emph{accept coarse if it agrees} (run the cheap simulator, accept it when it agrees with the generation, else simulate with the reference setting);
+\emph{momentum-residual gate} (accept the generation when its centre of mass follows momentum balance, in the spirit of residual-triggered correction~\cite{roy2025anchor});
+\emph{best-of-8} (select one of 8 samples by medoid or by residual);
+\emph{certify or simulate} (our certificate, with a full reference rollout on rejection);
+\emph{always simulate}.
+Ablations: uniform window placement at matched budget, shuffled restart times, and a switch timed by the generation instead of the shadow.
+
+\paragraph{Metrics.}
+Risk ($P(e > 0.10)$, also at 0.05 and 0.20), mean, tail and last-frame error, the certificate's false-accept rate on bad trajectories, AUROC and the area under the risk--coverage curve (AURC) of each score, and cost relative to always simulating.
+On PhysCtrl's test set we also report PhysCtrl's own metrics, position MSE and its deformation loss.

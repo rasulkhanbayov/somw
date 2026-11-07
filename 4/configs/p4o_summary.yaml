@@ -1,0 +1,20 @@
+# Phase 4o verdict (pre-registered Oct 16, 2026; PLAN.md "Phase 4o"). CPU, dev server: code/p4o_summarize.py.
+paths:
+  data_root: ${DATA_ROOT}
+  gen_dir: ${BIG_ROOT}/generations
+summary_run_name: p4o_summary
+build_run: p4o_scene_build
+scan_run: p4o_scan
+allk_run: p4o_allk
+chain_k: [3, 7, 11, 15, 19]
+fidelity_restart_dist: 0.46875
+defect_spec: {fidelity: coarse_cfl, m: 4, placement: spread_event}
+tau: 0.02614
+eps: 0.10
+cost_fit_scan_run: p2c_scan
+shadow_rate_run: p4d_fullsim
+full_substeps: 20016
+n_boot: 2000
+primary: sf                         # Phase 4o tests O1-O3 on the shadow-timed switch
+test_prefix: O
+title: "Phase 4o: shadow-timed fidelity switch on fresh contact scenes (pre-registered Oct 16, 2026)"

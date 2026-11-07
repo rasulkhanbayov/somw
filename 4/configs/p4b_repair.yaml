@@ -1,0 +1,20 @@
+# Phase 4b: training-free repair (pre-registered Oct 11, 2026; see code/p4b_repair.py).
+paths:
+  data_root: ${DATA_ROOT}
+  ckpt_dir: ${DATA_ROOT}/checkpoints/checkpoints
+  testset_dir: ${DATA_ROOT}/testset
+  ood_dir: ${DATA_ROOT}/ood
+  gen_dir: ${DATA_ROOT}/generations
+run_name: p4b_repair
+summary_run_name: p4b_summary
+models: [base, large]
+n_id_queries: 100           # the Phase 2c queries and generations
+n_ood_per_split: 50
+m: 4                        # the certificate's window length
+lift: {k: 12, lam: 1.0e-6, use_F: false, use_C: true}
+constraint_fidelity: {}     # verified frames at PhysCtrl's reference setting
+verify_fidelity: {substep_dt: 8.0e-4, n_grid: 64, cfl_target: 0.5}   # the certificate's signal
+lambda_base: 0.03007        # Phase 4a primary lambda (base, eps = alpha = 0.10)
+equivalence_tol: 1.0e-3     # |PhysCtrl pipeline - our loop|, simulator units
+seed: 0
+n_boot: 2000

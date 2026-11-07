@@ -1,0 +1,11 @@
+# Phase 4o (pre-registered Oct 16, 2026; PLAN.md "Phase 4o"): components for FRESH draws 16..23.
+paths:
+  data_root: ${DATA_ROOT}
+  ckpt_dir: ${DATA_ROOT}/checkpoints/checkpoints
+  testset_dir: ${DATA_ROOT}/testset
+  ood_dir: ${BIG_ROOT}/datasets/mo_comp
+  gen_dir: ${BIG_ROOT}/generations
+run_name: p4o_comp_build
+n_base_queries: 100
+splits: [mo_comp_16, mo_comp_17, mo_comp_18, mo_comp_19, mo_comp_20, mo_comp_21, mo_comp_22, mo_comp_23]
+mode: nosync

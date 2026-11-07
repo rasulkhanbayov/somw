@@ -1,0 +1,12 @@
+# Phase 4l: two-object scenes (design + joint ground truth + composed generations).
+paths:
+  data_root: ${DATA_ROOT}
+  ckpt_dir: ${DATA_ROOT}/checkpoints/checkpoints
+  testset_dir: ${DATA_ROOT}/testset
+  ood_dir: ${BIG_ROOT}/datasets/mo
+  gen_dir: ${BIG_ROOT}/generations
+  comp_gen_dir: ${BIG_ROOT}/generations
+run_name: p4l_scene_build
+comp_build_runs: [p4l_comp_build]
+draws: [0, 1, 2, 3, 4, 5, 6, 7]
+mode: nosync

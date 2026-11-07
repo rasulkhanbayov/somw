@@ -1,0 +1,55 @@
+{
+  "run_name": "p4n_scene_build",
+  "synthetic": false,
+  "shard": "3",
+  "start_utc": "2026-10-16T12:21:19.249325+00:00",
+  "host": "crirdchpxd001",
+  "platform": "Linux-5.19.0-45-generic-x86_64-with-glibc2.35",
+  "python": "3.10.22 (main, Oct  1 2026, 20:14:04) [GCC 14.3.0]",
+  "argv": [
+    "code/p4l_mo_build.py",
+    "--config",
+    "configs/p4n_scene_build.yaml",
+    "--shard",
+    "3",
+    "--num-shards",
+    "8"
+  ],
+  "slurm_job_id": "426382",
+  "slurm_array_task_id": "1",
+  "gpus": [
+    "NVIDIA H200"
+  ],
+  "project_git_commit": null,
+  "physctrl_git_commit": "eaebd534719ce209436a610ea583ee7aee38943b",
+  "config": {
+    "paths": {
+      "data_root": "/export/home/rakh90100/cvpr_physics_plausibility/data",
+      "ckpt_dir": "/export/home/rakh90100/cvpr_physics_plausibility/data/checkpoints/checkpoints",
+      "testset_dir": "/export/home/rakh90100/cvpr_physics_plausibility/data/testset",
+      "ood_dir": "/export/hbku-research/rakh90100/somw/datasets/mo",
+      "gen_dir": "/export/hbku-research/rakh90100/somw/generations",
+      "comp_gen_dir": "/export/hbku-research/rakh90100/somw/generations"
+    },
+    "run_name": "p4n_scene_build",
+    "comp_build_runs": [
+      "p4n_comp_build"
+    ],
+    "draws": [
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+    ],
+    "mode": "nosync"
+  },
+  "torch": "2.5.1+cu121",
+  "warp": "1.5.0",
+  "end_utc": "2026-10-16T12:29:12.457636+00:00",
+  "status": "ok",
+  "n_scenes": 40
+}

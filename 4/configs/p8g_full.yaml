@@ -1,0 +1,16 @@
+# Pilot E1b (Oct 19, 2026; EXPLORATORY; PLAN.md "Pilot E1b"): the stiff-material regime. ladder of full rollouts (M1, M2, M3)
+paths:
+  data_root: ${DATA_ROOT}
+  ckpt_dir: ${DATA_ROOT}/checkpoints/checkpoints
+  testset_dir: ${DATA_ROOT}/testset
+  ood_dir: ${BIG_ROOT}/datasets/stiff_e1
+  gen_dir: ${BIG_ROOT}/generations
+reference_cfl: 0.3          # CFL-safe reference for very stiff materials (backend option, off by default elsewhere)
+run_name: p8g_full
+entry_sets:
+  - {include_test_id: false, query_runs: [p8g_build], n_id_queries: 0, n_ood_per_split: 75}
+fidelities:
+  M1: {substep_dt: 8.0e-4, n_grid: 96, cfl_target: 0.5}
+  M2: {substep_dt: 4.0e-4, n_grid: 96, cfl_target: 0.5}
+  M3: {substep_dt: 2.0e-4, n_grid: 125, cfl_target: 0.5}
+sim_mode: nosync

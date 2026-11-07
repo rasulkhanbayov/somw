@@ -1,0 +1,10 @@
+# Phase 15a (pre-registered Oct 22, 2026; clarified Oct 24 before data; PLAN.md "Phase 15"): joint two-object
+# rollouts (4,096 particles, PhysCtrl's reference setting) of the designed scenes + the 2,048-point model files.
+paths:
+  data_root: ${DATA_ROOT}
+  ckpt_dir: ${DATA_ROOT}/checkpoints/checkpoints
+  testset_dir: ${DATA_ROOT}/testset
+run_name: p15a_build
+scenes_run: p15a_scenes
+out_root: ${BIG_ROOT}/p15
+mode: nosync

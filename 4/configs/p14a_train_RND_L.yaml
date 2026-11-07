@@ -1,0 +1,29 @@
+# Phase 14a (pre-registered Oct 22, 2026; PLAN.md "Phase 14"): simulator distillation pilot, arm RND, variant L.
+paths:
+  data_root: ${DATA_ROOT}
+  ckpt_dir: ${DATA_ROOT}/checkpoints/checkpoints
+  ckpt_root: ${BIG_ROOT}/checkpoints
+  testset_dir: ${DATA_ROOT}/testset
+  ood_dir: ${DATA_ROOT}/fc_train
+  gen_dir: ${BIG_ROOT}/generations
+run_name: p14a_train_RND_L
+ckpt_name: p14a_RND_L
+arm_list: ${PROJECT_ROOT}/results/p14a_acquire/arm_RND.json
+replay_build_runs: [p4g_train_build]
+base_manifest: ${PROJECT_ROOT}/results/p4g_sample_manifest/manifest.json
+seed: 0
+train:
+  mode: lora
+  steps: 5000
+  batch_size: 8             # 4 arm + 4 replay
+  lr: 1.0e-4
+  lora_rank: 16
+  lora_alpha: 16.0
+  warmup: 100
+  lambda_vel: 1.0
+  val_frac: 0.05            # held-out training objects; logged only, never used to pick a checkpoint
+  val_samples: 64
+  num_workers: 6
+  log_every: 100
+  val_every: 1000
+  ckpt_every: 2500

@@ -1,0 +1,19 @@
+# Phase 11 (pre-registered Oct 20, 2026; PLAN.md "Phase 11"): renders of the 25 synthetic images (code/p11_images.py) with
+# PhysCtrl, ours (Phase 9 pipeline: one-window certificate, M1 shadow, M2 suffix) and the reference. GPU job 99.
+paths:
+  data_root: ${DATA_ROOT}
+  ckpt_dir: ${DATA_ROOT}/checkpoints/checkpoints
+  render_dir: ${BIG_ROOT}/renders_p11
+examples: all                                               # every image folder in examples_dir
+examples_dir: ${BIG_ROOT}/p11_examples
+force_coeffs: [0.06, 0.40]                                  # in range / shifted (inside ood3_force 0.3-0.8)
+seed: 0
+n_samples: 8
+tau: 0.02614
+chain_k: [3, 7, 11, 15, 19]
+defect_spec: {m: 4, fidelity_spec: {substep_dt: 8.0e-4, n_grid: 64, cfl_target: 0.5}}
+lift: {k: 12, lam: 1.0e-6, use_F: false, use_C: true}
+v2: true
+shadow_fidelity: {substep_dt: 8.0e-4, n_grid: 96, cfl_target: 0.5}     # M1, as configs/p9_allk.yaml
+restart_fidelity: {substep_dt: 4.0e-4, n_grid: 96, cfl_target: 0.5}    # M2, as configs/p9_allk.yaml
+fresh: true                                                 # new cases: render all three variants

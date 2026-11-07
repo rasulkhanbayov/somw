@@ -1,0 +1,17 @@
+# Phase 4a extension (Oct 11, 2026): 8 more in-distribution draws per held-out object
+# (id_new_4..11), so the object-level certificate has enough bad objects. Same generator of
+# physics as id_new_0..3 (p2_build_ood.py, seeded by qid).
+# Original header: a fresh in-distribution set for conformal calibration and
+# held-out confirmation. The 100 released test objects x 4 independent in-distribution physics
+# draws (id_new_0..3; see p2_build_ood.py). The calibration/test split is by object
+# (p4 analysis), so the two halves never share geometry.
+paths:
+  data_root: ${DATA_ROOT}
+  ckpt_dir: ${DATA_ROOT}/checkpoints/checkpoints
+  testset_dir: ${DATA_ROOT}/testset
+  ood_dir: ${DATA_ROOT}/calib
+  gen_dir: ${DATA_ROOT}/generations
+run_name: p4_calib2_build
+n_base_queries: 100
+splits: [id_new_4, id_new_5, id_new_6, id_new_7, id_new_8, id_new_9, id_new_10, id_new_11]
+mode: nosync

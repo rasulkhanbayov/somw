@@ -1,0 +1,20 @@
+\section{Limitations and conclusion}
+\label{sec:conclusion}
+
+\paragraph{Limitations.}
+\emph{Scope.} We study elastic objects, PhysCtrl's base model and 2{,}048 points; at this resolution a simulator substep costs about the same on every grid we use, which a denser setting would change.
+\emph{The reference.} Ground truth is PhysCtrl's own MPM simulator, the motion the generator imitates, not real-world motion; its contact between objects is the sticky contact of grid-based MPM, and it is not converged at our error scale for soft materials, drops and strong pushes (\cref{sec:res-reference}), so absolute risks there depend on the chosen time step.
+\emph{Known regimes.} In a known regime a tuned setting is cheaper (0.13$\times$ in distribution, 0.50$\times$ on contact), and under shift M2 is as safe as ours within the reference's uncertainty at 0.29$\times$; our advantage is tracking the simulator when the regime is unknown, with a per-query decision.
+% src: Phase 9 (always M1 in distribution, always M3 on contact); Phase 10c (M2)
+\emph{Stiff materials.} Explicit simulation grows costlier with stiffness while generation does not, so generate-then-certify should pay most for stiff objects; but in exploratory tests at $E \ge 10^8$\,Pa the certificate, calibrated on softer materials, accepted 6 of 16 bad trajectories.
+% src: pilots E1, E1b
+\emph{Conservativeness.} The certificate rejects many good trajectories (it accepted 105 of 174 good ones in distribution and 1 of 45 on contact), which is where most of the remaining cost goes.
+% src: results/p9_table (certificate counts)
+\emph{Video-level evaluation.} We score 3D trajectories. A 7B open VLM judge with PhysCtrl's prompt could not tell reference videos from PhysCtrl's (supplement).
+\emph{Streams.} The amortised verifier is valid for stationary query streams only.
+
+\paragraph{Conclusion.}
+A fast learned motion prior is often wrong outside its training range or when objects collide, and neither the prior nor a simulator setting tuned on familiar queries says when.
+Spending a few short simulator windows on each generated trajectory turns that silence into a calibrated accept-or-reject decision, and re-simulating only the uncertified suffix, from a cheap shadow's state and with the switch to a contact-resolving setting timed by that shadow, keeps the cost below simulating every query.
+In pre-registered tests on fresh data, scored against three simulator time steps, only this pipeline stayed within a few points of simulating every query, in distribution, under shift and on contact, at less than its cost.
+More broadly, a generative model need not be trusted or replaced wholesale: a little simulation, placed where its output is checked, can certify it.

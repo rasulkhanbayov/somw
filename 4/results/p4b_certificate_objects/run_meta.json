@@ -1,0 +1,92 @@
+{
+  "run_name": "p4b_certificate_objects",
+  "synthetic": false,
+  "shard": null,
+  "start_utc": "2026-10-11T20:33:22.418462+00:00",
+  "host": "crimv3mgpu015",
+  "platform": "Linux-5.15.0-170-generic-x86_64-with-glibc2.35",
+  "python": "3.10.22 (main, Oct  1 2026, 20:14:04) [GCC 14.3.0]",
+  "argv": [
+    "code/p4b_certificate_objects.py",
+    "--config",
+    "configs/p4b_certificate_objects.yaml"
+  ],
+  "slurm_job_id": null,
+  "slurm_array_task_id": null,
+  "gpus": [
+    "Tesla P100-PCIE-16GB"
+  ],
+  "project_git_commit": null,
+  "physctrl_git_commit": "eaebd534719ce209436a610ea583ee7aee38943b",
+  "config": {
+    "paths": {
+      "data_root": "/export/home/rakh90100/cvpr_physics_plausibility/data",
+      "gen_dir": "/export/home/rakh90100/cvpr_physics_plausibility/data/generations"
+    },
+    "run_name": "p4b_certificate_objects",
+    "calib_build_runs": [
+      "p4_calib_build",
+      "p4_calib2_build"
+    ],
+    "calib_scan_runs": [
+      "p4_calib_scan",
+      "p4_calib2_scan"
+    ],
+    "calib_probe_runs": [
+      "p4_calib_errors",
+      "p4_calib2_errors"
+    ],
+    "shift_scan_run": "p2c_scan",
+    "shift_probe_run": "p2b_probe_v2",
+    "models": [
+      "base",
+      "large"
+    ],
+    "defect_specs": {
+      "base_cfl_m4_spread": {
+        "fidelity": "coarse_cfl",
+        "m": 4,
+        "placement": "spread_event"
+      },
+      "large_ref_m4_spread": {
+        "fidelity": "ref",
+        "m": 4,
+        "placement": "spread_event"
+      }
+    },
+    "certificates": [
+      {
+        "name": "base_defect",
+        "model": "base",
+        "score": "base_cfl_m4_spread"
+      },
+      {
+        "name": "large_seed_spread",
+        "model": "large",
+        "score": "seed_spread"
+      },
+      {
+        "name": "large_fused",
+        "model": "large",
+        "score": "fused:large_ref_m4_spread"
+      }
+    ],
+    "primary": "base_defect",
+    "eps": [
+      0.05,
+      0.1,
+      0.2
+    ],
+    "alpha": [
+      0.05,
+      0.1
+    ],
+    "primary_eps": 0.1,
+    "primary_alpha": 0.1,
+    "n_replicates": 500
+  },
+  "torch": "2.5.1+cu121",
+  "warp": "1.5.0",
+  "end_utc": "2026-10-11T20:42:58.029686+00:00",
+  "status": "ok"
+}

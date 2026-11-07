@@ -1,0 +1,19 @@
+# Pilot 8b (Oct 17, 2026; EXPLORATORY, development data; PLAN.md "Pilots 8a and 8b"): fused certificate score. CPU.
+paths:
+  data_root: ${DATA_ROOT}
+  ckpt_dir: ${DATA_ROOT}/checkpoints/checkpoints
+  testset_dir: ${DATA_ROOT}/testset
+  gen_dir: ${DATA_ROOT}/generations
+summary_run_name: p8b_fused
+defect_spec: {fidelity: coarse_cfl, m: 4, placement: spread_event}
+eps: 0.10
+alpha: 0.10
+calibration_pool:
+  build_runs: [p4_calib_build, p4_calib2_build]
+  scan_runs: [p4_calib_scan, p4_calib2_scan]
+  probe_runs: [p4_calib_errors, p4_calib2_errors]
+shift_pool:
+  build_runs: [p2_build_ood]
+  scan_runs: [p2c_scan]
+  probe_runs: [p2b_probe_v2]
+  splits: [ood_E_high, ood_E_low, ood_force_x3, ood_gravity_drop]

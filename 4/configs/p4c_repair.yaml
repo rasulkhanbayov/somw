@@ -1,0 +1,23 @@
+# Phase 4c: conditioning repair (pre-registered Oct 11, 2026; see code/p4c_repair_conditioning.py).
+paths:
+  data_root: ${DATA_ROOT}
+  ckpt_dir: ${DATA_ROOT}/checkpoints/checkpoints
+  testset_dir: ${DATA_ROOT}/testset
+  ood_dir: ${DATA_ROOT}/ood
+  gen_dir: ${DATA_ROOT}/generations
+run_name: p4c_repair
+summary_run_name: p4c_summary
+p4b_run: p4b_repair          # R0/R1/R2 errors and the R0 certificate defect come from Phase 4b
+models: [base, large]
+n_id_queries: 100            # the Phase 2c queries and generations
+n_ood_per_split: 50
+m: 4
+lift: {k: 12, lam: 1.0e-6, use_F: false, use_C: true}
+dlogE: [-1.0, -0.5, 0.0, 0.5, 1.0]              # 5 x 6 = 30 candidates, one batch (<= 31)
+force_scale: [0.33, 0.5, 0.75, 1.0, 1.5, 2.0]
+anchor_fidelity: {}                              # anchor from the true initial state at 'ref'
+verify_fidelity: {substep_dt: 8.0e-4, n_grid: 64, cfl_target: 0.5}   # the certificate's signal
+lambda_base: 0.03007
+equivalence_tol: 1.0e-3
+seed: 0                      # with the same per-query offset as Phase 4b
+n_boot: 2000

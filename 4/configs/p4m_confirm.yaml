@@ -1,0 +1,29 @@
+# Phase 4m verdict (pre-registered Oct 14, 2026; PLAN.md "Phase 4m"). CPU only: code/p4m_confirm.py.
+paths:
+  data_root: ${DATA_ROOT}
+  ckpt_dir: ${DATA_ROOT}/checkpoints/checkpoints
+  testset_dir: ${DATA_ROOT}/testset
+  ood_dir: ${DATA_ROOT}/fresh4m
+  gen_dir: ${DATA_ROOT}/generations
+  coarse_dir: ${DATA_ROOT}/coarse_traj
+summary_run_name: p4m_confirm
+# fresh queries (loaded with the Phase 4k loader)
+run_name: p4m_allk
+build_runs: [p4m_build]
+scan_run: p4m_scan
+probe_run: p4m_errors
+model: base
+defect_spec: {fidelity: coarse_cfl, m: 4, placement: spread_event}
+chain_k: [3, 7, 11, 15, 19]
+cost_fit_scan_run: p2c_scan
+shadow_rate_run: p4d_fullsim
+shadow_rate_splits_prefix: id_new_
+full_substeps: 20016
+# calibration pool (thresholds only)
+calib_build_runs: [p4_calib_build, p4_calib2_build]
+calib_scan_runs: [p4_calib_scan, p4_calib2_scan]
+calib_probe_runs: [p4_calib_errors, p4_calib2_errors]
+calib_coarse_run: p4m_calib_coarse
+eps: 0.10
+alpha: 0.10
+n_boot: 2000

@@ -1,0 +1,5 @@
+# Phase 1 decision rule.
+hardware: [A100, H200]
+go_ratio: 10                # simulation must cost >= 10x one generated sample
+realistic_regimes: [physctrl, dense10x, multiobj2, multiobj3]
+models_for_verdict: [base, large]

@@ -1,0 +1,10 @@
+# results/ and logs/ are archived on Hugging Face (somw-results); only the verdicts and provenance records are in git.
+results/**
+!results/**/
+!results/**/SUMMARY.md
+!results/**/run_meta.json
+!results/.gitkeep
+logs/*
+!logs/.gitkeep
+__pycache__/
+*.pyc

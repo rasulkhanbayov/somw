@@ -1,0 +1,12 @@
+# Phase 4l components (pre-registered Oct 15, 2026; PLAN.md "Phase 4l"): each of the 100 test objects
+# alone, for 8 draws, with its scene's shared (E, nu) and its own in-distribution drag (mo_scenes.py).
+paths:
+  data_root: ${DATA_ROOT}
+  ckpt_dir: ${DATA_ROOT}/checkpoints/checkpoints
+  testset_dir: ${DATA_ROOT}/testset
+  ood_dir: ${BIG_ROOT}/datasets/mo_comp
+  gen_dir: ${BIG_ROOT}/generations
+run_name: p4l_comp_build
+n_base_queries: 100
+splits: [mo_comp_0, mo_comp_1, mo_comp_2, mo_comp_3, mo_comp_4, mo_comp_5, mo_comp_6, mo_comp_7]
+mode: nosync

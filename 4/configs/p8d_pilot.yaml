@@ -1,0 +1,6 @@
+# Pilot 8d analysis (Oct 18, 2026; EXPLORATORY; PLAN.md "Pilot 8d"). CPU, after job 80.
+summary_run_name: p8d_pilot
+certsim_run: p8d_certsim
+check_k: [3, 11, 19]
+eps: 0.10
+full_substeps: 20016

@@ -1,0 +1,11 @@
+what	source	revision	restored to	used for
+PhysCtrl code	https://github.com/cwchenwang/physctrl.git	eaebd534719ce209436a610ea583ee7aee38943b	$DATA_ROOT/physctrl	generator, MPM data generator, renderer pipeline (byte-identical to 4/notes/physctrl_ref_snapshot)
+PhysCtrl weights	hf model chenwang/physctrl: checkpoints/physctrl_base.safetensors, checkpoints/physctrl_large.safetensors	4b3cf613dd15f56dec2e7bee6012fb2bf18de654	$DATA_ROOT/checkpoints/checkpoints	the generator (base, large)
+PhysCtrl test set	hf dataset chenwang/physctrl: testset.zip	bd8d316bed9edaafd8df3d4ecea493566d13519b	$DATA_ROOT/zips + unzip to $DATA_ROOT/testset	100 test objects (all evaluation)
+PhysCtrl sample set	hf dataset chenwang/physctrl: sample.zip	bd8d316bed9edaafd8df3d4ecea493566d13519b	$DATA_ROOT/zips + unzip to $DATA_ROOT/sample	100 training objects (4g, 14a, 15a)
+Renderer (DAS)	hf model chenwang/physctrl: checkpoints/cogshader5B/*, checkpoints/lgm_fp16.safetensors	4b3cf613dd15f56dec2e7bee6012fb2bf18de654	$BIG_ROOT/checkpoints/checkpoints	video rendering (Phases 6a, 11)
+SAM	https://dl.fbaipublicfiles.com/segment_anything/sam_vit_h_4b8939.pth	file sha256 in manifests/tp_render_ckpt.tsv	$BIG_ROOT/checkpoints/checkpoints	segmentation in the renderer
+SV3D	hf model chenguolin/sv3d-diffusers	cf4c88acda116901e1e21aa9afa61976a21363f8	$BIG_ROOT/hf_cache (HF_HOME)	multi-view images in the renderer
+FLUX.1-schnell	hf model black-forest-labs/FLUX.1-schnell	741f7c3ce8b383c54771c7003378a50191e9efe9	$BIG_ROOT/hf_cache (HF_HOME)	Phase 11 input images
+Qwen2-VL-7B-Instruct	hf model Qwen/Qwen2-VL-7B-Instruct	eed13092ef92e448dd6875b2a00151bd3f7db0ac	$BIG_ROOT/hf_cache (HF_HOME)	Phase 11 judge
+PolyFEM	https://github.com/polyfem/polyfem.git	008a1aeae97b277c8bcf644adf0673749b7889ef	$BIG_ROOT/tools/polyfem	Phase 12 FEM (binary also in the results repo; rebuild: freeze/polyfem/build_polyfem.sh)

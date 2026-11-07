@@ -1,0 +1,41 @@
+% CVPR 2027 submission. Template: CVPR 2026 author kit (https://github.com/cvpr-org/author-kit);
+% swap cvpr.sty / ieeenat_fullname.bst for the 2027 kit when it is released.
+\documentclass[10pt,twocolumn,letterpaper]{article}
+\usepackage[review]{cvpr}
+\input{preamble}
+\definecolor{cvprblue}{rgb}{0.21,0.49,0.74}
+\usepackage[pagebackref,breaklinks,colorlinks,allcolors=cvprblue]{hyperref}
+
+\def\paperID{*****}
+\def\confName{CVPR}
+\def\confYear{2027}
+
+\title{Simulate Only What Matters:\\Certified Sparse Simulator Probing for Physics-Grounded Video Generation}
+\author{Anonymous}
+
+\begin{document}
+\twocolumn[{%
+\renewcommand\twocolumn[1][]{#1}%
+\maketitle
+\begin{center}
+\centering
+\includegraphics[width=\linewidth]{fig/teaser.pdf}
+\captionof{figure}{\textbf{A fast motion prior fails silently; a few simulator checks catch it.}
+(a) Two objects collide (the median rejected test scene with a mid-clip switch, chosen before any picture; colour is each point's distance to the reference simulation). PhysCtrl moves each object as if it were alone and misses the collision; ours detects the approach, switches to a contact-resolving simulation at frame 15 and follows the reference.
+(b) Every pipeline of \cref{tab:main} over the in-distribution, shifted and two-object test sets: largest risk gap to simulating every query (over the sets and three reference time steps, \cref{sec:res-reference}) against largest cost: ours is the only one within 3 points at less than that cost.}
+\label{fig:teaser}
+\end{center}%
+}]
+\input{sec/0_abstract}
+\input{sec/1_intro}
+\input{sec/2_related}
+\input{sec/3_method}
+\input{sec/4_setup}
+\input{sec/5_results}
+\input{sec/6_conclusion}
+{
+    \small
+    \bibliographystyle{ieeenat_fullname}
+    \bibliography{main}
+}
+\end{document}

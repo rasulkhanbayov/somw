@@ -1,0 +1,14 @@
+# Phase 7d (pre-registered Oct 17, 2026; PLAN.md "Phase 7d"): coarse_cfl rollouts WITH positions for the
+# 4o contact scenes (joint scene, true initial state, to the end), for the coarse-only and XF baselines.
+paths:
+  data_root: ${DATA_ROOT}
+  ckpt_dir: ${DATA_ROOT}/checkpoints/checkpoints
+  testset_dir: ${DATA_ROOT}/testset
+  gen_dir: ${BIG_ROOT}/generations
+run_name: p7d_contact_coarse
+entry_sets:
+  - {include_test_id: false, query_runs: [p4o_scene_build], n_id_queries: 0, n_ood_per_split: 50}
+chain_k: []                     # coarse rollout only
+shadow_fidelity: {substep_dt: 8.0e-4, n_grid: 64, cfl_target: 0.5}
+shadow_to_end: true
+save_coarse_dir: ${BIG_ROOT}/coarse_traj_4o

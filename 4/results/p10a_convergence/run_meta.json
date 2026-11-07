@@ -1,0 +1,40 @@
+{
+  "run_name": "p10a_convergence",
+  "synthetic": false,
+  "shard": null,
+  "start_utc": "2026-10-20T21:57:03.763243+00:00",
+  "host": "crimv3mgpu015",
+  "platform": "Linux-5.15.0-170-generic-x86_64-with-glibc2.35",
+  "python": "3.10.22 (main, Oct  1 2026, 20:14:04) [GCC 14.3.0]",
+  "argv": [
+    "code/p10a_convergence.py",
+    "--config",
+    "configs/p10a_summary.yaml"
+  ],
+  "slurm_job_id": null,
+  "slurm_array_task_id": null,
+  "gpus": [
+    "Tesla P100-PCIE-16GB"
+  ],
+  "project_git_commit": null,
+  "physctrl_git_commit": "eaebd534719ce209436a610ea583ee7aee38943b",
+  "config": {
+    "single_config": "configs/p9_confirm.yaml",
+    "contact_config": "configs/p9c_summary.yaml",
+    "half_runs": {
+      "single": "p10a_half",
+      "contact": "p10ac_half"
+    },
+    "quarter_runs": {
+      "single": "p10a_quarter",
+      "contact": "p10ac_quarter"
+    },
+    "r1_p95": 0.02,
+    "safe": 0.03,
+    "freefall_tol": 0.01
+  },
+  "torch": "2.5.1+cu121",
+  "warp": "1.5.0",
+  "end_utc": "2026-10-20T21:57:45.708297+00:00",
+  "status": "ok"
+}

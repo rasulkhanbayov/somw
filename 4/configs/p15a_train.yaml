@@ -1,0 +1,29 @@
+# Phase 15a (pre-registered Oct 22, 2026; PLAN.md "Phase 15"): contact-aware two-object generator, pilot training.
+# Full fine-tune of base + zero-initialised object-ID embeddings; batches 50% two-object scenes, 50% single-object replay.
+paths:
+  data_root: ${DATA_ROOT}
+  ckpt_dir: ${DATA_ROOT}/checkpoints/checkpoints
+  ckpt_root: ${BIG_ROOT}/checkpoints
+  testset_dir: ${DATA_ROOT}/testset
+  ood_dir: ${DATA_ROOT}/fc_train
+  gen_dir: ${BIG_ROOT}/generations
+run_name: p15a_train
+ckpt_name: p15a_FT
+arm_build_runs: [p15a_build]
+replay_build_runs: [p4g_train_build]
+base_manifest: ${PROJECT_ROOT}/results/p4g_sample_manifest/manifest.json
+object_id: true
+seed: 0
+train:
+  mode: full
+  steps: 6000
+  batch_size: 8             # 4 two-object + 4 replay
+  lr: 1.0e-5
+  warmup: 100
+  lambda_vel: 1.0
+  val_frac: 0.05            # held-out training objects (by A's object); logged only, never used to pick a checkpoint
+  val_samples: 64
+  num_workers: 6
+  log_every: 100
+  val_every: 1000
+  ckpt_every: 2000

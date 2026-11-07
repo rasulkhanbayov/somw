@@ -1,0 +1,56 @@
+{
+  "run_name": "p10a_quarter",
+  "synthetic": false,
+  "shard": "3",
+  "start_utc": "2026-10-20T23:59:19.797746+00:00",
+  "host": "crirdchpxd002",
+  "platform": "Linux-5.19.0-45-generic-x86_64-with-glibc2.35",
+  "python": "3.10.22 (main, Oct  1 2026, 20:14:04) [GCC 14.3.0]",
+  "argv": [
+    "code/p4d_fullsim.py",
+    "--config",
+    "configs/p10a_quarter.yaml",
+    "--shard",
+    "3",
+    "--num-shards",
+    "8"
+  ],
+  "slurm_job_id": "430823",
+  "slurm_array_task_id": "1",
+  "gpus": [
+    "NVIDIA H200"
+  ],
+  "project_git_commit": null,
+  "physctrl_git_commit": "eaebd534719ce209436a610ea583ee7aee38943b",
+  "config": {
+    "paths": {
+      "data_root": "/export/home/rakh90100/cvpr_physics_plausibility/data",
+      "ckpt_dir": "/export/home/rakh90100/cvpr_physics_plausibility/data/checkpoints/checkpoints",
+      "testset_dir": "/export/home/rakh90100/cvpr_physics_plausibility/data/testset",
+      "ood_dir": "/export/hbku-research/rakh90100/somw/datasets/p9",
+      "gen_dir": "/export/hbku-research/rakh90100/somw/generations"
+    },
+    "run_name": "p10a_quarter",
+    "entry_sets": [
+      {
+        "include_test_id": false,
+        "query_runs": [
+          "p9_build"
+        ],
+        "n_id_queries": 0,
+        "n_ood_per_split": 25
+      }
+    ],
+    "fidelities": {
+      "quarter": {
+        "substep_dt": 2.5e-05,
+        "n_grid": 125
+      }
+    },
+    "sim_mode": "nosync"
+  },
+  "torch": "2.5.1+cu121",
+  "warp": "1.5.0",
+  "end_utc": "2026-10-21T00:08:06.213500+00:00",
+  "status": "ok"
+}

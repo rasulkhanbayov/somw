@@ -1,0 +1,26 @@
+# Phase 4j: held-out confirmation of 4i V2 + shuffled-restart ablation (pre-registered Oct 13, 2026;
+# PLAN.md "Phase 4j"). GPU part: p4j_allk.py; CPU verdict: p4j_confirm.py.
+paths:
+  data_root: ${DATA_ROOT}
+  ckpt_dir: ${DATA_ROOT}/checkpoints/checkpoints
+  testset_dir: ${DATA_ROOT}/testset
+  ood_dir: ${DATA_ROOT}/calib
+  gen_dir: ${DATA_ROOT}/generations
+run_name: p4j_allk
+summary_run_name: p4j_confirm
+entry_sets:          # the base calibration pool (id_new_0..11), as in Phase 4d/4f
+  - {include_test_id: false, query_runs: [p4_calib_build, p4_calib2_build], n_id_queries: 0, n_ood_per_split: 100}
+chain_k: [3, 7, 11, 15, 19]
+shadow_fidelity: {substep_dt: 8.0e-4, n_grid: 64, cfl_target: 0.5}   # the Phase 4d coarse_cfl setting
+# CPU verdict (same protocol as Phase 4f)
+model: base
+defect_spec: {fidelity: coarse_cfl, m: 4, placement: spread_event}   # frozen in Phase 4a
+calib_build_runs: [p4_calib_build, p4_calib2_build]
+calib_scan_runs: [p4_calib_scan, p4_calib2_scan]
+calib_probe_runs: [p4_calib_errors, p4_calib2_errors]
+cost_fit_scan_run: p2c_scan
+shadow_cost_run: p4d_fullsim
+full_substeps: 20016
+eps: 0.10
+alpha: 0.10
+n_replicates: 500

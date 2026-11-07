@@ -1,0 +1,23 @@
+# Pilot 8a analysis (Oct 17, 2026; EXPLORATORY; PLAN.md "Pilots 8a and 8b"). CPU, after job 79.
+paths:
+  data_root: ${DATA_ROOT}
+  ckpt_dir: ${DATA_ROOT}/checkpoints/checkpoints
+  testset_dir: ${DATA_ROOT}/testset
+  ood_dir: ${DATA_ROOT}/ood
+  gen_dir: ${DATA_ROOT}/generations
+summary_run_name: p8a_pilot
+full_run: p8a_full
+coarse_full_run: p4d_fullsim
+model: base
+defect_spec: {fidelity: coarse_cfl, m: 4, placement: spread_event}
+chain_k: [3, 7, 11, 15, 19]
+scan_run: p2c_scan
+probe_run: p2b_probe_v2
+build_runs: [p2_build_ood]
+only_splits: [test_id, ood_E_high, ood_E_low, ood_force_x3, ood_gravity_drop]
+tau: 0.02614
+eps: 0.10
+cost_fit_scan_run: p2c_scan
+shadow_rate_run: p4d_fullsim
+shadow_rate_splits_prefix: id_new_
+full_substeps: 20016

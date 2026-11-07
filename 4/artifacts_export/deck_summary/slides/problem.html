@@ -1,0 +1,21 @@
+<section id="problem" data-transition="fade" style="background:#14213D;color:#F4F1EA;font-family:'IBM Plex Sans', Arial, sans-serif;padding:112px 128px 140px;display:flex;flex-direction:column;gap:48px">
+<p style="font-size:26px;letter-spacing:3px;text-transform:uppercase;color:#E9A35B">Simulate Only What Matters · CVPR 2027</p>
+<h2 style="font-family:'Source Serif 4', Georgia, serif;font-size:64px;font-weight:600;line-height:1.15;color:#F4F1EA">AI-generated motion looks right but is often physically wrong, and nothing warns you</h2>
+<p style="font-size:30px;line-height:1.4;color:#BFCAD9;width:1600px">PhysCtrl makes physics-based videos in two steps: a learned model predicts how the object’s 3D points move under a push, then a video model renders that motion. The motion model is fast, but outside its training conditions it is often wrong.</p>
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:32px">
+<div style="display:flex;flex-direction:column;gap:12px;background:#1F2E50;border-radius:16px;padding:36px">
+<p style="font-family:'Source Serif 4', Georgia, serif;font-size:80px;font-weight:600;color:#E9A35B;line-height:1.1">68%</p>
+<p style="font-size:28px;line-height:1.35;color:#DCE3EC">of PhysCtrl’s motions are wrong when the material or push is outside its training range</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:12px;background:#1F2E50;border-radius:16px;padding:36px">
+<p style="font-family:'Source Serif 4', Georgia, serif;font-size:80px;font-weight:600;color:#E9A35B;line-height:1.1">69%</p>
+<p style="font-size:28px;line-height:1.35;color:#DCE3EC">are wrong when two objects collide: it moves each object as if it were alone</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:12px;background:#1F2E50;border-radius:16px;padding:36px">
+<p style="font-family:'Source Serif 4', Georgia, serif;font-size:80px;font-weight:600;color:#E9A35B;line-height:1.1">20×</p>
+<p style="font-size:28px;line-height:1.35;color:#DCE3EC">the cost of generating, if you run the physics simulator on every query instead</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#8FA0B8">“Wrong” = average point error above 0.10. Fresh, pre-registered test data (Phase 9). Cost measured on an A100.</p>
+<aside>The problem in one sentence: a learned motion model is fast but silently wrong when the query is unfamiliar (new material, stronger push, gravity drop) or when objects collide; the model’s own uncertainty does not flag it (it accepted 99% of failed drops in our shift test). The obvious fixes both have a catch: simulating every query is about 20 times the cost of generating, and a cheaper tuned simulator works on familiar queries but is silently wrong on 10–16% of unfamiliar ones. You cannot know in advance which kind a query is. Numbers: Phase 9 (fresh data, pre-registered): generate-only risk 0.680 under shift, 0.693 on contact; cost ratio from Phase 1 (4.666 s vs 0.236 s).</aside>
+</section>

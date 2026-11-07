@@ -1,0 +1,21 @@
+# Phase 9 (pre-registered Oct 19, 2026; PLAN.md "Phase 9"): confirmation of ours-v2 on fresh data. Contact verdict (tests CC1-CC3).
+paths:
+  data_root: ${DATA_ROOT}
+  gen_dir: ${BIG_ROOT}/generations
+summary_run_name: p9c_summary
+build_run: p9c_scene_build
+scan_run: p9c_scan
+allk_run: p9c_allk
+chain_k: [3, 7, 11, 15, 19]
+fidelity_restart_dist: 0.46875
+defect_spec: {fidelity: coarse_cfl, m: 4, placement: spread_event}
+tau: 0.02614
+eps: 0.10
+cost_fit_scan_run: p2c_scan
+shadow_rate_run: p4d_fullsim
+full_substeps: 20016
+n_boot: 2000
+primary: sf                         # Phase 4o tests O1-O3 on the shadow-timed switch
+test_prefix: CC
+title: "Phase 9 contact: three-window certificate, shadow-timed switch, M3 suffix on fresh scenes (pre-registered Oct 19, 2026; amended before data)"
+abs_risk_limit: 0.03          # amendment before data: CC1 also needs risk <= 0.03

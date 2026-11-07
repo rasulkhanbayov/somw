@@ -1,0 +1,19 @@
+# Phase 2a: lift floor on ground-truth trajectories.
+paths:
+  data_root: ${DATA_ROOT}
+  ckpt_dir: ${DATA_ROOT}/checkpoints/checkpoints
+  testset_dir: ${DATA_ROOT}/testset
+  ood_dir: ${DATA_ROOT}/ood
+  gen_dir: ${DATA_ROOT}/generations
+n_queries: 40
+include_ood: true
+n_ood_per_split: 10
+window_starts_model_frames: [0, 4, 8, 12, 16, 20]
+window_lengths_model_frames: [1, 2]
+variants: [oracle_state, lift, lift_dense_t, lift_noC, lift_noF, lift_k6, lift_k24]
+n_perturb: 4
+perturb:
+  pos_eps_dx: 0.05          # position jitter, fraction of grid spacing
+  vel_rel: 0.05             # velocity jitter, fraction of mean speed
+  logE_sd: 0.05             # Young's modulus jitter, log-normal sd
+  sigma_floor: 1.0e-4

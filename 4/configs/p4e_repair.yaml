@@ -1,0 +1,22 @@
+# Phase 4e: anchored conditioning repair (pre-registered Oct 12, 2026; see code/p4e_repair_anchored.py).
+paths:
+  data_root: ${DATA_ROOT}
+  ckpt_dir: ${DATA_ROOT}/checkpoints/checkpoints
+  testset_dir: ${DATA_ROOT}/testset
+  ood_dir: ${DATA_ROOT}/ood
+  gen_dir: ${DATA_ROOT}/generations
+run_name: p4e_repair
+summary_run_name: p4e_summary
+p4b_run: p4b_repair
+models: [base, large]
+n_id_queries: 100
+n_ood_per_split: 50
+lift: {k: 12, lam: 1.0e-6, use_F: false, use_C: true}
+dlogE: [-1.0, -0.5, 0.0, 0.5, 1.0]              # identical to Phase 4c
+force_scale: [0.33, 0.5, 0.75, 1.0, 1.5, 2.0]
+anchor_lengths: [8, 12]                          # model frames (1/3 and 1/2 of the trajectory)
+primary_L: 8
+anchor_fidelity: {substep_dt: 8.0e-4, n_grid: 64, cfl_target: 0.5}   # the fallback fidelity
+lambda_base: 0.03007
+seed: 0
+n_boot: 2000

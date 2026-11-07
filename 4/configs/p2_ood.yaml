@@ -1,0 +1,10 @@
+# Phase 2 prep: OOD elastic queries re-simulated from released test objects.
+paths:
+  data_root: ${DATA_ROOT}
+  ckpt_dir: ${DATA_ROOT}/checkpoints/checkpoints
+  testset_dir: ${DATA_ROOT}/testset
+  ood_dir: ${DATA_ROOT}/ood
+  gen_dir: ${DATA_ROOT}/generations
+n_base_queries: 100
+splits: [ood_E_low, ood_E_high, ood_force_x3, ood_gravity_drop]
+mode: nosync

@@ -1,0 +1,20 @@
+# Phase 4m: the exhaustive coarse_cfl m = 4 window scan (base) on the fresh queries.
+paths:
+  data_root: ${DATA_ROOT}
+  ckpt_dir: ${DATA_ROOT}/checkpoints/checkpoints
+  testset_dir: ${DATA_ROOT}/testset
+  ood_dir: ${DATA_ROOT}/fresh4m
+  gen_dir: ${DATA_ROOT}/generations
+run_name: p4m_scan
+include_test_id: false
+query_runs: [p4m_build]
+n_id_queries: 0
+n_ood_per_split: 100
+models: [base]
+include_gt: false
+ms: [4]
+fidelities:
+  coarse_cfl: {substep_dt: 8.0e-4, n_grid: 64, cfl_target: 0.5}
+lift: {k: 12, lam: 1.0e-6, use_F: false, use_C: true}
+cfl_gate: 1.15
+seed: 0

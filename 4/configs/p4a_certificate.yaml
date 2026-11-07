@@ -1,0 +1,27 @@
+# Phase 4a certificate (pre-registered Oct 11, 2026; see PLAN.md "Phase 4a").
+paths:
+  data_root: ${DATA_ROOT}
+  gen_dir: ${DATA_ROOT}/generations
+run_name: p4a_certificate
+calib_build_run: p4_calib_build
+calib_scan_run: p4_calib_scan
+calib_probe_run: p4_calib_errors
+shift_scan_run: p2c_scan          # Phase 2c splits for P3 (empirical, no guarantee)
+shift_probe_run: p2b_probe_v2
+models: [base, large]
+defect_specs:                     # chosen on the Phase 2c selection set by the pre-stated rule
+  base_cfl_m4_spread: {fidelity: coarse_cfl, m: 4, placement: spread_event}
+  large_ref_m4_spread: {fidelity: ref, m: 4, placement: spread_event}
+certificates:
+  - {name: base_defect, model: base, score: base_cfl_m4_spread}             # primary
+  - {name: large_seed_spread, model: large, score: seed_spread}             # large primary
+  - {name: large_fused, model: large, score: "fused:large_ref_m4_spread"}   # large secondary
+  # Comparator, added Oct 11 AFTER the primary results, to show P3 for seed spread on base:
+  - {name: base_seed_spread, model: base, score: seed_spread}
+primary: base_defect
+eps: [0.05, 0.10, 0.20]
+alpha: [0.05, 0.10]
+primary_eps: 0.10
+primary_alpha: 0.10
+split_seed: 0
+n_boot: 2000

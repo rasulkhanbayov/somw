@@ -1,0 +1,17 @@
+# Phase 4l-ref verdict (PLAN.md "Phase 4l-ref"): p4l_summarize.py on the reference-setting scan.
+paths:
+  data_root: ${DATA_ROOT}
+  gen_dir: ${BIG_ROOT}/generations
+summary_run_name: p4l_summary_ref
+build_run: p4l_scene_build
+probe_run: p4l_errors
+scan_run: p4l_scan_ref
+allk_run: p4l_allk
+chain_k: [3, 7, 11, 15, 19]        # the 4k chain (decisions); restarts exist at every frame
+defect_spec: {fidelity: ref, m: 4}
+tau: 0.02894                       # reference-window lambda, calibration pool, replicate 0 (computed Oct 15 before the run)
+eps: 0.10
+cost_fit_scan_run: p2c_scan
+shadow_rate_run: p4d_fullsim
+full_substeps: 20016
+n_boot: 2000

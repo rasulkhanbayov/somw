@@ -1,0 +1,19 @@
+# Phase 5a: audited amortisation of the certificate (pre-registered Oct 16, 2026; PLAN.md "Phase 5a").
+# CPU only (dev server): code/p5a_amortise.py. Pools exclude the calibration pool used for tau.
+paths:
+  data_root: ${DATA_ROOT}
+  gen_dir: ${DATA_ROOT}/generations
+run_name: p5a_amortise
+pools:
+  - {name: 4k, build_runs: [p4k_build], scan_run: p4k_scan, probe_run: p4k_errors}
+  - {name: 4m, build_runs: [p4m_build], scan_run: p4m_scan, probe_run: p4m_errors}
+  - {name: 2c, build_runs: [p2_build_ood], scan_run: p2c_scan, probe_run: p2b_probe_v2}
+defect_spec: {fidelity: coarse_cfl, m: 4, placement: spread_event}
+tau: 0.02614
+eps: 0.10
+audit_rate: 0.10
+delta: 0.05
+min_audits: 50
+retrain_every: 100
+n_orders: 50
+cost_fit_scan_run: p2c_scan

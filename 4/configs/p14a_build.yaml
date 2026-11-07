@@ -1,0 +1,17 @@
+# Phase 14a (pre-registered Oct 22, 2026; PLAN.md "Phase 14"): candidate pool for simulator distillation.
+# PhysCtrl sample/ objects (no overlap with the evaluation objects) x 30 aug_ draws, all simulated at the
+# reference setting; the certificate later decides which are acquired (arm ACT) vs a random subset (RND).
+paths:
+  data_root: ${DATA_ROOT}
+  ckpt_dir: ${DATA_ROOT}/checkpoints/checkpoints
+  testset_dir: ${DATA_ROOT}/testset
+  ood_dir: ${BIG_ROOT}/datasets/p14a
+  gen_dir: ${DATA_ROOT}/generations
+run_name: p14a_build
+base_manifest: ${PROJECT_ROOT}/results/p4g_sample_manifest/manifest.json
+base_split: train_obj
+n_base_queries: 100
+splits: [aug_0, aug_1, aug_2, aug_3, aug_4, aug_5, aug_6, aug_7, aug_8, aug_9,
+         aug_10, aug_11, aug_12, aug_13, aug_14, aug_15, aug_16, aug_17, aug_18, aug_19,
+         aug_20, aug_21, aug_22, aug_23, aug_24, aug_25, aug_26, aug_27, aug_28, aug_29]
+mode: nosync

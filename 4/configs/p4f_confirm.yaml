@@ -1,0 +1,14 @@
+# Phase 4f: confirm certify-or-simulate with a reference fallback (pre-registered Oct 12, 2026).
+paths:
+  data_root: ${DATA_ROOT}
+  gen_dir: ${DATA_ROOT}/generations
+run_name: p4f_confirm
+model: base
+defect_spec: {fidelity: coarse_cfl, m: 4, placement: spread_event}   # frozen in Phase 4a
+calib_build_runs: [p4_calib_build, p4_calib2_build]
+calib_scan_runs: [p4_calib_scan, p4_calib2_scan]
+calib_probe_runs: [p4_calib_errors, p4_calib2_errors]
+cost_fit_scan_run: p2c_scan       # A100-timed windows for the probe cost model
+eps: 0.10
+alpha: 0.10
+n_replicates: 500

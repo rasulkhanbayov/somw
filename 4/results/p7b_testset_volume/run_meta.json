@@ -1,0 +1,78 @@
+{
+  "run_name": "p7b_testset_volume",
+  "synthetic": false,
+  "shard": null,
+  "start_utc": "2026-10-20T18:34:15.538208+00:00",
+  "host": "crimv3mgpu015",
+  "platform": "Linux-5.15.0-170-generic-x86_64-with-glibc2.35",
+  "python": "3.10.22 (main, Oct  1 2026, 20:14:04) [GCC 14.3.0]",
+  "argv": [
+    "code/p7b_summarize.py",
+    "--config",
+    "configs/p7b_testset_volume.yaml"
+  ],
+  "slurm_job_id": null,
+  "slurm_array_task_id": null,
+  "gpus": [
+    "Tesla P100-PCIE-16GB"
+  ],
+  "project_git_commit": null,
+  "physctrl_git_commit": "eaebd534719ce209436a610ea583ee7aee38943b",
+  "config": {
+    "paths": {
+      "data_root": "/export/home/rakh90100/cvpr_physics_plausibility/data",
+      "ckpt_dir": "/export/home/rakh90100/cvpr_physics_plausibility/data/checkpoints/checkpoints",
+      "testset_dir": "/export/home/rakh90100/cvpr_physics_plausibility/data/testset",
+      "gen_dir": "/export/home/rakh90100/cvpr_physics_plausibility/data/generations"
+    },
+    "run_name": "p7b_allk",
+    "summary_run_name": "p7b_testset_volume",
+    "entry_sets": [
+      {
+        "include_test_id": true,
+        "query_runs": [],
+        "n_id_queries": 100,
+        "n_ood_per_split": 0
+      }
+    ],
+    "chain_k": [
+      3,
+      7,
+      11,
+      15,
+      19
+    ],
+    "shadow_fidelity": {
+      "substep_dt": 0.0008,
+      "n_grid": 64,
+      "cfl_target": 0.5
+    },
+    "save_traj_dir": "/export/hbku-research/rakh90100/somw/p7b_traj",
+    "physctrl_metrics": true,
+    "model": "base",
+    "defect_spec": {
+      "fidelity": "coarse_cfl",
+      "m": 4,
+      "placement": "spread_event"
+    },
+    "scan_run": "p2c_scan",
+    "tau": 0.02614,
+    "eps": 0.1,
+    "cost_fit_scan_run": "p2c_scan",
+    "shadow_rate_run": "p4d_fullsim",
+    "full_substeps": 20016,
+    "only_splits": [
+      "test_id"
+    ],
+    "probe_run": "p2b_probe_v2",
+    "build_runs": [],
+    "shadow_rate_splits_prefix": "id_new_",
+    "physctrl_volume_metrics": true,
+    "physctrl_root": "/export/home/rakh90100/cvpr_physics_plausibility/data/physctrl",
+    "title": "Phase 7b outputs (earlier pipeline) with PhysCtrl's own vIoU / Chamfer (descriptive; Oct 20, 2026)"
+  },
+  "torch": "2.5.1+cu121",
+  "warp": "1.5.0",
+  "end_utc": "2026-10-20T18:37:27.319502+00:00",
+  "status": "ok"
+}

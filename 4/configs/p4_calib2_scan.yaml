@@ -1,0 +1,23 @@
+# Phase 4a extension: window scan for id_new_4..11, restricted to what the certificates use.
+# Phase 4a data: the same exhaustive window scan as Phase 2c, on the calibration set.
+# No ground-truth source: the lift floor is measured in Phase 2c.
+paths:
+  data_root: ${DATA_ROOT}
+  ckpt_dir: ${DATA_ROOT}/checkpoints/checkpoints
+  testset_dir: ${DATA_ROOT}/testset
+  ood_dir: ${DATA_ROOT}/calib
+  gen_dir: ${DATA_ROOT}/generations
+run_name: p4_calib2_scan
+include_test_id: false
+query_runs: [p4_calib2_build]
+n_id_queries: 0
+n_ood_per_split: 100
+models: [base, large]
+include_gt: false
+ms: [4]                     # only the window length the certificates use
+fidelities:                 # only the fidelities the certificates use
+  ref: {}
+  coarse_cfl: {substep_dt: 8.0e-4, n_grid: 64, cfl_target: 0.5}
+lift: {k: 12, lam: 1.0e-6, use_F: false, use_C: true}
+cfl_gate: 1.15            # added Oct 11: skip (score +inf) windows above this CFL; crashes had CFL >= 1.18, clean runs <= 1.03
+seed: 0

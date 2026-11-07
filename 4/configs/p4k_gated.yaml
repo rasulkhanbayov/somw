@@ -1,0 +1,33 @@
+# Phase 4k: V2 at every restart point on the fresh queries (p4j_allk.py) + the gated-V2 verdict
+# (p4k_gated.py). Pre-registered Oct 14, 2026 (PLAN.md "Phase 4k").
+paths:
+  data_root: ${DATA_ROOT}
+  ckpt_dir: ${DATA_ROOT}/checkpoints/checkpoints
+  testset_dir: ${DATA_ROOT}/testset
+  ood_dir: ${DATA_ROOT}/calib
+  gen_dir: ${DATA_ROOT}/generations
+run_name: p4k_allk
+summary_run_name: p4k_gated
+entry_sets:
+  - {include_test_id: false, query_runs: [p4k_build], n_id_queries: 0, n_ood_per_split: 100}
+chain_k: [3, 7, 11, 15, 19]
+shadow_fidelity: {substep_dt: 8.0e-4, n_grid: 64, cfl_target: 0.5}
+shadow_to_end: true                  # coarse-only baseline from the same shadow
+# verdict
+model: base
+defect_spec: {fidelity: coarse_cfl, m: 4, placement: spread_event}
+build_runs: [p4k_build]
+scan_run: p4k_scan
+probe_run: p4k_errors
+cost_fit_scan_run: p2c_scan
+shadow_rate_run: p4d_fullsim         # pooled median A100 coarse_cfl s/substep over stable calibration rows
+shadow_rate_splits_prefix: id_new_
+full_substeps: 20016
+tau: 0.02614                         # fixed: replicate-0 object-level lambda (Phase 4a extension)
+tau_hi: 0.04501                      # 97.5th percentile of lambda in 4j (where V2 lost)
+tau_secondary: [0.01625, 0.02614, 0.02992, 0.04501]
+tau_cal_objects_run: p4b_certificate_objects   # informational: replicate-0 split for the secondary
+eps: 0.10
+alpha: 0.10
+n_boot: 2000
+# K3 uses the exact expectation over permutations (PLAN amendment, Oct 14)

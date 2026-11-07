@@ -1,0 +1,8 @@
+# Phase 10a analysis (CPU; pre-registered Oct 20, 2026; PLAN.md "Phase 10"). R1 convergence, R2 robustness bounds, R3 free fall.
+single_config: configs/p9_confirm.yaml
+contact_config: configs/p9c_summary.yaml
+half_runs: {single: p10a_half, contact: p10ac_half}
+quarter_runs: {single: p10a_quarter, contact: p10ac_quarter}
+r1_p95: 0.02
+safe: 0.03
+freefall_tol: 0.01

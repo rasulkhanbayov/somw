@@ -1,0 +1,17 @@
+# Phase 4d pipeline analysis (pre-registered Oct 12, 2026; see code/p4d_pipeline.py).
+paths:
+  data_root: ${DATA_ROOT}
+  gen_dir: ${DATA_ROOT}/generations
+run_name: p4d_pipeline
+fullsim_run: p4d_fullsim
+fallback_fidelity: coarse_cfl
+probe_run: p2b_probe_v2          # e_gen (sample 0) and seed spread for the Phase 2c queries
+scan_run: p2c_scan               # certificate windows and their measured A100 seconds
+defect_spec: {fidelity: coarse_cfl, m: 4, placement: spread_event}
+certificates:
+  - {name: base_defect, model: base, score: defect, lambda: 0.02614}           # primary (object-level 4a)
+  - {name: base_seed_spread, model: base, score: seed_spread, lambda: 0.01577}  # Phase 4a value
+  - {name: large_seed_spread, model: large, score: seed_spread, lambda: 0.02979}
+eps: 0.10
+sweep_quantiles: [0.0, 0.2, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]
+n_boot: 2000

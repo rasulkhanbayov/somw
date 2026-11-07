@@ -1,0 +1,62 @@
+{
+  "run_name": "p4g_repair_v2",
+  "synthetic": false,
+  "shard": "1",
+  "start_utc": "2026-10-13T11:23:52.594495+00:00",
+  "host": "crirdchpxd002",
+  "platform": "Linux-5.19.0-45-generic-x86_64-with-glibc2.35",
+  "python": "3.10.22 (main, Oct  1 2026, 20:14:04) [GCC 14.3.0]",
+  "argv": [
+    "code/p4g_repair_fc.py",
+    "--config",
+    "configs/p4g_repair_v2.yaml",
+    "--shard",
+    "1",
+    "--num-shards",
+    "4"
+  ],
+  "slurm_job_id": "422731",
+  "slurm_array_task_id": "1",
+  "gpus": [
+    "NVIDIA H200"
+  ],
+  "project_git_commit": null,
+  "physctrl_git_commit": "eaebd534719ce209436a610ea583ee7aee38943b",
+  "config": {
+    "paths": {
+      "data_root": "/export/home/rakh90100/cvpr_physics_plausibility/data",
+      "ckpt_dir": "/export/home/rakh90100/cvpr_physics_plausibility/data/checkpoints/checkpoints",
+      "ckpt_root": "/export/home/rakh90100/cvpr_physics_plausibility/data/checkpoints",
+      "testset_dir": "/export/home/rakh90100/cvpr_physics_plausibility/data/testset",
+      "ood_dir": "/export/home/rakh90100/cvpr_physics_plausibility/data/ood",
+      "gen_dir": "/export/home/rakh90100/cvpr_physics_plausibility/data/generations"
+    },
+    "run_name": "p4g_repair_v2",
+    "summary_run_name": "p4g_summary_v2",
+    "ckpt_name": "fc_base_v2",
+    "p4b_run": "p4b_repair",
+    "n_id_queries": 100,
+    "n_ood_per_split": 50,
+    "m": 4,
+    "lift": {
+      "k": 12,
+      "lam": 1e-06,
+      "use_F": false,
+      "use_C": true
+    },
+    "constraint_fidelity": {},
+    "verify_fidelity": {
+      "substep_dt": 0.0008,
+      "n_grid": 64,
+      "cfl_target": 0.5
+    },
+    "lambda_base": 0.03007,
+    "lambda_object_level": 0.02614,
+    "seed": 0,
+    "n_boot": 2000
+  },
+  "torch": "2.5.1+cu121",
+  "warp": "1.5.0",
+  "end_utc": "2026-10-13T11:33:57.771026+00:00",
+  "status": "ok"
+}

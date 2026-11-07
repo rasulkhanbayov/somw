@@ -1,0 +1,344 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Pushed Objects Study</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,600&display=swap">
+<style>
+/* Layout: one centred column; a sticky progress strip; each item is a two-up video comparison that stacks on phones. */
+:root {
+  --bg: #f5f6f4; --surface: #ffffff; --ink: #1c2321; --muted: #5d6763; --line: #d9dedb;
+  --accent: #1f6f5c; --accent-ink: #ffffff; --accent-soft: #e2efea; --warn: #8a5a12; --warn-soft: #f6ecd9;
+  --display: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #121615; --surface: #1a201e; --ink: #e6ebe8; --muted: #9aa5a0; --line: #2c3532;
+  --accent: #5fb89e; --accent-ink: #0d1412; --accent-soft: #1d2f29; --warn: #e0b46a; --warn-soft: #2e2618; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #121615; --surface: #1a201e; --ink: #e6ebe8; --muted: #9aa5a0; --line: #2c3532;
+  --accent: #5fb89e; --accent-ink: #0d1412; --accent-soft: #1d2f29; --warn: #e0b46a; --warn-soft: #2e2618; color-scheme: dark }
+* { box-sizing: border-box }
+body { background: var(--bg); color: var(--ink); font: 15px/1.55 var(--body) }
+.wrap { max-width: 980px; margin: 0 auto; padding-block: 28px 64px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  display: grid; gap: 22px }
+h1 { font: 600 clamp(26px, 4vw, 34px)/1.15 var(--display); margin: 0; text-wrap: balance }
+h2 { font: 600 20px/1.3 var(--display); margin: 0; text-wrap: balance }
+p { margin: 0; max-width: 65ch }
+.eyebrow { font: 500 12px/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted) }
+.panel { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 20px; display: grid; gap: 14px }
+.note { background: var(--warn-soft); color: var(--warn); border-radius: 8px; padding: 12px 14px }
+ol.steps { margin: 0; padding-left: 20px; display: grid; gap: 6px; max-width: 65ch }
+button { font: 500 15px/1 var(--body); border-radius: 8px; padding: 12px 16px; cursor: pointer; border: 1px solid var(--line);
+  background: var(--surface); color: var(--ink); min-height: 44px }
+button.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink) }
+button:disabled { opacity: .45; cursor: default }
+button:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px }
+button.chosen { background: var(--accent-soft); border-color: var(--accent); color: var(--ink) }
+.progress { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--bg); padding-block: 10px;
+  display: grid; gap: 6px }
+.progress .row { display: flex; justify-content: space-between; gap: 12px; font: 13px/1.2 var(--mono); color: var(--muted);
+  font-variant-numeric: tabular-nums }
+.bar { height: 4px; background: var(--line); border-radius: 2px; overflow: hidden }
+.bar i { display: block; height: 100%; width: 0; background: var(--accent); transition: width .3s }
+.prompt { font: 600 18px/1.4 var(--display) }
+.pair { display: grid; grid-template-columns: 1fr 1fr; gap: 14px }
+.clip { display: grid; gap: 8px; min-width: 0 }
+.clip .label { font: 500 13px/1 var(--mono); color: var(--muted); letter-spacing: .04em }
+video { width: 100%; max-width: 100%; aspect-ratio: 3 / 2; background: #000; border-radius: 6px; display: block }
+.choices { display: grid; grid-template-columns: 1fr 1fr; gap: 14px }
+.toolbar { display: flex; flex-wrap: wrap; gap: 10px; align-items: center }
+.ref { display: grid; gap: 8px; max-width: 480px; justify-self: center; width: 100% }
+.q { font-weight: 600 }
+.stat { display: flex; flex-wrap: wrap; gap: 28px }
+.stat div { display: grid; gap: 2px }
+.stat b { font: 500 28px/1 var(--mono); font-variant-numeric: tabular-nums }
+.stat span { color: var(--muted); font-size: 13px }
+.muted { color: var(--muted) }
+@media (max-width: 640px) { .pair, .choices { grid-template-columns: 1fr } }
+@media (prefers-reduced-motion: reduce) { .bar i { transition: none } }
+</style>
+
+<div class="wrap">
+  <header style="display:grid;gap:8px">
+    <span class="eyebrow">Short perception study · about 10 minutes</span>
+    <h1>Which motion looks right?</h1>
+  </header>
+
+  <section id="loading" class="panel"><p class="muted">Loading the study…</p></section>
+
+  <section id="blocked" class="panel" hidden>
+    <h2>This page can't record answers here</h2>
+    <p id="blockedMsg"></p>
+    <div class="toolbar">
+      <button class="primary" id="allow" hidden>Allow this page to save answers</button>
+      <button id="manage" hidden>Open permissions</button>
+    </div>
+    <p class="muted" id="diag" style="font:12px/1.5 var(--mono);overflow-wrap:anywhere"></p>
+  </section>
+
+  <section id="owner" class="panel" hidden>
+    <span class="eyebrow">Study owner view</span>
+    <h2>Progress</h2>
+    <div class="stat">
+      <div><b id="nStarted">0</b><span>raters started</span></div>
+      <div><b id="nDone">0</b><span>finished all items</span></div>
+      <div><b id="nAnswers">0</b><span>answers saved</span></div>
+    </div>
+    <p class="muted">Answers are hidden here on purpose: the analysis runs once, when you close the study. Share this page with lab members as Contributors; each person needs to be signed in to claude.ai.</p>
+    <div class="toolbar"><button id="preview">Preview the items (nothing is saved)</button></div>
+  </section>
+
+  <section id="intro" class="panel" hidden>
+    <h2>What you'll do</h2>
+    <ol class="steps">
+      <li>Each item shows two short videos of the same object being pushed by an invisible force.</li>
+      <li>First choose which video looks <b>more physically plausible</b>.</li>
+      <li>Then a reference simulation appears; choose which video <b>moves more like the reference</b>.</li>
+    </ol>
+    <p class="muted">There are <span id="nItems">28</span> items. No account is needed. Your answers are kept in this browser as you go, so you can stop and come back later in the same browser. At the end you get a short answer code to send back; it holds only your choices, not your name.</p>
+    <div class="toolbar"><button class="primary" id="start">Start</button></div>
+    <p class="muted" style="font-size:13px">Running this study? <a href="#" id="ownerLink">Show progress counts</a> instead (you should not rate).</p>
+  </section>
+
+  <section id="study" hidden style="display:grid;gap:18px">
+    <div class="progress">
+      <div class="row"><span id="count">Item 1 of 28</span><span id="mode"></span></div>
+      <div class="bar"><i id="barFill"></i></div>
+    </div>
+    <div class="panel">
+      <p class="prompt" id="prompt"></p>
+      <div class="pair">
+        <div class="clip"><span class="label">VIDEO 1</span><video id="v1" muted loop playsinline preload="auto"></video></div>
+        <div class="clip"><span class="label">VIDEO 2</span><video id="v2" muted loop playsinline preload="auto"></video></div>
+      </div>
+      <div class="toolbar"><button id="replay">Replay both from the start</button></div>
+      <p class="q">1. Which video looks more physically plausible?</p>
+      <div class="choices">
+        <button id="q1a">Video 1</button>
+        <button id="q1b">Video 2</button>
+      </div>
+    </div>
+    <div class="panel" id="stage2" hidden>
+      <div class="ref"><span class="label eyebrow">Reference simulation</span><video id="vr" muted loop playsinline preload="auto"></video></div>
+      <p class="q">2. Which video moves more like the reference?</p>
+      <div class="choices">
+        <button id="q2a">Video 1</button>
+        <button id="q2b">Video 2</button>
+      </div>
+      <p class="muted" id="saveState" aria-live="polite"></p>
+      <div class="toolbar"><button class="primary" id="next" disabled>Next item</button></div>
+    </div>
+  </section>
+
+  <section id="done" class="panel" hidden>
+    <h2>Thank you, that's every item</h2>
+    <p id="doneMsg">Please copy your answer code below and send it to the person who shared this study with you, by email or chat.</p>
+    <label class="eyebrow" for="code">Your answer code</label>
+    <textarea id="code" readonly rows="4" style="width:100%;font:13px/1.5 var(--mono);padding:10px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);resize:vertical"></textarea>
+    <div class="toolbar"><button class="primary" id="copy">Copy code</button><span class="muted" id="copyState" aria-live="polite"></span></div>
+  </section>
+</div>
+
+<script>
+const ITEMS = [{"id":"ed3sv","prompt":"the plush teddy bear is pushed up and to the left by an invisible force and moves naturally"},{"id":"vsep7","prompt":"the soft rubber toy dinosaur is pushed up and to the right by an invisible force and moves naturally"},{"id":"te289","prompt":"the foam sponge is pushed upwards by an invisible force and moves naturally"},{"id":"wesqx","prompt":"the jelly dessert is pushed up and to the left by an invisible force and moves naturally"},{"id":"5em3h","prompt":"the stuffed bunny is pushed up and to the right by an invisible force and moves naturally"},{"id":"x845u","prompt":"the rubber chicken toy is pushed upwards by an invisible force and moves naturally"},{"id":"egku4","prompt":"the silicone spatula is pushed up and to the left by an invisible force and moves naturally"},{"id":"r7vzh","prompt":"the plush octopus is pushed up and to the right by an invisible force and moves naturally"},{"id":"658d3","prompt":"the soft toy car is pushed upwards by an invisible force and moves naturally"},{"id":"rac96","prompt":"the rubber boot is pushed up and to the left by an invisible force and moves naturally"},{"id":"he5xc","prompt":"the foam letter A is pushed up and to the right by an invisible force and moves naturally"},{"id":"g9gvb","prompt":"the squishy star-shaped stress ball is pushed upwards by an invisible force and moves naturally"},{"id":"qmzrm","prompt":"the rubber frog toy is pushed up and to the left by an invisible force and moves naturally"},{"id":"72m6a","prompt":"the plush dog is pushed up and to the right by an invisible force and moves naturally"},{"id":"a9cr4","prompt":"the stuffed elephant is pushed upwards by an invisible force and moves naturally"},{"id":"ysbf5","prompt":"the giant gummy bear is pushed up and to the left by an invisible force and moves naturally"},{"id":"ak7kk","prompt":"the plush cactus is pushed up and to the right by an invisible force and moves naturally"},{"id":"csaa5","prompt":"the plush fish is pushed up and to the left by an invisible force and moves naturally"},{"id":"qdwz9","prompt":"the foam pillow is pushed up and to the right by an invisible force and moves naturally"},{"id":"gev56","prompt":"the rubber snake toy is pushed upwards by an invisible force and moves naturally"},{"id":"p3tfy","prompt":"the plush mushroom is pushed up and to the left by an invisible force and moves naturally"},{"id":"cnk8z","prompt":"the stuffed cat is pushed up and to the right by an invisible force and moves naturally"},{"id":"j58gh","prompt":"the rubber dog chew toy is pushed upwards by an invisible force and moves naturally"},{"id":"kp9n8","prompt":"A soft, striped blanket lies flat on the ground, then lifts upwards as if a upward force is dragging it in the middle."},{"id":"8q2k9","prompt":"a chair lifted upwards without any distortion, as if there is a force upwards"},{"id":"2dctp","prompt":"the earphone is dragged upwards on its handle and rotates as if there an invisible force"},{"id":"f5kzj","prompt":"the giraffe is dragged upwards toward the left and float into the air with a natural motion, as if there is a left force"},{"id":"t7y63","prompt":"the penguin is fully lifted upwards and float into the air with a natural motion, as if there is a force applied onto its left wing. No webbed feet, realistic claws and flippers."}];
+</script>
+<script>
+const $ = id => document.getElementById(id);
+const show = (id) => { for (const s of ["loading","blocked","owner","intro","study","done"]) $(s).hidden = s !== id; };
+const sentence = p => { const t = p.replace(/ and moves naturally$/, ""); return t.charAt(0).toUpperCase() + t.slice(1) + "."; };
+
+// Seeded order per rater: the same rater always sees the same order and sides.
+function hash(str) { let h = 2166136261; for (let i = 0; i < str.length; i++) { h ^= str.charCodeAt(i); h = Math.imul(h, 16777619); } return h >>> 0; }
+function rng(seed) { return () => { seed |= 0; seed = seed + 0x6D2B79F5 | 0; let t = Math.imul(seed ^ seed >>> 15, 1 | seed);
+  t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
+function orderFor(uid) { const r = rng(hash(uid)); const a = ITEMS.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(r() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; }
+const leftFor = (uid, item) => (hash(uid + ":" + item) & 1) ? "a" : "b";
+
+let db = null, ref = null, uid = null, preview = false;
+let answers = {}, order = [], idx = 0, cur = null, t0 = 0, t1 = 0;
+
+function setVideo(el, src) { el.src = src; el.load(); const p = el.play(); if (p) p.catch(() => {}); }
+function replay() { for (const v of [$("v1"), $("v2"), $("vr")]) { if (!v.src) continue; v.currentTime = 0; const p = v.play(); if (p) p.catch(() => {}); } }
+
+function firstOpen() { for (let i = 0; i < order.length; i++) { const a = answers[order[i].id]; if (!a || a.q2 == null) return i; } return order.length; }
+
+// Answer code: SOMW1-<rater>-<q1 q2 left per item, in the fixed item list order; "-" when unanswered>-<checksum>.
+function answerCode() {
+  const body = ITEMS.map(it => { const a = answers[it.id] || {}; return (a.q1 || "-") + (a.q2 || "-") + (a.left || "-"); }).join("");
+  const core = `SOMW1-${uid}-${body}`;
+  return `${core}-${hash(core).toString(16).padStart(8, "0")}`;
+}
+function showDone() {
+  $("code").value = answerCode();
+  if (ref) $("doneMsg").textContent = "Your answers are saved. As a backup, please also copy your answer code below and send it to the person who shared this study with you.";
+  show("done");
+}
+function storeLocal() { try { localStorage.setItem("p11_answers_" + uid, JSON.stringify(answers)); } catch (e) {} }
+function loadLocal() { try { return JSON.parse(localStorage.getItem("p11_answers_" + uid) || "{}") || {}; } catch (e) { return {}; } }
+
+function render() {
+  if (idx >= order.length) { showDone(); return; }
+  show("study");
+  const it = order[idx], left = leftFor(uid || "preview", it.id), right = left === "a" ? "b" : "a";
+  cur = { it, left, right };
+  $("count").textContent = `Item ${idx + 1} of ${order.length}`;
+  $("mode").textContent = preview ? "Preview, not saved" : "";
+  $("barFill").style.width = `${(idx / order.length) * 100}%`;
+  $("prompt").textContent = sentence(it.prompt);
+  setVideo($("v1"), `v/${it.id}_${left}.mp4`);
+  setVideo($("v2"), `v/${it.id}_${right}.mp4`);
+  const a = answers[it.id] || {};
+  for (const b of ["q1a","q1b","q2a","q2b"]) $(b).classList.remove("chosen");
+  $("q1a").disabled = $("q1b").disabled = a.q1 != null;
+  if (a.q1 != null) $(a.q1 === left ? "q1a" : "q1b").classList.add("chosen");
+  $("stage2").hidden = a.q1 == null;
+  $("vr").removeAttribute("src");
+  if (a.q1 != null) setVideo($("vr"), `v/${it.id}_r.mp4`);
+  $("q2a").disabled = $("q2b").disabled = false;
+  $("next").disabled = true;
+  $("saveState").textContent = "";
+  t0 = performance.now();
+  window.scrollTo({ top: 0 });
+}
+
+async function save(itemId, patch) {
+  answers[itemId] = Object.assign({}, answers[itemId], patch);
+  if (preview) return true;
+  storeLocal();
+  if (!ref) { $("saveState").textContent = "Kept in this browser"; return true; }
+  $("saveState").textContent = "Saving…";
+  try {
+    await ref.update({ answers: { [itemId]: patch }, updated: new Date().toISOString() });
+    $("saveState").textContent = "Saved";
+  } catch (e) {
+    // The browser copy and the final answer code still hold the answer; stop using the store for this visit.
+    ref = null;
+    $("saveState").textContent = "Kept in this browser";
+  }
+  return true;
+}
+
+async function chooseQ1(which) {
+  const letter = which === 1 ? cur.left : cur.right;
+  $("q1a").disabled = $("q1b").disabled = true;
+  $(which === 1 ? "q1a" : "q1b").classList.add("chosen");
+  t1 = performance.now();
+  const ok = await save(cur.it.id, { q1: letter, left: cur.left, ms1: Math.round(t1 - t0) });
+  if (!ok) { $("q1a").disabled = $("q1b").disabled = false; $(which === 1 ? "q1a" : "q1b").classList.remove("chosen"); return; }
+  $("stage2").hidden = false;
+  setVideo($("vr"), `v/${cur.it.id}_r.mp4`);
+  replay();
+}
+
+async function chooseQ2(which) {
+  const letter = which === 1 ? cur.left : cur.right;
+  $("q2a").classList.toggle("chosen", which === 1);
+  $("q2b").classList.toggle("chosen", which === 2);
+  const ok = await save(cur.it.id, { q2: letter, ms2: Math.round(performance.now() - t1) });
+  $("next").disabled = !ok;
+}
+
+$("q1a").onclick = () => chooseQ1(1); $("q1b").onclick = () => chooseQ1(2);
+$("q2a").onclick = () => chooseQ2(1); $("q2b").onclick = () => chooseQ2(2);
+$("replay").onclick = replay;
+$("next").onclick = () => { idx += 1; render(); };
+$("start").onclick = () => { idx = firstOpen(); render(); };
+$("preview").onclick = () => { preview = true; answers = {}; order = ITEMS.slice(); idx = 0; render(); };
+$("nItems").textContent = ITEMS.length;
+$("ownerLink").onclick = (e) => { e.preventDefault(); ownerView(); };
+$("copy").onclick = () => {
+  const t = $("code").value;
+  const done = () => { $("copyState").textContent = "Copied"; };
+  const fallback = () => { $("code").focus(); $("code").select(); $("copyState").textContent = "Selected. Press Ctrl+C (or Cmd+C) to copy."; };
+  try { navigator.clipboard.writeText(t).then(done, fallback); } catch (e) { fallback(); }
+};
+
+function blocked(msg) { $("blockedMsg").textContent = msg; show("blocked"); }
+
+async function ownerView() {
+  show("owner");
+  // Counts only, from both stores: signed-in raters (responses/<account id>) and anonymous rater codes (anon/<code>).
+  const docs = { responses: [], anon: [] };
+  const tally = () => {
+    let started = 0, done = 0, n = 0;
+    for (const d of docs.responses.concat(docs.anon)) {
+      const a = (d.data() || {}).answers || {};
+      const k = Object.values(a).filter(x => x && x.q1 != null).length;
+      if (k > 0) started += 1;
+      if (Object.values(a).filter(x => x && x.q2 != null).length >= ITEMS.length) done += 1;
+      n += k;
+    }
+    $("nStarted").textContent = started; $("nDone").textContent = done; $("nAnswers").textContent = n;
+  };
+  for (const c of ["responses", "anon"]) db.collection(c).onSnapshot(snap => { docs[c] = snap.docs; tally(); }, () => {});
+}
+
+function raterCode() {
+  // Anonymous rater code for views that give the page no account id; kept in this browser so the rater can resume.
+  let code = null;
+  try { code = localStorage.getItem("p11_rater"); } catch (e) {}
+  if (!code) {
+    const a = new Uint8Array(12); crypto.getRandomValues(a);
+    code = "r_" + Array.from(a, b => b.toString(16).padStart(2, "0")).join("");
+    try { localStorage.setItem("p11_rater", code); } catch (e) {}
+  }
+  return code;
+}
+
+async function explain(claude, dbNs, user) {
+  // Say which piece is missing, and offer the platform's own permission controls when consent is the cause.
+  const perms = claude?.use ? await claude.use("permissions") : null;
+  let st = {};
+  if (perms) { try { st = await perms.state(); } catch (e) { st = {}; } }
+  $("diag").textContent = `Details for the study owner: viewer ${claude?.use ? "yes" : "no"} · db ${dbNs ? "ok" : "missing"} · user ${user ? "ok" : "missing"} · permissions ${JSON.stringify(st)}`;
+  if (!claude?.use) { blocked("This copy of the page is not running inside claude.ai. Open the study link in your browser while signed in to claude.ai."); return; }
+  const need = ["db", "user"].filter(n => st[n] === "prompt" || st[n] === "denied");
+  if (perms && need.length) {
+    const denied = need.some(n => st[n] === "denied");
+    blocked(denied ? "Saving answers is switched off for this page. Turn it on in the page's permissions, then reload the page."
+                   : "This page needs your permission to save your answers.");
+    $("allow").hidden = denied; $("manage").hidden = !denied;
+    $("allow").onclick = async () => {
+      const r = await perms.request(need);
+      if (need.every(n => r[n] === "granted")) location.reload();
+      else { $("allow").hidden = true; $("manage").hidden = false; $("blockedMsg").textContent = "Saving was not allowed. You can turn it on in the page's permissions, then reload."; }
+    };
+    $("manage").onclick = async () => {
+      try { await perms.manage(); location.reload(); }
+      catch (e) { $("blockedMsg").textContent = "Open the page's Permissions menu in claude.ai, turn saving on, then reload."; }
+    };
+    return;
+  }
+  blocked("Saving isn't available in this view. Open the study link in a web browser signed in to claude.ai (not a preview or an embedded copy), then reload.");
+}
+
+(async () => {
+  const claude = window.claude;
+  const [dbNs, user] = await Promise.all([claude?.use?.("db") ?? null, claude?.use?.("user") ?? null]);
+  db = dbNs;
+  if (db && user && await user.isOwner()) { await ownerView(); return; }
+  uid = (db && user) ? await user.id() : null;
+  if (db) ref = uid ? db.doc("responses/" + uid) : null;
+  if (!uid) uid = raterCode();
+  if (db && !ref) ref = db.doc("anon/" + uid);
+  if (!db) $("ownerLink").parentElement.hidden = true;
+  // Without a store (signed out, outside the organization) the page keeps answers in this browser and ends with a code.
+  answers = loadLocal();
+  if (ref) {
+    try {
+      const snap = await ref.get();
+      if (snap.exists) answers = Object.assign({}, answers, (snap.data() || {}).answers);
+      else await ref.set({ answers, started: new Date().toISOString() });
+    } catch (e) { ref = null; }
+  }
+  order = orderFor(uid);
+  const open = firstOpen();
+  if (open >= order.length) { showDone(); return; }
+  if (open > 0) $("start").textContent = `Continue from item ${open + 1}`;
+  show("intro");
+})();
+</script>
+
+</body></html>

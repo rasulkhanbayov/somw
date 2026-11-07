@@ -1,0 +1,23 @@
+# Phase 4g-v2 evaluation (identical to 4g except the checkpoint and run names)
+# Original header: Phase 4g evaluation (pre-registered Oct 12, 2026; see code/p4g_repair_fc.py and p4g_summarize.py).
+paths:
+  data_root: ${DATA_ROOT}
+  ckpt_dir: ${DATA_ROOT}/checkpoints/checkpoints
+  ckpt_root: ${DATA_ROOT}/checkpoints
+  testset_dir: ${DATA_ROOT}/testset
+  ood_dir: ${DATA_ROOT}/ood
+  gen_dir: ${DATA_ROOT}/generations
+run_name: p4g_repair_v2
+summary_run_name: p4g_summary_v2
+ckpt_name: fc_base_v2          # the FINAL checkpoint of configs/p4g_train_v2.yaml
+p4b_run: p4b_repair
+n_id_queries: 100
+n_ood_per_split: 50
+m: 4
+lift: {k: 12, lam: 1.0e-6, use_F: false, use_C: true}
+constraint_fidelity: {}
+verify_fidelity: {substep_dt: 8.0e-4, n_grid: 64, cfl_target: 0.5}
+lambda_base: 0.03007           # the Phase 4b population (rejected base trajectories)
+lambda_object_level: 0.02614   # acceptance after repair
+seed: 0
+n_boot: 2000

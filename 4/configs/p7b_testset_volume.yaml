@@ -1,0 +1,33 @@
+# Phase 7b (pre-registered Oct 17, 2026; PLAN.md "Phase 7b"): PhysCtrl's own metrics on its released test set.
+# GPU part: p4j_allk.py (shadow + the five chain restarts, positions saved, DeformLoss on GPU).
+# CPU part: p7b_summarize.py (assembles each pipeline's output by the 4k rule; descriptive, no test).
+paths:
+  data_root: ${DATA_ROOT}
+  ckpt_dir: ${DATA_ROOT}/checkpoints/checkpoints
+  testset_dir: ${DATA_ROOT}/testset
+  gen_dir: ${DATA_ROOT}/generations
+run_name: p7b_allk
+summary_run_name: p7b_testset_volume
+entry_sets:
+  - {include_test_id: true, query_runs: [], n_id_queries: 100, n_ood_per_split: 0}
+chain_k: [3, 7, 11, 15, 19]
+shadow_fidelity: {substep_dt: 8.0e-4, n_grid: 64, cfl_target: 0.5}   # the coarse_cfl shadow of 4i-4o
+save_traj_dir: ${BIG_ROOT}/p7b_traj
+physctrl_metrics: true
+# CPU summary
+model: base
+defect_spec: {fidelity: coarse_cfl, m: 4, placement: spread_event}   # frozen in Phase 4a
+scan_run: p2c_scan                     # test_id rows of the exhaustive 2c scan (all chain starts present)
+tau: 0.02614
+eps: 0.10
+cost_fit_scan_run: p2c_scan
+shadow_rate_run: p4d_fullsim
+full_substeps: 20016
+only_splits: [test_id]
+probe_run: p2b_probe_v2                # true error of sample 0 on test_id (base)
+build_runs: []
+shadow_rate_splits_prefix: id_new_
+# Phase 10b addition (Oct 20): PhysCtrl's own vIoU / Chamfer on the 7b outputs (earlier pipeline), secondary row.
+physctrl_volume_metrics: true
+physctrl_root: ${DATA_ROOT}/physctrl
+title: "Phase 7b outputs (earlier pipeline) with PhysCtrl's own vIoU / Chamfer (descriptive; Oct 20, 2026)"

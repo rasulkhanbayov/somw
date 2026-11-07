@@ -1,0 +1,12 @@
+# Pilot E1b (Oct 19, 2026; EXPLORATORY; PLAN.md "Pilot E1b"): the stiff-material regime. build (E 10^U(7.5, 9.0))
+paths:
+  data_root: ${DATA_ROOT}
+  ckpt_dir: ${DATA_ROOT}/checkpoints/checkpoints
+  testset_dir: ${DATA_ROOT}/testset
+  ood_dir: ${BIG_ROOT}/datasets/stiff_e1
+  gen_dir: ${BIG_ROOT}/generations
+reference_cfl: 0.3          # CFL-safe reference for very stiff materials (backend option, off by default elsewhere)
+run_name: p8g_build
+n_base_queries: 75
+splits: [stiff_2, stiff_3]
+mode: nosync

@@ -1,0 +1,60 @@
+{
+  "run_name": "p1_fidelity_A100",
+  "synthetic": false,
+  "shard": "0",
+  "start_utc": "2026-10-10T13:44:15.005191+00:00",
+  "host": "crirdcmgpu006",
+  "platform": "Linux-5.19.0-45-generic-x86_64-with-glibc2.35",
+  "python": "3.10.22 (main, Oct  1 2026, 20:14:04) [GCC 14.3.0]",
+  "argv": [
+    "code/p1_fidelity.py",
+    "--config",
+    "configs/p1_fidelity.yaml",
+    "--tag",
+    "A100",
+    "--shard",
+    "0",
+    "--num-shards",
+    "4"
+  ],
+  "slurm_job_id": "419231",
+  "slurm_array_task_id": "0",
+  "gpus": [
+    "NVIDIA A100 80GB PCIe"
+  ],
+  "project_git_commit": null,
+  "physctrl_git_commit": "eaebd534719ce209436a610ea583ee7aee38943b",
+  "config": {
+    "paths": {
+      "data_root": "/export/home/rakh90100/cvpr_physics_plausibility/data",
+      "ckpt_dir": "/export/home/rakh90100/cvpr_physics_plausibility/data/checkpoints/checkpoints",
+      "testset_dir": "/export/home/rakh90100/cvpr_physics_plausibility/data/testset",
+      "ood_dir": "/export/home/rakh90100/cvpr_physics_plausibility/data/ood",
+      "gen_dir": "/export/home/rakh90100/cvpr_physics_plausibility/data/generations"
+    },
+    "n_queries": 40,
+    "mode": "nosync",
+    "sweep": {
+      "substep_dt": [
+        0.0001,
+        0.0002,
+        0.0004,
+        0.0008,
+        0.0016
+      ],
+      "n_grid": [
+        64,
+        96,
+        125
+      ]
+    },
+    "generator_models": [
+      "base",
+      "large"
+    ],
+    "generator_samples": 4,
+    "seed": 0
+  },
+  "torch": "2.5.1+cu121",
+  "warp": "1.5.0"
+}

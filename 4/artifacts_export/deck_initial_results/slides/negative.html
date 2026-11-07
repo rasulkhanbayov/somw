@@ -1,0 +1,21 @@
+<section id="negative" data-transition="fade" style="background:#FBFBF8;color:#14213D;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:44px">
+<p style="font-size:28px;letter-spacing:3px;text-transform:uppercase;color:#D9762B">What did not work</p>
+<h2 style="font-family:'Source Serif 4', Georgia, serif;font-size:72px;font-weight:600;line-height:1.1">Six ways to repair by regenerating all failed</h2>
+<div style="display:flex;flex-direction:row;gap:48px;align-items:start">
+<table style="width:1060px;font-size:26px;color:#14213D">
+<tr><th style="width:58%;text-align:left">Attempt</th><th style="width:42%;text-align:left">Outcome</th></tr>
+<tr><td>Fix verified frames inside the sampler</td><td>1% better: too small</td></tr>
+<tr><td>Search the conditioning to lower the defect</td><td>error 0.27 → 0.51</td></tr>
+<tr><td>Anchor the conditioning to the true start</td><td>no gain</td></tr>
+<tr><td>Fine-tune to accept clean frames</td><td>forgetting: +47% error</td></tr>
+<tr><td>LoRA fine-tune without forgetting</td><td>no propagation</td></tr>
+<tr><td>Re-simulate from generated positions</td><td>risk 0.070: too high</td></tr>
+</table>
+<div style="flex:1;display:flex;flex-direction:column;gap:20px;background:#14213D;border-radius:16px;padding:44px">
+<p style="font-size:32px;line-height:1.3;color:#F4F1EA"><b>Windows certify consistency, not accuracy.</b></p>
+<p style="font-size:28px;line-height:1.4;color:#BFCAD9">A restart from generated states removes only 20% of the error; one from the true start removes 94%. So repair needs a simulated state.</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#6A7280">Phases 4b, 4c, 4e, 4g, 4g-v2, 4h; all pre-registered and kept as negative results</p>
+<aside>The second attempt is a Goodhart effect: optimising the generation against the window defect lowered the defect on held-out windows while the true error nearly doubled. Lesson recorded in the plan: use the defect as a certificate, never as an objective. The working repair (Result 3) follows directly from the last row's diagnosis: early restarts lost the stress state, and late restarts started from positions that had drifted although every earlier window passed.</aside>
+</section>

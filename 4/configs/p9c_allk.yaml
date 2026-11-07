@@ -1,0 +1,15 @@
+# Phase 9 (pre-registered Oct 19, 2026; PLAN.md "Phase 9"): confirmation of ours-v2 on fresh data. Contact restarts as 4o, suffix at M3.
+paths:
+  data_root: ${DATA_ROOT}
+  ckpt_dir: ${DATA_ROOT}/checkpoints/checkpoints
+  testset_dir: ${DATA_ROOT}/testset
+  gen_dir: ${BIG_ROOT}/generations
+run_name: p9c_allk
+entry_sets:
+  - {include_test_id: false, query_runs: [p9c_scene_build], n_id_queries: 0, n_ood_per_split: 50}
+chain_k: [3, 7, 11, 15, 19]
+event_restart: true
+fidelity_restart_dist: 0.46875      # 3 coarse cells (10/64): where the coarse grid couples the objects
+shadow_fidelity: {substep_dt: 8.0e-4, n_grid: 64, cfl_target: 0.5}
+shadow_switch_dist: 0.46875         # Phase 4o: switch where the SHADOW's objects come within 3 coarse cells
+restart_fidelity: {substep_dt: 2.0e-4, n_grid: 125, cfl_target: 0.5}   # Phase 9: M3 suffix (cheapest with risk <= 0.02 on 4l, 8a)

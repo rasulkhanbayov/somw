@@ -1,0 +1,14 @@
+# Pilot E1b (Oct 19, 2026; EXPLORATORY; PLAN.md "Pilot E1b"): the stiff-material regime. gated-V2 restarts, M1 shadow, M3 suffix (E1b)
+paths:
+  data_root: ${DATA_ROOT}
+  ckpt_dir: ${DATA_ROOT}/checkpoints/checkpoints
+  testset_dir: ${DATA_ROOT}/testset
+  ood_dir: ${BIG_ROOT}/datasets/stiff_e1
+  gen_dir: ${BIG_ROOT}/generations
+reference_cfl: 0.3          # CFL-safe reference for very stiff materials (backend option, off by default elsewhere)
+run_name: p8g_allk
+entry_sets:
+  - {include_test_id: false, query_runs: [p8g_build], n_id_queries: 0, n_ood_per_split: 75}
+chain_k: [3, 7, 11, 15, 19]
+shadow_fidelity: {substep_dt: 8.0e-4, n_grid: 96, cfl_target: 0.5}
+restart_fidelity: {substep_dt: 2.0e-4, n_grid: 125, cfl_target: 0.5}    # M3 (E1b)

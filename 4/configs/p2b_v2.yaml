@@ -1,0 +1,25 @@
+# Phase 2b-v2 (Oct 10, 2026): probe rerun with the lift variant chosen on ground truth only.
+# v1 (p2b.yaml) lifted F from positions; that blew up the simulator on 36-58% of
+# ground-truth windows (p2a), so its probes measured the lift defect. lift_noF (F = I) had
+# 0 ground-truth blow-ups and the lowest in-distribution floor. Everything else, including
+# the generations, thresholds and +inf blow-up rule, is unchanged from v1.
+paths:
+  data_root: ${DATA_ROOT}
+  ckpt_dir: ${DATA_ROOT}/checkpoints/checkpoints
+  testset_dir: ${DATA_ROOT}/testset
+  ood_dir: ${DATA_ROOT}/ood
+  gen_dir: ${DATA_ROOT}/generations
+run_name: p2b_probe_v2
+models: [base, large]
+n_id_queries: 100
+n_ood_per_split: 50
+n_samples: 8                # sample 0 is verified; all 8 give the seed-spread baseline
+seed: 0
+probe:
+  strategies: [uniform, random, event, disagree, proposal, oracle]
+  n_windows: 3
+  m: 1                      # window = 2 simulator frames
+  n_perturb: 2
+  lift: {k: 12, lam: 1.0e-6, use_F: false, use_C: true}   # = p2a variant lift_noF
+  perturb: {pos_eps_dx: 0.05, vel_rel: 0.05, logE_sd: 0.05, sigma_floor: 1.0e-4}
+  seed: 0

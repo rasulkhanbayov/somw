@@ -1,0 +1,62 @@
+{
+  "run_name": "p4g_train",
+  "synthetic": false,
+  "shard": null,
+  "start_utc": "2026-10-12T18:33:01.981341+00:00",
+  "host": "crirdchpxd005",
+  "platform": "Linux-5.19.0-45-generic-x86_64-with-glibc2.35",
+  "python": "3.10.22 (main, Oct  1 2026, 20:14:04) [GCC 14.3.0]",
+  "argv": [
+    "code/p4g_train_fc.py",
+    "--config",
+    "configs/p4g_train.yaml"
+  ],
+  "slurm_job_id": "421442",
+  "slurm_array_task_id": null,
+  "gpus": [
+    "NVIDIA H200"
+  ],
+  "project_git_commit": null,
+  "physctrl_git_commit": "eaebd534719ce209436a610ea583ee7aee38943b",
+  "config": {
+    "paths": {
+      "data_root": "/export/home/rakh90100/cvpr_physics_plausibility/data",
+      "ckpt_dir": "/export/home/rakh90100/cvpr_physics_plausibility/data/checkpoints/checkpoints",
+      "ckpt_root": "/export/home/rakh90100/cvpr_physics_plausibility/data/checkpoints",
+      "testset_dir": "/export/home/rakh90100/cvpr_physics_plausibility/data/testset",
+      "ood_dir": "/export/home/rakh90100/cvpr_physics_plausibility/data/fc_train",
+      "gen_dir": "/export/home/rakh90100/cvpr_physics_plausibility/data/generations"
+    },
+    "run_name": "p4g_train",
+    "ckpt_name": "fc_base_v1",
+    "train_build_runs": [
+      "p4g_train_build"
+    ],
+    "base_manifest": "/export/home/rakh90100/cvpr_physics_plausibility/4/results/p4g_sample_manifest/manifest.json",
+    "seed": 0,
+    "train": {
+      "steps": 20000,
+      "batch_size": 8,
+      "lr": 5e-05,
+      "warmup": 100,
+      "lambda_vel": 1.0,
+      "val_frac": 0.05,
+      "val_samples": 64,
+      "num_workers": 6,
+      "log_every": 100,
+      "val_every": 1000,
+      "ckpt_every": 2500
+    },
+    "mask": {
+      "window": 4,
+      "p_none": 0.1,
+      "p_anchor": 0.7,
+      "max_windows": 3
+    }
+  },
+  "torch": "2.5.1+cu121",
+  "warp": "1.5.0",
+  "end_utc": "2026-10-12T23:31:17.149477+00:00",
+  "status": "ok",
+  "final": "/export/home/rakh90100/cvpr_physics_plausibility/data/checkpoints/fc_base_v1/final.pt"
+}

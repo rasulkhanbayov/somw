@@ -1,0 +1,12 @@
+# Phase 10c (pre-registered Oct 21, 2026; PLAN.md "Phase 10c"): positions of every Phase 9 pipeline and of the reference at
+# dt, dt/2, dt/4 for exact re-scoring. GPU job 101 (code/p10c_rescore.py); decisions from code/p10c_decisions.py (CPU).
+paths:
+  data_root: ${DATA_ROOT}
+  ckpt_dir: ${DATA_ROOT}/checkpoints/checkpoints
+  testset_dir: ${DATA_ROOT}/testset
+  gen_dir: ${BIG_ROOT}/generations
+run_name: p10c_rescore
+decisions_run: p10c_decisions
+traj_dir: ${BIG_ROOT}/p10c_traj
+single: {full_config: configs/p9_full.yaml, allk_config: configs/p9_allk.yaml}
+contact: {full_config: configs/p9c_full.yaml, allk_config: configs/p9c_allk.yaml}

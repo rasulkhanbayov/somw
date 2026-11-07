@@ -1,0 +1,639 @@
+CMake Warning at CMakeLists.txt:14 (message):
+  CMake version is 4.4.3, setting stuff for dependencies.
+
+
+-- The C compiler identification is GNU 15.3.0
+-- The CXX compiler identification is GNU 15.3.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /export/home/rakh90100/miniconda3/envs/somw-fem/bin/x86_64-conda-linux-gnu-gcc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /export/home/rakh90100/miniconda3/envs/somw-fem/bin/x86_64-conda-linux-gnu-g++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Enabling MMG because optimization support requires remeshing
+-- Using CPM cache folder: /export/home/rakh90100/.cache/CPM
+-- Performing Test IS_SUPPORTED_-fdiagnostics-color-always
+-- Performing Test IS_SUPPORTED_-fdiagnostics-color-always - Success
+-- Performing Test IS_SUPPORTED_-fcolor-diagnostics
+-- Performing Test IS_SUPPORTED_-fcolor-diagnostics - Failed
+-- Adding global flags: $<$<COMPILE_LANGUAGE:CXX>:-fdiagnostics-color=always>
+-- Third-party: creating target 'polysolve'
+-- Found Git: /usr/bin/git (found version "2.34.1")
+-- Using CPM cache folder: /export/home/rakh90100/.cache/CPM
+-- Adding global flags: $<$<COMPILE_LANGUAGE:CXX>:-fdiagnostics-color=always>
+-- Forcing /MD globally due MKL being enabled
+-- Third-party: creating target 'Eigen3::Eigen'
+-- CPM: polysolve: Adding package eigen@5.0.1 (5.0.1 at /export/home/rakh90100/.cache/CPM/eigen/4f90)
+-- Third-party: creating target 'mkl::mkl'
+-- MKL interface layer: lp64
+-- MKL threading layer: tbb
+-- MKL linking strategy: static
+-- MKL version: 2022.2.1
+-- CPM: polysolve: Adding package mkl-include@16999 (16999 at /export/home/rakh90100/.cache/CPM/mkl-include/03d8)
+-- CPM: polysolve: Adding package mkl-static@16999 (16999 at /export/home/rakh90100/.cache/CPM/mkl-static/fea3)
+-- MKL include dir: /export/home/rakh90100/.cache/CPM/mkl-include/03d8/include
+-- Creating target mkl::core for lib file: /export/home/rakh90100/.cache/CPM/mkl-static/fea3/lib/libmkl_core.a
+-- Creating target mkl::intel_lp64 for lib file: /export/home/rakh90100/.cache/CPM/mkl-static/fea3/lib/libmkl_intel_lp64.a
+-- Creating target mkl::tbb_thread for lib file: /export/home/rakh90100/.cache/CPM/mkl-static/fea3/lib/libmkl_tbb_thread.a
+-- Third-party: creating target 'TBB::tbb' (OneTBB)
+CMake Warning at /export/home/rakh90100/.cache/CPM/onetbb/8201/CMakeLists.txt:116 (message):
+  You are building oneTBB as a static library.  This is highly discouraged
+  and such configuration is not supported.  Consider building a dynamic
+  library to avoid unforeseen issues.
+
+
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Failed
+-- Check if compiler accepts -pthread
+-- Check if compiler accepts -pthread - yes
+-- Found Threads: TRUE
+-- Checking for one of the modules 'hwloc'
+-- TBBBind build targets are disabled due to unsupported environment
+-- CPM: polysolve: Adding package oneTBB@2021.9.0 (v2021.9.0 at /export/home/rakh90100/.cache/CPM/onetbb/8201)
+-- Third-party: creating target 'spdlog::spdlog'
+-- Build spdlog: 1.13.0
+-- Looking for pthread_create in pthreads
+-- Looking for pthread_create in pthreads - not found
+-- Looking for pthread_create in pthread
+-- Looking for pthread_create in pthread - found
+-- Build type: Release
+-- Generating install
+-- CPM: polysolve: Adding package spdlog@1.13.0 (v1.13.0 at /export/home/rakh90100/.cache/CPM/spdlog/d7e5)
+-- Third-party: creating target 'nlohmann_json::nlohmann_json'
+-- CPM: polysolve: Adding package nlohmann_json@ ( at /export/home/rakh90100/.cache/CPM/nlohmann_json/38b0)
+-- Third-party: creating target 'jse::jse'
+-- GCC >= 4.9 detected, enabling colored diagnostics
+-- CPM: polysolve: Adding package json-spec-engine@0 (81c4dc4092115f37a841285dede3d39559f7fb86 at /export/home/rakh90100/.cache/CPM/json-spec-engine/4b7c)
+-- Third-party: creating target 'HYPRE::HYPRE'
+-- CMake Executable: /export/home/rakh90100/miniconda3/envs/somw-fem/bin/cmake
+-- CMake Version: 4.4.3
+-- Hypre Version: v3.1.0-55-g7e247a231 (HEAD)
+-- Build type: Release
+-- Shared library: OFF
+-- Installation directory: /export/home/rakh90100/.cache/CPM/hypre/0d42/src/hypre
+-- Using C standard: 99
+-- Link-Time Optimization (LTO) disabled
+-- GPU support not enabled
+-- Using internal BLAS
+-- Using internal LAPACK
+-- 
+-- HYPRE Configuration Summary:
+-- 
+--  Base Options:
+--  +-------------------------------------+---------+
+--  | Option                              | Status  |
+--  +-------------------------------------+---------+
+--  | HYPRE_ENABLE_BIGINT                 | OFF     |
+--  | HYPRE_ENABLE_MIXEDINT               | OFF     |
+--  | HYPRE_ENABLE_SINGLE                 | OFF     |
+--  | HYPRE_ENABLE_LONG_DOUBLE            | OFF     |
+--  | HYPRE_ENABLE_COMPLEX                | OFF     |
+--  | HYPRE_ENABLE_MIXED_PRECISION        | OFF     |
+--  | HYPRE_ENABLE_FORTRAN                | OFF     |
+--  | HYPRE_ENABLE_HYPRE_BLAS             | ON      |
+--  | HYPRE_ENABLE_HYPRE_LAPACK           | ON      |
+--  | HYPRE_ENABLE_PERSISTENT_COMM        | OFF     |
+--  | HYPRE_ENABLE_FEI                    | OFF     |
+--  | HYPRE_ENABLE_HOPSCOTCH              | OFF     |
+--  | HYPRE_ENABLE_OPENMP                 | OFF     |
+--  | HYPRE_ENABLE_MPI                    | OFF     |
+--  | HYPRE_ENABLE_LTO                    | OFF     |
+--  | HYPRE_ENABLE_PRINT_ERRORS           | ON      |
+--  | HYPRE_ENABLE_FPE_TRAP               | OFF     |
+--  | HYPRE_ENABLE_TEST_USING_HOST        | OFF     |
+--  | HYPRE_ENABLE_HOST_MEMORY            | ON      |
+--  | HYPRE_BUILD_EXAMPLES                | OFF     |
+--  | HYPRE_BUILD_TESTS                   | OFF     |
+--  +-------------------------------------+---------+
+-- 
+--  Third-Party Library Options:
+--  +-------------------------------------+---------+
+--  | Option                              | Status  |
+--  +-------------------------------------+---------+
+--  | HYPRE_BUILD_UMPIRE                  | OFF     |
+--  | HYPRE_ENABLE_UMPIRE                 | OFF     |
+--  | HYPRE_ENABLE_UMPIRE_HOST            | OFF     |
+--  | HYPRE_ENABLE_UMPIRE_PINNED          | OFF     |
+--  | HYPRE_ENABLE_UMPIRE_DEVICE          | OFF     |
+--  | HYPRE_ENABLE_UMPIRE_UM              | OFF     |
+--  | HYPRE_ENABLE_SUPERLU                | OFF     |
+--  | HYPRE_ENABLE_DSUPERLU               | OFF     |
+--  | HYPRE_ENABLE_MAGMA                  | OFF     |
+--  | HYPRE_ENABLE_CALIPER                | OFF     |
+--  +-------------------------------------+---------+
+-- 
+-- CPM: polysolve: Adding package hypre@0 (7e247a231ebdeb44b06c7c9d3b5bee3bac21123f at /export/home/rakh90100/.cache/CPM/hypre/0d42)
+-- Third-party: creating targets 'SuiteSparse::CHOLMOD'
+-- Third-party: creating target 'BLAS::BLAS'
+-- Third-party: creating target 'LAPACK::LAPACK'
+-- Looking for a CUDA compiler
+-- Looking for a CUDA compiler - NOTFOUND
+-- Looking for a Fortran compiler
+-- Looking for a Fortran compiler - /usr/bin/gfortran
+-- Performing Test HAVE_QSTD_C99
+-- Performing Test HAVE_QSTD_C99 - Failed
+-- Found OpenMP_C: -fopenmp (found version "4.5")
+-- Found OpenMP: TRUE (found version "4.5") found components: C
+-- Looking for complex.h
+-- Looking for complex.h - found
+-- Looking for fenv.h
+-- Looking for fenv.h - found
+-- Looking for ceil in m
+-- Looking for ceil in m - found
+-- Looking for feenableexcept
+-- Looking for feenableexcept - found
+-- Looking for _controlfp
+-- Looking for _controlfp - not found
+-- Check size of _C_double_complex
+-- Check size of _C_double_complex - failed
+-- Performing Test COMPILER_HAS_HIDDEN_VISIBILITY
+-- Performing Test COMPILER_HAS_HIDDEN_VISIBILITY - Success
+-- Performing Test COMPILER_HAS_HIDDEN_INLINE_VISIBILITY
+-- Performing Test COMPILER_HAS_HIDDEN_INLINE_VISIBILITY - Success
+-- Performing Test COMPILER_HAS_DEPRECATED_ATTR
+-- Performing Test COMPILER_HAS_DEPRECATED_ATTR - Success
+-- The following features have been enabled:
+
+ * GPL, GNU GPL modules
+ * LGPL, GNU LGPL modules
+ * CAMD, CAMD, CCOLAMD, CSYMAMD interfaces
+ * Check, Check module
+ * Cholesky, Cholesky module
+ * MatrixOps, MatrixOps module
+ * Print, Additional diagnostic messages
+ * Supernodal, Supernodal module
+
+-- The following OPTIONAL packages have been found:
+
+ * OpenMP, Multi-platform shared memory multiprocessing, <http://www.openmp.org>
+   Enables multithreading support
+
+-- The following REQUIRED packages have been found:
+
+ * Threads, Multithreading support
+ * Git
+ * BLAS, Basic Linear Algebra Subprograms, <http://www.netlib.org/blas>
+ * LAPACK, Linear Algebra PACKage, <http://www.netlib.org/lapack>
+
+-- The following features have been disabled:
+
+ * CUDA, GPU accelerated CHOLMOD using CUDA
+ * Fortran, Fortran compilation
+ * Partition, Partition module
+ * Threading, Parallelization using Intel Threading Building Blocks
+
+-- CPM: polysolve: Adding package suitesparse@0 (0ba07264225518a487a0a9a8e675f6e36c96a68a at /export/home/rakh90100/.cache/CPM/suitesparse/3786)
+-- Third-party: creating targets 'SuperLU::SuperLU'
+CMake Warning at /export/home/rakh90100/.cache/CPM/polysolve/a3ba/cmake/recipes/superlu.cmake:10 (find_package):
+  By not providing "FindSUPERLU.cmake" in CMAKE_MODULE_PATH this project has
+  asked CMake to find a package configuration file provided by "SUPERLU", but
+  CMake did not find one.
+
+  Could not find a package configuration file provided by "SUPERLU" with any
+  of the following names:
+
+    SUPERLU.cps
+    superlu.cps
+    SUPERLUConfig.cmake
+    superlu-config.cmake
+
+  Add the installation prefix of "SUPERLU" to CMAKE_PREFIX_PATH or set
+  "SUPERLU_DIR" to a directory containing one of the above files.  If
+  "SUPERLU" provides a separate development package or SDK, be sure it has
+  been installed.
+Call Stack (most recent call first):
+  /export/home/rakh90100/.cache/CPM/polysolve/a3ba/CMakeLists.txt:346 (include)
+
+
+CMake Warning at /export/home/rakh90100/.cache/CPM/polysolve/a3ba/CMakeLists.txt:351 (message):
+  SuperLU not found, solver will not be available.
+
+
+-- Third-party: creating targets 'SuiteSparse::SPQR'
+CMake Warning at /export/home/rakh90100/.cache/CPM/polysolve/a3ba/cmake/recipes/spqr.cmake:10 (find_package):
+  By not providing "FindSPQR.cmake" in CMAKE_MODULE_PATH this project has
+  asked CMake to find a package configuration file provided by "SPQR", but
+  CMake did not find one.
+
+  Could not find a package configuration file provided by "SPQR" with any of
+  the following names:
+
+    SPQR.cps
+    spqr.cps
+    SPQRConfig.cmake
+    spqr-config.cmake
+
+  Add the installation prefix of "SPQR" to CMAKE_PREFIX_PATH or set
+  "SPQR_DIR" to a directory containing one of the above files.  If "SPQR"
+  provides a separate development package or SDK, be sure it has been
+  installed.
+Call Stack (most recent call first):
+  /export/home/rakh90100/.cache/CPM/polysolve/a3ba/CMakeLists.txt:357 (include)
+
+
+-- Third-party: creating target 'Spectra::Spectra'
+-- CPM: polysolve: Adding package spectra@0.6.2 (v0.6.2 at /export/home/rakh90100/.cache/CPM/spectra/ba1e)
+-- Performing Test IS_SUPPORTED_-Wall
+-- Performing Test IS_SUPPORTED_-Wall - Success
+-- Performing Test IS_SUPPORTED_-Wextra
+-- Performing Test IS_SUPPORTED_-Wextra - Success
+-- Performing Test IS_SUPPORTED_-Wunused
+-- Performing Test IS_SUPPORTED_-Wunused - Success
+-- Performing Test IS_SUPPORTED_-Wno-long-long
+-- Performing Test IS_SUPPORTED_-Wno-long-long - Success
+-- Performing Test IS_SUPPORTED_-Wpointer-arith
+-- Performing Test IS_SUPPORTED_-Wpointer-arith - Success
+-- Performing Test IS_SUPPORTED_-Wformat-2
+-- Performing Test IS_SUPPORTED_-Wformat-2 - Success
+-- Performing Test IS_SUPPORTED_-Wuninitialized
+-- Performing Test IS_SUPPORTED_-Wuninitialized - Success
+-- Performing Test IS_SUPPORTED_-Wcast-qual
+-- Performing Test IS_SUPPORTED_-Wcast-qual - Success
+-- Performing Test IS_SUPPORTED_-Wmissing-noreturn
+-- Performing Test IS_SUPPORTED_-Wmissing-noreturn - Success
+-- Performing Test IS_SUPPORTED_-Wmissing-format-attribute
+-- Performing Test IS_SUPPORTED_-Wmissing-format-attribute - Success
+-- Performing Test IS_SUPPORTED_-Wredundant-decls
+-- Performing Test IS_SUPPORTED_-Wredundant-decls - Success
+-- Performing Test IS_SUPPORTED_-Werror-implicit
+-- Performing Test IS_SUPPORTED_-Werror-implicit - Failed
+-- Performing Test IS_SUPPORTED_-Werror-nonnull
+-- Performing Test IS_SUPPORTED_-Werror-nonnull - Success
+-- Performing Test IS_SUPPORTED_-Werror-init-self
+-- Performing Test IS_SUPPORTED_-Werror-init-self - Success
+-- Performing Test IS_SUPPORTED_-Werror-main
+-- Performing Test IS_SUPPORTED_-Werror-main - Success
+-- Performing Test IS_SUPPORTED_-Werror-missing-braces
+-- Performing Test IS_SUPPORTED_-Werror-missing-braces - Success
+-- Performing Test IS_SUPPORTED_-Werror-sequence-point
+-- Performing Test IS_SUPPORTED_-Werror-sequence-point - Success
+-- Performing Test IS_SUPPORTED_-Werror-return-type
+-- Performing Test IS_SUPPORTED_-Werror-return-type - Success
+-- Performing Test IS_SUPPORTED_-Werror-trigraphs
+-- Performing Test IS_SUPPORTED_-Werror-trigraphs - Success
+-- Performing Test IS_SUPPORTED_-Werror-array-bounds
+-- Performing Test IS_SUPPORTED_-Werror-array-bounds - Success
+-- Performing Test IS_SUPPORTED_-Werror-write-strings
+-- Performing Test IS_SUPPORTED_-Werror-write-strings - Success
+-- Performing Test IS_SUPPORTED_-Werror-address
+-- Performing Test IS_SUPPORTED_-Werror-address - Success
+-- Performing Test IS_SUPPORTED_-Werror-int-to-pointer-cast
+-- Performing Test IS_SUPPORTED_-Werror-int-to-pointer-cast - Success
+-- Performing Test IS_SUPPORTED_-Werror-pointer-to-int-cast
+-- Performing Test IS_SUPPORTED_-Werror-pointer-to-int-cast - Failed
+-- Performing Test IS_SUPPORTED_-Wno-unused-variable
+-- Performing Test IS_SUPPORTED_-Wno-unused-variable - Success
+-- Performing Test IS_SUPPORTED_-Wunused-but-set-variable
+-- Performing Test IS_SUPPORTED_-Wunused-but-set-variable - Success
+-- Performing Test IS_SUPPORTED_-Wno-unused-parameter
+-- Performing Test IS_SUPPORTED_-Wno-unused-parameter - Success
+-- Performing Test IS_SUPPORTED_-Wno-old-style-cast
+-- Performing Test IS_SUPPORTED_-Wno-old-style-cast - Success
+-- Performing Test IS_SUPPORTED_-Wshadow
+-- Performing Test IS_SUPPORTED_-Wshadow - Success
+-- Performing Test IS_SUPPORTED_-Wstrict-null-sentinel
+-- Performing Test IS_SUPPORTED_-Wstrict-null-sentinel - Success
+-- Performing Test IS_SUPPORTED_-Woverloaded-virtual
+-- Performing Test IS_SUPPORTED_-Woverloaded-virtual - Success
+-- Performing Test IS_SUPPORTED_-Wsign-promo
+-- Performing Test IS_SUPPORTED_-Wsign-promo - Success
+-- Performing Test IS_SUPPORTED_-Wstack-protector
+-- Performing Test IS_SUPPORTED_-Wstack-protector - Success
+-- Performing Test IS_SUPPORTED_-Wstrict-aliasing
+-- Performing Test IS_SUPPORTED_-Wstrict-aliasing - Success
+-- Performing Test IS_SUPPORTED_-Wstrict-aliasing-2
+-- Performing Test IS_SUPPORTED_-Wstrict-aliasing-2 - Success
+-- Performing Test IS_SUPPORTED_-Wswitch-default
+-- Performing Test IS_SUPPORTED_-Wswitch-default - Success
+-- Performing Test IS_SUPPORTED_-Wswitch-enum
+-- Performing Test IS_SUPPORTED_-Wswitch-enum - Success
+-- Performing Test IS_SUPPORTED_-Wswitch-unreachable
+-- Performing Test IS_SUPPORTED_-Wswitch-unreachable - Success
+-- Performing Test IS_SUPPORTED_-Wcast-align
+-- Performing Test IS_SUPPORTED_-Wcast-align - Success
+-- Performing Test IS_SUPPORTED_-Wdisabled-optimization
+-- Performing Test IS_SUPPORTED_-Wdisabled-optimization - Success
+-- Performing Test IS_SUPPORTED_-Winvalid-pch
+-- Performing Test IS_SUPPORTED_-Winvalid-pch - Success
+-- Performing Test IS_SUPPORTED_-Wpacked
+-- Performing Test IS_SUPPORTED_-Wpacked - Success
+-- Performing Test IS_SUPPORTED_-Wno-padded
+-- Performing Test IS_SUPPORTED_-Wno-padded - Success
+-- Performing Test IS_SUPPORTED_-Wstrict-overflow
+-- Performing Test IS_SUPPORTED_-Wstrict-overflow - Success
+-- Performing Test IS_SUPPORTED_-Wstrict-overflow-2
+-- Performing Test IS_SUPPORTED_-Wstrict-overflow-2 - Success
+-- Performing Test IS_SUPPORTED_-Wctor-dtor-privacy
+-- Performing Test IS_SUPPORTED_-Wctor-dtor-privacy - Success
+-- Performing Test IS_SUPPORTED_-Wlogical-op
+-- Performing Test IS_SUPPORTED_-Wlogical-op - Success
+-- Performing Test IS_SUPPORTED_-Wnoexcept
+-- Performing Test IS_SUPPORTED_-Wnoexcept - Success
+-- Performing Test IS_SUPPORTED_-Wnon-virtual-dtor
+-- Performing Test IS_SUPPORTED_-Wnon-virtual-dtor - Success
+-- Performing Test IS_SUPPORTED_-Wdelete-non-virtual-dtor
+-- Performing Test IS_SUPPORTED_-Wdelete-non-virtual-dtor - Success
+-- Performing Test IS_SUPPORTED_-Werror-non-virtual-dtor
+-- Performing Test IS_SUPPORTED_-Werror-non-virtual-dtor - Success
+-- Performing Test IS_SUPPORTED_-Werror-delete-non-virtual-dtor
+-- Performing Test IS_SUPPORTED_-Werror-delete-non-virtual-dtor - Success
+-- Performing Test IS_SUPPORTED_-Wno-sign-compare
+-- Performing Test IS_SUPPORTED_-Wno-sign-compare - Success
+-- Performing Test IS_SUPPORTED_-Wnull-dereference
+-- Performing Test IS_SUPPORTED_-Wnull-dereference - Success
+-- Performing Test IS_SUPPORTED_-fdelete-null-pointer-checks
+-- Performing Test IS_SUPPORTED_-fdelete-null-pointer-checks - Success
+-- Performing Test IS_SUPPORTED_-Wduplicated-cond
+-- Performing Test IS_SUPPORTED_-Wduplicated-cond - Success
+-- Performing Test IS_SUPPORTED_-Wmisleading-indentation
+-- Performing Test IS_SUPPORTED_-Wmisleading-indentation - Success
+-- Performing Test IS_SUPPORTED_-fno-omit-frame-pointer
+-- Performing Test IS_SUPPORTED_-fno-omit-frame-pointer - Success
+-- Performing Test IS_SUPPORTED_-fno-optimize-sibling-calls
+-- Performing Test IS_SUPPORTED_-fno-optimize-sibling-calls - Success
+-- Performing Test IS_SUPPORTED_-Wno-missing-noreturn
+-- Performing Test IS_SUPPORTED_-Wno-missing-noreturn - Success
+-- Performing Test IS_SUPPORTED_-Wno-shadow
+-- Performing Test IS_SUPPORTED_-Wno-shadow - Success
+-- Performing Test IS_SUPPORTED_-Wno-switch-enum
+-- Performing Test IS_SUPPORTED_-Wno-switch-enum - Success
+-- Performing Test IS_SUPPORTED_-Wno-unused-command-line-argument
+-- Performing Test IS_SUPPORTED_-Wno-unused-command-line-argument - Failed
+-- Performing Test IS_SUPPORTED_-Wno-unused-function
+-- Performing Test IS_SUPPORTED_-Wno-unused-function - Success
+-- Performing Test IS_SUPPORTED_-Wno-unused-private-field
+-- Performing Test IS_SUPPORTED_-Wno-unused-private-field - Failed
+-- Performing Test IS_SUPPORTED_-Wno-unused-lambda-capture
+-- Performing Test IS_SUPPORTED_-Wno-unused-lambda-capture - Failed
+-- Performing Test IS_SUPPORTED_-Wno-reorder-ctor
+-- Performing Test IS_SUPPORTED_-Wno-reorder-ctor - Failed
+-- Performing Test IS_SUPPORTED_-Wno-missing-field-initializers
+-- Performing Test IS_SUPPORTED_-Wno-missing-field-initializers - Success
+-- Third-party: creating target 'LBGFSpp::LBGFSpp'
+-- CPM: polysolve: Adding package lbfgspp@0.2.0 (v0.2.0 at /export/home/rakh90100/.cache/CPM/lbfgspp/4070)
+-- Third-party: creating target 'finitediff::finitediff'
+-- Performing Test IS_SUPPORTED_-pedantic
+-- Performing Test IS_SUPPORTED_-pedantic - Success
+-- Performing Test IS_SUPPORTED_-Wswitch
+-- Performing Test IS_SUPPORTED_-Wswitch - Success
+-- CPM: polysolve: Adding package finite-diff@1.0.2 (v1.0.2 at /export/home/rakh90100/.cache/CPM/finite-diff/1d94)
+-- CPM: Adding package polysolve@0 (a7727e33398ff4ab703bb593e1f06041c237c600 at /export/home/rakh90100/.cache/CPM/polysolve/a3ba)
+-- Third-party: creating target 'igl::core'
+-- Found Patch: /usr/bin/patch
+-- Creating target: igl::core (igl_core)
+-- Creating target: igl::predicates (igl_predicates)
+-- Creating target: igl_restricted::triangle (igl_restricted_triangle)
+-- Third-party: creating target 'triangle::triangle'
+-- CPM: Adding package libigl@0 (aeeea9b416a5b5474cb9d12c07ff1238a4c83ba1 at /export/home/rakh90100/.cache/CPM/libigl/9b83)
+-- Third-party: creating target 'ipc::toolkit'
+-- Using CPM cache folder: /export/home/rakh90100/.cache/CPM
+-- Adding global flags: $<$<COMPILE_LANGUAGE:CXX>:-fdiagnostics-color=always>
+-- Testing SIMD capabilities...
+-- Performing Test DETECTED_SSE_42
+-- Performing Test DETECTED_SSE_42 - Success
+-- Performing Test DETECTED_SSE_41
+-- Performing Test DETECTED_SSE_41 - Success
+-- Performing Test DETECTED_SSE_30
+-- Performing Test DETECTED_SSE_30 - Success
+-- Performing Test DETECTED_AVX_20
+-- Performing Test DETECTED_AVX_20 - Success
+-- Performing Test DETECTED_AVX_10
+-- Performing Test DETECTED_AVX_10 - Success
+-- Performing Test DETECTED_FMA
+-- Performing Test DETECTED_FMA - Success
+-- Performing Test DETECTED_NEON
+-- Performing Test DETECTED_NEON - Failed
+-- Using automatic native flag for SIMD optimization
+-- SIMD support found: -march=x86-64-v2
+-- Third-party: creating target 'tight_inclusion::tight_inclusion'
+-- Using CPM cache folder: /export/home/rakh90100/.cache/CPM
+-- Adding global flags: $<$<COMPILE_LANGUAGE:CXX>:-fdiagnostics-color=always>
+-- Performing Test IS_SUPPORTED_-Wno-maybe-uninitialized
+-- Performing Test IS_SUPPORTED_-Wno-maybe-uninitialized - Success
+-- Performing Test IS_SUPPORTED_-Wno-unused-but-set-variable
+-- Performing Test IS_SUPPORTED_-Wno-unused-but-set-variable - Success
+-- Searching for AVX...
+-- Using CPU native flags for AVX optimization:  -march=native
+-- Performing Test HAS_FLAG__mno_avx512f
+-- Performing Test HAS_FLAG__mno_avx512f - Success
+-- Performing Test HAS_FLAG__mno_avx512pf
+-- Performing Test HAS_FLAG__mno_avx512pf - Failed
+-- Performing Test HAS_FLAG__mno_avx512er
+-- Performing Test HAS_FLAG__mno_avx512er - Failed
+-- Performing Test HAS_FLAG__mno_avx512cd
+-- Performing Test HAS_FLAG__mno_avx512cd - Success
+--   Found AVX 2.0 extensions, using flags:  -march=native -mavx2 -mno-avx512f -mno-avx512cd
+-- CPM: ipc-toolkit: Adding package Tight-Inclusion@1.0.6 (v1.0.6 at /export/home/rakh90100/.cache/CPM/tight-inclusion/6ee0)
+-- Third-party: creating target 'scalable_ccd::scalable_ccd'
+-- Using CPM cache folder: /export/home/rakh90100/.cache/CPM
+-- Adding global flags: $<$<COMPILE_LANGUAGE:CXX>:-fdiagnostics-color=always>
+-- Performing Test IS_SUPPORTED_-Wpedantic
+-- Performing Test IS_SUPPORTED_-Wpedantic - Success
+-- Performing Test IS_SUPPORTED_-Werror-enum-conversion
+-- Performing Test IS_SUPPORTED_-Werror-enum-conversion - Success
+-- Performing Test IS_SUPPORTED_-Wfloat-conversion
+-- Performing Test IS_SUPPORTED_-Wfloat-conversion - Success
+-- Performing Test IS_SUPPORTED_-Warray-bounds
+-- Performing Test IS_SUPPORTED_-Warray-bounds - Success
+-- Performing Test IS_SUPPORTED_-Werror-inconsistent-missing-override
+-- Performing Test IS_SUPPORTED_-Werror-inconsistent-missing-override - Failed
+-- Performing Test IS_SUPPORTED_-Werror-return-stack-address
+-- Performing Test IS_SUPPORTED_-Werror-return-stack-address - Failed
+-- Performing Test IS_SUPPORTED_-Wunused-variable
+-- Performing Test IS_SUPPORTED_-Wunused-variable - Success
+-- Performing Test IS_SUPPORTED_-Wold-style-cast
+-- Performing Test IS_SUPPORTED_-Wold-style-cast - Success
+-- Performing Test IS_SUPPORTED_-Wmissing-include-dirs
+-- Performing Test IS_SUPPORTED_-Wmissing-include-dirs - Success
+-- Performing Test IS_SUPPORTED_-Wno-redundant-decls
+-- Performing Test IS_SUPPORTED_-Wno-redundant-decls - Success
+-- CPM: ipc-toolkit: Adding package scalable-ccd@0 (c80af01cab083b3eeb8dac80312ec9cfe479a5cf at /export/home/rakh90100/.cache/CPM/scalable-ccd/0521)
+-- Third-party: creating target 'TinyAD::TinyAD'
+-- Building TinyAD in Release mode
+-- Building TinyAD with oneTBB backend.
+-- CPM: ipc-toolkit: Adding package tinyad@0 (957ede5bcf4b8d924f27230083508c664a9f7a7d at /export/home/rakh90100/.cache/CPM/tinyad/6834)
+-- Third-party: creating target 'tsl::robin_map'
+-- CPM: ipc-toolkit: Adding package robin-map@1.4.1 (v1.4.1 at /export/home/rakh90100/.cache/CPM/robin-map/5c0c)
+-- Third-party: creating target 'absl::flat_hash_map'
+-- Performing Test ABSL_INTERNAL_AT_LEAST_CXX17
+-- Performing Test ABSL_INTERNAL_AT_LEAST_CXX17 - Success
+-- Performing Test ABSL_INTERNAL_AT_LEAST_CXX20
+-- Performing Test ABSL_INTERNAL_AT_LEAST_CXX20 - Failed
+-- CPM: ipc-toolkit: Adding package abseil-cpp@0 (d407ef122a08203648451e0fec77b3f868b71112 at /export/home/rakh90100/.cache/CPM/abseil-cpp/9514)
+-- Third-party: creating target 'filib::filib'
+-- CPM: ipc-toolkit: Adding package filib@0 (7cf13519b0db72df2493c9c8997a8bef9e372848 at /export/home/rakh90100/.cache/CPM/filib/c410)
+-- Performing Test IS_SUPPORTED_-Werror-extra-semi
+-- Performing Test IS_SUPPORTED_-Werror-extra-semi - Success
+-- Performing Test IS_SUPPORTED_-Wno-gnu-anonymous-struct
+-- Performing Test IS_SUPPORTED_-Wno-gnu-anonymous-struct - Failed
+-- Performing Test IS_SUPPORTED_-Wno-nested-anon-types
+-- Performing Test IS_SUPPORTED_-Wno-nested-anon-types - Failed
+-- Third-party: creating target 'xsimd::xsimd'
+-- xsimd v14.0.0
+-- CPM: ipc-toolkit: Adding package xsimd@14.0.0 (14.0.0 at /export/home/rakh90100/.cache/CPM/xsimd/a9a5)
+-- CPM: Adding package ipc-toolkit@0 (b40e9c078639f947a2b631723f595231add59373 at /export/home/rakh90100/.cache/CPM/ipc-toolkit/05b0)
+-- Third-party: creating target 'simple_bvh::simple_bvh'
+-- Using CPM cache folder: /export/home/rakh90100/.cache/CPM
+-- Performing Test IS_SUPPORTED_-Wno-pedantic
+-- Performing Test IS_SUPPORTED_-Wno-pedantic - Success
+-- CPM: Adding package SimpleBVH@0 (e1a931337a9e07e8bd2d2e8bbdfd7e54bc850df5 at /export/home/rakh90100/.cache/CPM/simplebvh/7244)
+-- Third-party: creating target 'mshio'
+-- CPM: Adding package MshIO@0 (29d0263b45bbbb2931ecbe892d0d7f0f3a493d0c at /export/home/rakh90100/.cache/CPM/mshio/d192)
+-- Third-party: creating target 'nanospline'
+CMake Warning (author) at /export/home/rakh90100/miniconda3/envs/somw-fem/share/cmake-4.4/Modules/FetchContent.cmake:1968 (message):
+  Calling FetchContent_Populate(sanitizer) is deprecated, call
+  FetchContent_MakeAvailable(sanitizer) instead.  Policy CMP0169 can be set
+  to OLD to allow FetchContent_Populate(sanitizer) to be called directly for
+  now, but the ability to call it with declared details will be removed
+  completely in a future version.
+Call Stack (most recent call first):
+  /export/home/rakh90100/.cache/CPM/nanospline/4ca1/cmake/sanitizer-cmake.cmake:11 (FetchContent_Populate)
+  /export/home/rakh90100/.cache/CPM/nanospline/4ca1/CMakeLists.txt:24 (include)
+This warning is for project developers.  Use -Wno-author to suppress it.
+
+-- CPM: Adding package nanospline@0 (de2e4d4daceb5e5058ea3092ddf1c6e5ba447c38 at /export/home/rakh90100/.cache/CPM/nanospline/4ca1)
+-- Third-party: creating target 'geogram'
+-- Using local options file: /export/home/rakh90100/.cache/CPM/geogram/d78f/CMakeOptions.txt
+-- Configuring build for standalone Geogram (without Vorpaline)
+-- Third-party: creating target 'ZLIB::ZLIBSTATIC'
+-- Looking for sys/types.h
+-- Looking for sys/types.h - found
+-- Looking for stdint.h
+-- Looking for stdint.h - found
+-- Looking for stddef.h
+-- Looking for stddef.h - found
+-- Check size of off64_t
+-- Check size of off64_t - done
+-- Looking for fseeko
+-- Looking for fseeko - found
+-- Looking for stdarg.h
+-- Looking for stdarg.h - found
+-- Looking for unistd.h
+-- Looking for unistd.h - found
+-- Performing Test HAVE___ATTR__VIS_HIDDEN
+-- Performing Test HAVE___ATTR__VIS_HIDDEN - Failed
+-- CPM: geogram: Adding package zlib@1.3.2 (v1.3.2 at /export/home/rakh90100/.cache/CPM/zlib/d34c)
+-- Doxygen >= 1.7.0 not found, cannot generate documentation
+-- CPM: Adding package geogram@0 (0402d16ad5be8e892db239ac38ca724f9497dbd3 at /export/home/rakh90100/.cache/CPM/geogram/d78f)
+-- Found Geogram here: /export/home/rakh90100/.cache/CPM/geogram/d78f/src/lib/../..
+-- Found OpenMP_CXX: -fopenmp (found version "4.5")
+-- Found OpenMP: TRUE (found version "4.5")
+-- Third-party: creating target 'paraviewo::paraviewo'
+-- Using CPM cache folder: /export/home/rakh90100/.cache/CPM
+-- Adding global flags: $<$<COMPILE_LANGUAGE:CXX>:-fdiagnostics-color=always>
+-- Third-party: creating target 'tinyxml'
+-- CPM: paraviewo: Adding package tinyxml2@9.0.0 (9.0.0 at /export/home/rakh90100/.cache/CPM/tinyxml2/1b5a)
+-- Found system HDF5, skipping CPM download.
+-- Third-party: creating target 'h5pp'
+-- Performing Test has_std_optional
+-- Performing Test has_std_optional - Success
+-- Looking for C++ include filesystem
+-- Looking for C++ include filesystem - found
+CMake Warning (policy) at /export/home/rakh90100/.cache/CPM/h5pp/fe41/cmake/modules/FindFilesystem.cmake:202 (check_cxx_source_compiles):
+  Policy CMP0219 is not set: Macro invocations preserve backslashes in
+  arguments.  Run "cmake --help-policy CMP0219" for policy details.  Use the
+  cmake_policy command to set the policy and suppress this warning.
+
+  Command "CHECK_CXX_SOURCE_COMPILES" called with arguments containing
+  backslashes.
+
+  Since the policy is not set, backslashes in the arguments:
+
+   "            #include <filesystem>
+
+
+
+              int main() {
+                  std::filesystem::path testpath = \"../\";
+                  std::filesystem::exists(testpath);
+                  auto cwd = std::filesystem::current_path();
+                  return static_cast<int>(cwd.string().size());
+              }
+          "
+
+  will be interpreted as escape sequences for compatibility.
+
+  Set the policy to NEW to instead pass
+
+   "            #include <filesystem>
+
+
+
+              int main() {
+                  std::filesystem::path testpath = \\"../\\";
+                  std::filesystem::exists(testpath);
+                  auto cwd = std::filesystem::current_path();
+                  return static_cast<int>(cwd.string().size());
+              }
+          "
+
+  so that argument parsing will preserve the original values.
+Call Stack (most recent call first):
+  /export/home/rakh90100/.cache/CPM/h5pp/fe41/cmake/modules/FindFilesystem.cmake:247 (find_filesystem)
+  /export/home/rakh90100/.cache/CPM/h5pp/fe41/cmake/SetupDependencies.cmake:11 (find_package)
+  /export/home/rakh90100/.cache/CPM/h5pp/fe41/CMakeLists.txt:82 (include)
+This warning is for project developers.  Use -Wno-author or -Wno-policy to
+suppress it.
+
+-- Performing Test CXX_FILESYSTEM_NO_LINK_NEEDED
+-- Performing Test CXX_FILESYSTEM_NO_LINK_NEEDED - Success
+-- Found Filesystem: TRUE
+-- CPM: paraviewo: Adding package h5pp@0 (b46d66b16c11f4e94752433e61d92b152be3d1d8 at /export/home/rakh90100/.cache/CPM/h5pp/fe41)
+-- CPM: Adding package paraviewo@0 (1c01aae7ad37020f751eb598c62ae4ae74a3ada7 at /export/home/rakh90100/.cache/CPM/paraviewo/91c8)
+-- Third-party: creating target 'miso' via hocgv-miso
+-- Third-party: creating target 'tight::tight'
+-- Using CPM cache folder: /export/home/rakh90100/.cache/CPM
+-- Performing Test _cpu_has_avx2
+-- Performing Test _cpu_has_avx2 - Success
+-- TIGHT_SIMD: AUTO -> AVX2
+-- Third-party: creating target 'nfg::nfg'
+-- CPM: hocgv-miso: tight: Adding package NFG@0 (f1df171345e91eeccea3c8b1e3f703a9fe27fca3 at /export/home/rakh90100/.cache/CPM/nfg/9c1e)
+-- Third-party: creating target 'coremath::coremath'
+-- CPM: hocgv-miso: tight: Adding package core-math-cpp@0 (08dcee0ae9da8157d2daadcb3bf0b405fe8471ba at /export/home/rakh90100/.cache/CPM/core-math-cpp/e8a2)
+-- CPM: hocgv-miso: Adding package tight@0 (ce69ac487c3c75b57f20c1a6e7f40eab531db6c7 at /export/home/rakh90100/.cache/CPM/tight/2a50)
+-- CPM: Adding package hocgv-miso@0 (aaab372d086608ab717ecb9ba0e7bc0fe00c7a10 at /export/home/rakh90100/.cache/CPM/hocgv-miso/cdfd)
+-- Third-party: creating target 'tinyexpr::tinyexpr'
+-- CPM: Adding package tinyexpr@0 (4e8cc0067a1e2378faae23eb2dfdd21e9e9907c2 at /export/home/rakh90100/.cache/CPM/tinyexpr/8fff)
+-- Third-party: creating target 'natsort::natsort'
+-- CPM: Adding package natsort@0 (f8a6b0cda6de846b2a3b741967f35809de00b083 at /export/home/rakh90100/.cache/CPM/natsort/d1ab)
+-- Third-party: creating target 'Glob::Glob'
+-- CPM: glob: Adding package PackageProject.cmake@1.3 (v1.3 at /export/home/rakh90100/.cache/CPM/packageproject.cmake/209d)
+-- CPM: Adding package glob@0 (a5f32776f93aaf827c8deb5ecd2857c19b9ba4a7 at /export/home/rakh90100/.cache/CPM/glob/1608)
+-- Third-party: creating target 'units::units'
+-- CPM: Adding package units@0.7.0 (v0.7.0 at /export/home/rakh90100/.cache/CPM/units/1ed3)
+-- Third-party: creating target 'yaml-cpp::yaml-cpp'
+-- CPM: Adding package yaml-cpp@0.9.0 (yaml-cpp-0.9.0 at /export/home/rakh90100/.cache/CPM/yaml-cpp/7ad1)
+-- Found Python3: /export/home/rakh90100/miniconda3/envs/somw-fem/bin/python3.10 (found version "3.10.22") found components: Interpreter Development Development.Module Development.Embed
+-- Third-party: creating target 'pybind11::embed'
+-- pybind11 v3.0.3 
+-- Performing Test HAS_FLTO_AUTO
+-- Performing Test HAS_FLTO_AUTO - Success
+-- CPM: Adding package pybind11@3.0.3 (v3.0.3 at /export/home/rakh90100/.cache/CPM/pybind11/0429)
+-- Third-party: creating target 'mmg::mmg'
+-- Found Perl: /usr/bin/perl (found version "5.34.0")
+-- M_LIB not defined. Searching it
+-- Vertex insertion by delaunay kernel
+-- Installing: /export/hbku-research/rakh90100/somw/tools/polyfem/build_conda/_deps/mmg-build/include/mmg//libmmgf.h
+-- Installing: /export/hbku-research/rakh90100/somw/tools/polyfem/build_conda/_deps/mmg-build/include/mmg/mmg2d//mmg2d_export.h
+-- Installing: /export/hbku-research/rakh90100/somw/tools/polyfem/build_conda/_deps/mmg-build/include/mmg/mmg2d//libmmg2d.h
+-- Installing: /export/hbku-research/rakh90100/somw/tools/polyfem/build_conda/_deps/mmg-build/include/mmg/mmgs//mmgs_export.h
+-- Installing: /export/hbku-research/rakh90100/somw/tools/polyfem/build_conda/_deps/mmg-build/include/mmg/mmgs//libmmgs.h
+-- Installing: /export/hbku-research/rakh90100/somw/tools/polyfem/build_conda/_deps/mmg-build/include/mmg/mmg3d//mmg3d_export.h
+-- Installing: /export/hbku-research/rakh90100/somw/tools/polyfem/build_conda/_deps/mmg-build/include/mmg/mmg3d//libmmg3d.h
+-- Installing: /export/hbku-research/rakh90100/somw/tools/polyfem/build_conda/_deps/mmg-build/include/mmg//libmmg.h
+-- CPM: Adding package mmg@5.8.0 (v5.8.0 at /export/home/rakh90100/.cache/CPM/mmg/15c0)
+-- Third-party: creating target 'clipper::clipper'
+-- CPM: Adding package clipper_clipper@6.4.2 (6.4.2 at /export/home/rakh90100/.cache/CPM/clipper_clipper/85d5)
+-- Third-party: creating target 'PolyClipper::PolyClipper'
+-- CPM: Adding package polyclipper@0 (2a727ebce1a5c500c0d3e23a6f22e2ecf941c6d5 at /export/home/rakh90100/.cache/CPM/polyclipper/4479)
+-- Performing Test IS_SUPPORTED_-Wsuggest-override
+-- Performing Test IS_SUPPORTED_-Wsuggest-override - Success
+-- Third-party: creating target 'CLI11::CLI11'
+-- CPM: Adding package CLI11@2.3.2 (v2.3.2 at /export/home/rakh90100/.cache/CPM/cli11/9e6f)
+-- Configuring done (108.8s)
+-- Generating done (9.8s)
+-- Build files have been written to: /export/hbku-research/rakh90100/somw/tools/polyfem/build_conda

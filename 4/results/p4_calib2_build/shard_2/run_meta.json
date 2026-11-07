@@ -1,0 +1,53 @@
+{
+  "run_name": "p4_calib2_build",
+  "synthetic": false,
+  "shard": "2",
+  "start_utc": "2026-10-11T13:02:55.298912+00:00",
+  "host": "crirdchpxd002",
+  "platform": "Linux-5.19.0-45-generic-x86_64-with-glibc2.35",
+  "python": "3.10.22 (main, Oct  1 2026, 20:14:04) [GCC 14.3.0]",
+  "argv": [
+    "code/p2_build_ood.py",
+    "--config",
+    "configs/p4_calib2_build.yaml",
+    "--shard",
+    "2",
+    "--num-shards",
+    "4"
+  ],
+  "slurm_job_id": "419990",
+  "slurm_array_task_id": "2",
+  "gpus": [
+    "NVIDIA H200"
+  ],
+  "project_git_commit": null,
+  "physctrl_git_commit": "eaebd534719ce209436a610ea583ee7aee38943b",
+  "config": {
+    "paths": {
+      "data_root": "/export/home/rakh90100/cvpr_physics_plausibility/data",
+      "ckpt_dir": "/export/home/rakh90100/cvpr_physics_plausibility/data/checkpoints/checkpoints",
+      "testset_dir": "/export/home/rakh90100/cvpr_physics_plausibility/data/testset",
+      "ood_dir": "/export/home/rakh90100/cvpr_physics_plausibility/data/calib",
+      "gen_dir": "/export/home/rakh90100/cvpr_physics_plausibility/data/generations"
+    },
+    "run_name": "p4_calib2_build",
+    "n_base_queries": 100,
+    "splits": [
+      "id_new_4",
+      "id_new_5",
+      "id_new_6",
+      "id_new_7",
+      "id_new_8",
+      "id_new_9",
+      "id_new_10",
+      "id_new_11"
+    ],
+    "mode": "nosync"
+  },
+  "torch": "2.5.1+cu121",
+  "warp": "1.5.0",
+  "end_utc": "2026-10-11T13:21:44.568578+00:00",
+  "status": "ok",
+  "n_written": 200,
+  "n_failed": 0
+}

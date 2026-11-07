@@ -1,0 +1,10 @@
+# GitHub repository = this workspace minus data and secrets (freeze/README.md). Big files live on Hugging Face.
+/data/
+/PokeFlex/
+/_pokeflex_download.sh
+/rgcc_guidelines.txt
+/previous_prj_slurm_files/
+__pycache__/
+*.pyc
+*.prefreeze
+freeze/prepare.log

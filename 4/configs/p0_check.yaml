@@ -1,0 +1,14 @@
+# Phase 0: environment, data, replay determinism, generator sanity.
+paths:
+  data_root: ${DATA_ROOT}
+  ckpt_dir: ${DATA_ROOT}/checkpoints/checkpoints
+  testset_dir: ${DATA_ROOT}/testset
+  ood_dir: ${DATA_ROOT}/ood
+  gen_dir: ${DATA_ROOT}/generations
+replay_n: 8                 # elastic test trajectories re-simulated from frame 0
+replay_tol: 0.01            # max per-frame mean L2 (simulator units; objects are ~1 unit wide)
+timing_modes: [as_is, nosync, graph]
+generator_n: 8              # elastic test queries for the generator sanity check
+models: [base, large]
+seed: 0
+eval_cross_check_n: 20      # items listed for PhysCtrl's own eval.py cross-check

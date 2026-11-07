@@ -1,0 +1,20 @@
+<section id="premise" data-transition="fade" style="background:#FBFBF8;color:#14213D;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:56px">
+<h2 style="font-family:'Source Serif 4', Georgia, serif;font-size:72px;font-weight:600;line-height:1.1">Generation is cheap but fails silently</h2>
+<div style="display:flex;flex-direction:row;gap:32px">
+<div style="flex:1;display:flex;flex-direction:column;gap:12px;background:#EEF1F4;border-radius:16px;padding:44px">
+<p style="font-size:120px;font-weight:600;line-height:1;color:#2F6FB0">0.24 s</p>
+<p style="font-size:28px;line-height:1.35;color:#4A5568">one generated trajectory (base model, A100)</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:12px;background:#EEF1F4;border-radius:16px;padding:44px">
+<p style="font-size:120px;font-weight:600;line-height:1;color:#14213D">4.67 s</p>
+<p style="font-size:28px;line-height:1.35;color:#4A5568">one exact simulation at PhysCtrl's own setting (A100), about 20× more</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:12px;background:#EEF1F4;border-radius:16px;padding:44px">
+<p style="font-size:120px;font-weight:600;line-height:1;color:#D9762B">0.14</p>
+<p style="font-size:28px;line-height:1.35;color:#4A5568">risk of generation alone in distribution, 0.64–1.00 under the three hard shifts</p>
+</div>
+</div>
+<p style="font-size:32px;line-height:1.4;color:#4A5568;width:1500px">Risk = share of trajectories whose mean point error exceeds 0.10. Under shift: softer material, 3× force, or a drop onto the floor (contact).</p>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#6A7280">Sources: Phase 1 timings; Phase 4k fresh queries (in distribution); Phase 2c queries (shift: E_low 0.64, force ×3 0.72, gravity drop 1.00)</p>
+<aside>The exact simulator is the same Warp MPM that made PhysCtrl's data, so its output is the ground truth (replay error about 2e-6). Caveat from Phase 1: at matched accuracy, a coarser simulator is only 2.3–2.8× the cost of base generation, so the cost argument rests on the reference setting and on out-of-distribution failures.</aside>
+</section>

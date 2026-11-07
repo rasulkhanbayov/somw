@@ -1,0 +1,13 @@
+<section id="timeline" data-transition="fade" style="background:#FBFBF8;color:#14213D;font-family:'IBM Plex Sans', Arial, sans-serif;padding:96px 128px 160px;display:flex;flex-direction:column;gap:28px">
+<h2 style="font-family:'Source Serif 4', Georgia, serif;font-size:64px;font-weight:600;line-height:1.1">One query, step by step: check, find the failure, re-simulate from there</h2>
+<div style="display:flex;flex-direction:row;gap:48px;align-items:start">
+<img src="/_blob/29c148118efcf32db15e2cbf6203fb98" alt="Top: six probe windows along the trajectory; the first two pass below the threshold, the next four fail. Bottom: per-frame error over two seconds. Generation error grows steadily to 0.21; with certify plus repair, the error follows the generation until the first failed window at 0.63 s, then drops and stays near 0.03." style="width:1180px;height:666px;object-fit:contain;background:#FBFBF8">
+<div style="flex:1;display:flex;flex-direction:column;gap:24px">
+<p style="font-size:44px;font-weight:600;line-height:1.1;color:#14213D">0.093 → 0.025</p>
+<p style="font-size:26px;line-height:1.4;color:#4A5568">mean error of this query, generation vs certify + repair</p>
+<p style="font-size:26px;line-height:1.4;color:#4A5568">The frames before the first failure are kept; only the rest is simulated.</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#6A7280">In-distribution query 28470_000, the median repaired error among the 135 repaired queries (Phases 4h/4i)</p>
+<aside>Top panel: each bar is one short coarse-simulator window restarted from the generated state; its height is the drift between window and generation. The first window above the threshold (at 0.63 s) marks where the trajectory stopped being physically consistent. Bottom panel: the repaired trajectory keeps the generated frames up to that point and re-simulates the rest exactly, starting from a cheap coarse simulation's full state. The small dip right after the restart is because the coarse state is closer to the truth than the generated frame there.</aside>
+</section>

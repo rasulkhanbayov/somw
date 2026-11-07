@@ -1,0 +1,31 @@
+# Pilot 14a-v2 (pre-registered Oct 24, 2026; PLAN.md "Phase 14"): wall-free pool, replay distillation; arm ACT, variant Ltd.
+paths:
+  data_root: ${DATA_ROOT}
+  ckpt_dir: ${DATA_ROOT}/checkpoints/checkpoints
+  ckpt_root: ${BIG_ROOT}/checkpoints
+  testset_dir: ${DATA_ROOT}/testset
+  ood_dir: ${DATA_ROOT}/fc_train
+  gen_dir: ${BIG_ROOT}/generations
+run_name: p14a2_train_ACT_Ltd
+ckpt_name: p14a2_ACT_Ltd
+arm_list: ${PROJECT_ROOT}/results/p14a2_acquire/arm_ACT.json
+replay_build_runs: [p4g_train_build]
+base_manifest: ${PROJECT_ROOT}/results/p4g_sample_manifest/manifest.json
+seed: 0
+train:
+  mode: lora
+  steps: 5000
+  batch_size: 8             # 4 arm + 4 replay
+  lr: 1.0e-4
+  lora_rank: 8
+  lora_alpha: 8.0
+  lora_targets: [attn_temp]  # the 4g-v2 adapter
+  lambda_distill: 1.0       # replay half pulled to the frozen base (4g-v2 recipe); arm half not distilled
+  warmup: 100
+  lambda_vel: 1.0
+  val_frac: 0.05            # held-out training objects; logged only, never used to pick a checkpoint
+  val_samples: 64
+  num_workers: 6
+  log_every: 100
+  val_every: 1000
+  ckpt_every: 2500

@@ -1,0 +1,10 @@
+\begin{abstract}
+Physics-grounded video generators move objects along a 3D trajectory predicted by a learned motion prior.
+On familiar queries such a prior can rival a physics simulator, but nothing tells the user when a query is not familiar: on our tests, PhysCtrl's trajectories are wrong for 68\% of queries outside its training range and for 69\% of two-object collisions, and its own uncertainty does not flag them.
+We generate each trajectory once and then check it with a few short runs of the simulator it was trained to imitate.
+A calibrated threshold turns the check into an accept-or-reject certificate that bounds how many bad trajectories are accepted.
+A rejected trajectory keeps the part that passed; only the rest is re-simulated, and before a collision a cheap simulation decides when to switch to a contact-resolving setting.
+In pre-registered tests on fresh data, re-scored against the simulator at three time steps, PhysCtrl's failures persist whichever step is taken as ground truth, while ours stays within 2.5 points of the risk of simulating every query, in distribution, under four kinds of shift and on contact, at 0.26$\times$, 0.71$\times$ and 0.90$\times$ its cost.
+Tuned cheaper simulator settings win where the regime is known in advance, but each is ten or more points riskier than the full simulator on some test set.
+% src: Phase 9 (results/p9_table); Phase 10c T1 (pre-registered) and max gap (exploratory, results/p10c_explore); 4m
+\end{abstract}

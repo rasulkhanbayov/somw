@@ -1,0 +1,30 @@
+# Pilot E1b analysis (Oct 19, 2026; EXPLORATORY; PLAN.md "Pilot E1b"). CPU, after jobs 81-83
+# and the probe errors (python code/p2b_probe.py --config configs/p8g_gen.yaml on a dev server).
+paths:
+  data_root: ${DATA_ROOT}
+  ckpt_dir: ${DATA_ROOT}/checkpoints/checkpoints
+  testset_dir: ${DATA_ROOT}/testset
+  ood_dir: ${BIG_ROOT}/datasets/stiff_e1
+  gen_dir: ${BIG_ROOT}/generations
+summary_run_name: p8g_stiff
+model: base
+defect_spec: {fidelity: coarse_cfl, m: 4, placement: spread_event}
+chain_k: [3, 7, 11, 15, 19]
+scan_run: p8g_scan
+run_name: p8g_allk
+probe_run: p8g_errors
+build_runs: [p8g_build]
+only_splits: [stiff_2, stiff_3]
+full_run: p8g_full
+reference_cfl: 0.3
+tau: 0.02614
+eps: 0.10
+cost_fit_scan_run: p2c_scan
+shadow_rate_run: p4d_fullsim
+shadow_rate_splits_prefix: id_new_
+full_substeps: 20016
+primary_windows: one
+label_one: "ours (one window, M3 repair)"
+label_three: "ours (three windows, M3 repair; secondary)"
+pilot_name: E1b
+title: "Pilot E1b: stiff regime, round 2 (EXPLORATORY, fresh pilot draws; defined Oct 19, 2026)"

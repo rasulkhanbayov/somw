@@ -1,0 +1,75 @@
+{
+  "run_name": "p4c_summary",
+  "synthetic": false,
+  "shard": null,
+  "start_utc": "2026-10-12T08:01:19.962198+00:00",
+  "host": "crimv3mgpu015",
+  "platform": "Linux-5.15.0-170-generic-x86_64-with-glibc2.35",
+  "python": "3.10.22 (main, Oct  1 2026, 20:14:04) [GCC 14.3.0]",
+  "argv": [
+    "code/p4c_summarize.py",
+    "--config",
+    "configs/p4c_repair.yaml"
+  ],
+  "slurm_job_id": null,
+  "slurm_array_task_id": null,
+  "gpus": [
+    "Tesla P100-PCIE-16GB"
+  ],
+  "project_git_commit": null,
+  "physctrl_git_commit": "eaebd534719ce209436a610ea583ee7aee38943b",
+  "config": {
+    "paths": {
+      "data_root": "/export/home/rakh90100/cvpr_physics_plausibility/data",
+      "ckpt_dir": "/export/home/rakh90100/cvpr_physics_plausibility/data/checkpoints/checkpoints",
+      "testset_dir": "/export/home/rakh90100/cvpr_physics_plausibility/data/testset",
+      "ood_dir": "/export/home/rakh90100/cvpr_physics_plausibility/data/ood",
+      "gen_dir": "/export/home/rakh90100/cvpr_physics_plausibility/data/generations"
+    },
+    "run_name": "p4c_repair",
+    "summary_run_name": "p4c_summary",
+    "p4b_run": "p4b_repair",
+    "models": [
+      "base",
+      "large"
+    ],
+    "n_id_queries": 100,
+    "n_ood_per_split": 50,
+    "m": 4,
+    "lift": {
+      "k": 12,
+      "lam": 1e-06,
+      "use_F": false,
+      "use_C": true
+    },
+    "dlogE": [
+      -1.0,
+      -0.5,
+      0.0,
+      0.5,
+      1.0
+    ],
+    "force_scale": [
+      0.33,
+      0.5,
+      0.75,
+      1.0,
+      1.5,
+      2.0
+    ],
+    "anchor_fidelity": {},
+    "verify_fidelity": {
+      "substep_dt": 0.0008,
+      "n_grid": 64,
+      "cfl_target": 0.5
+    },
+    "lambda_base": 0.03007,
+    "equivalence_tol": 0.001,
+    "seed": 0,
+    "n_boot": 2000
+  },
+  "torch": "2.5.1+cu121",
+  "warp": "1.5.0",
+  "end_utc": "2026-10-12T08:02:01.349777+00:00",
+  "status": "ok"
+}

@@ -1,0 +1,12 @@
+# Phase 4n: fresh two-object scenes (the unchanged 4l construction and validity rules), draws 8..15.
+paths:
+  data_root: ${DATA_ROOT}
+  ckpt_dir: ${DATA_ROOT}/checkpoints/checkpoints
+  testset_dir: ${DATA_ROOT}/testset
+  ood_dir: ${BIG_ROOT}/datasets/mo
+  gen_dir: ${BIG_ROOT}/generations
+  comp_gen_dir: ${BIG_ROOT}/generations
+run_name: p4n_scene_build
+comp_build_runs: [p4n_comp_build]
+draws: [8, 9, 10, 11, 12, 13, 14, 15]
+mode: nosync

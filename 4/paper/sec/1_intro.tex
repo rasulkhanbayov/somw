@@ -1,0 +1,37 @@
+\section{Introduction}
+\label{sec:intro}
+
+Physics-grounded video generation separates motion from appearance: a model predicts how the points of an object move under the requested forces, and a video model renders that trajectory~\cite{wang2025physctrl}.
+The motion model is a learned prior, fast enough to sample in a fraction of a second, and on its own examples its videos are judged on par with those driven by a physics simulator~\cite{wang2025physctrl}.
+But a query need not be familiar.
+On our tests, PhysCtrl's trajectory model is wrong for 68\% of queries whose material or forces lie outside its training range and for 69\% of scenes in which two objects collide (\cref{fig:teaser}a).
+% src: Phase 9 (generate only: shift 0.680, contact 0.693)
+These failures are silent: a rendered clip can look plausible while its physics is wrong~\cite{khanbayov2026physweep}, and the model's own uncertainty, the spread between its samples, accepted 99\% of the failed drops in our shift test.
+% src: Phase 4m (seed spread accepts 99% of drop failures)
+
+The obvious remedies each give something up.
+Simulating every query with the physics engine that produced the training data~\cite{foo2026physical, liu2026realwonder} matches that data by construction but costs about twenty generations per query.
+% src: Phase 1 (reference 4.666 s vs generation 0.236 s, A100)
+A cheaper simulator setting, tuned as a fair efficiency comparison requires~\cite{mcgreivy2024weak}, is excellent in distribution (1.5\% wrong at 13\% of the cost), yet under shift the same setting is wrong about 10 points more often than the full simulator, whichever time step of the simulator is taken as ground truth.
+% src: Phase 9 (always M1: 0.015 / 0.13x ID); Phase 10c T3 for M1 (gap +0.10 to +0.11 against dt, dt/2, dt/4)
+Since a user cannot tell in advance which queries are unfamiliar, we ask: \emph{can each generated trajectory be trusted or corrected per query, at less than the cost of simulating it?}
+
+We answer by generating the trajectory once and spending the simulator only where it is needed (\cref{fig:method}).
+A few short simulator runs, restarted from states read off the generated frames, measure how far the trajectory drifts from physics; no equation residual is needed.
+A threshold calibrated on separate objects turns this drift into a certificate that bounds the fraction of bad trajectories it accepts.
+A rejected trajectory keeps its certified prefix, and only the rest is re-simulated, starting from the full state of a cheap shadow simulation of the true initial state.
+Before a collision, where cheap grids fail, the same shadow decides when to hand over to a setting that resolves the contact.
+\Cref{fig:teaser}b summarises the outcome: across the three test sets and against three time steps of the reference, ours is the only pipeline that stays within 3 points of the risk of simulating every query while costing less.
+% src: Phase 10c (max gap, exploratory)
+
+Our contributions are:
+\begin{itemize}
+\item \textbf{A certificate for generated motion}: a few short simulator checks, calibrated at the object level so that the fraction of bad trajectories accepted is bounded in distribution; under shift it accepted 1.2\% of failures, against 35\% for the generator's own uncertainty.
+% src: Phase 4a extension (0.084 <= 0.11); Phase 4m M1 (0.012 vs 0.353)
+\item \textbf{Repair that re-simulates only what failed}, from a cheap shadow's state, with \textbf{event-aware fidelity}: the shadow times the switch to a contact-resolving setting, which halves the repaired error on collisions. Repairing with the generator itself does not work (five attempts, at most 1\% better).
+% src: Phase 9 CC3 (0.029 -> 0.015); Phases 4b-4g-v2
+\item \textbf{A pre-registered, compute-accounted evaluation} on new shift and two-object contact benchmarks, against tuned simulators and gating baselines, and re-scored against the reference at three time steps: ours tracks the full simulator everywhere at 0.26--0.90$\times$ its cost; tuned settings are cheaper where the regime is known, and one of them (M2) matches ours under shift once the simulator's own time-step uncertainty is taken into account.
+% src: Phase 9; Phase 10c (T1 PASS, T3 PASS for M1/M3, FAIL for M2; max gap exploratory)
+\end{itemize}
+
+We study elastic objects with PhysCtrl's base model. Where the regime of a query is known in advance, a tuned simulator is cheaper than our pipeline; we report this throughout: ours pays for not knowing.

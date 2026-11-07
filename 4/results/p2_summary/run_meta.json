@@ -1,0 +1,43 @@
+{
+  "run_name": "p2_summary",
+  "synthetic": false,
+  "shard": null,
+  "start_utc": "2026-10-10T20:12:23.242653+00:00",
+  "host": "crimv3mgpu015",
+  "platform": "Linux-5.15.0-170-generic-x86_64-with-glibc2.35",
+  "python": "3.10.22 (main, Oct  1 2026, 20:14:04) [GCC 14.3.0]",
+  "argv": [
+    "code/p2_summarize.py",
+    "--config",
+    "configs/p2_summary.yaml"
+  ],
+  "slurm_job_id": null,
+  "slurm_array_task_id": null,
+  "gpus": [
+    "Tesla P100-PCIE-16GB"
+  ],
+  "project_git_commit": null,
+  "physctrl_git_commit": "eaebd534719ce209436a610ea583ee7aee38943b",
+  "config": {
+    "m": 1,
+    "primary_model": "large",
+    "floor_reference_strategy": "uniform",
+    "strategies": [
+      "uniform",
+      "random",
+      "event",
+      "disagree",
+      "proposal",
+      "oracle"
+    ],
+    "floor_ratio_max": 0.25,
+    "rho_min": 0.5,
+    "cost_max": 0.2,
+    "n_boot": 2000
+  },
+  "torch": "2.5.1+cu121",
+  "warp": "1.5.0",
+  "end_utc": "2026-10-10T20:14:53.785681+00:00",
+  "status": "ok",
+  "verdict": "NO-GO"
+}

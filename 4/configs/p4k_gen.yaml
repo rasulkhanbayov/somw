@@ -1,0 +1,24 @@
+# Phase 4k: base generations (8 samples, as the calibration pool) + true error / seed spread.
+paths:
+  data_root: ${DATA_ROOT}
+  ckpt_dir: ${DATA_ROOT}/checkpoints/checkpoints
+  testset_dir: ${DATA_ROOT}/testset
+  ood_dir: ${DATA_ROOT}/calib
+  gen_dir: ${DATA_ROOT}/generations
+generate_run_name: p4k_generate
+run_name: p4k_errors
+include_test_id: false
+query_runs: [p4k_build]
+n_id_queries: 0
+n_ood_per_split: 100
+models: [base]
+n_samples: 8
+seed: 0
+probe:
+  strategies: []            # true error and seed spread only; window defects come from the scan
+  n_windows: 3
+  m: 1
+  n_perturb: 0
+  lift: {k: 12, lam: 1.0e-6, use_F: false, use_C: true}
+  perturb: {pos_eps_dx: 0.05, vel_rel: 0.05, logE_sd: 0.05, sigma_floor: 1.0e-4}
+  seed: 0

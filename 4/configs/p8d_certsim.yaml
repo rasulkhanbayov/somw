@@ -1,0 +1,17 @@
+# Pilot 8d (Oct 18, 2026; EXPLORATORY, development data; PLAN.md "Pilot 8d"): certify the cheap simulator M1.
+paths:
+  data_root: ${DATA_ROOT}
+  ckpt_dir: ${DATA_ROOT}/checkpoints/checkpoints
+  testset_dir: ${DATA_ROOT}/testset
+  ood_dir: ${DATA_ROOT}/ood
+  gen_dir: ${DATA_ROOT}/generations
+run_name: p8d_certsim
+entry_sets:
+  - {include_test_id: true, query_runs: [p2_build_ood], n_id_queries: 100, n_ood_per_split: 50}       # Phase 2c (dev)
+  - {include_test_id: false, query_runs: [p4l_scene_build], n_id_queries: 0, n_ood_per_split: 50}     # Phase 4l scenes (dev)
+  - {include_test_id: false, query_runs: [p4_calib_build], n_id_queries: 0, n_ood_per_split: 100}     # id_new_0..3: threshold
+windows_only_prefix: id_new_
+proposal_fidelity: {substep_dt: 8.0e-4, n_grid: 96, cfl_target: 0.5}    # M1
+window_fidelity: {substep_dt: 2.0e-4, n_grid: 125, cfl_target: 0.5}     # M3
+check_k: [3, 11, 19]
+window_m: 4

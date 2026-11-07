@@ -1,0 +1,8 @@
+# Reference copy of the shared paths block. Each config repeats it so a single
+# file fully describes a run. ${VARS} come from slurm/cluster.env.
+paths:
+  data_root: ${DATA_ROOT}
+  ckpt_dir: ${DATA_ROOT}/checkpoints/checkpoints   # huggingface-cli puts files under checkpoints/ inside --local-dir
+  testset_dir: ${DATA_ROOT}/testset
+  ood_dir: ${DATA_ROOT}/ood
+  gen_dir: ${DATA_ROOT}/generations

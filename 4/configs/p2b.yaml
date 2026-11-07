@@ -1,0 +1,20 @@
+# Phase 2b: generation (H200) and probing (A100).
+paths:
+  data_root: ${DATA_ROOT}
+  ckpt_dir: ${DATA_ROOT}/checkpoints/checkpoints
+  testset_dir: ${DATA_ROOT}/testset
+  ood_dir: ${DATA_ROOT}/ood
+  gen_dir: ${DATA_ROOT}/generations
+models: [base, large]
+n_id_queries: 100
+n_ood_per_split: 50
+n_samples: 8                # sample 0 is verified; all 8 give the seed-spread baseline
+seed: 0
+probe:
+  strategies: [uniform, random, event, disagree, proposal, oracle]
+  n_windows: 3
+  m: 1                      # window = 2 simulator frames
+  n_perturb: 2
+  lift: {k: 12, lam: 1.0e-6, use_F: true, use_C: true}
+  perturb: {pos_eps_dx: 0.05, vel_rel: 0.05, logE_sd: 0.05, sigma_floor: 1.0e-4}
+  seed: 0

@@ -1,0 +1,20 @@
+<section id="shift" data-transition="fade" style="background:#FBFBF8;color:#14213D;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:48px">
+<p style="font-size:28px;letter-spacing:3px;text-transform:uppercase;color:#2F6FB0">Result 2 · the certificate</p>
+<h2 style="font-family:'Source Serif 4', Georgia, serif;font-size:72px;font-weight:600;line-height:1.1">Under shift, the certificate lets almost no failure through</h2>
+<div style="display:flex;flex-direction:row;gap:56px;align-items:start">
+<table style="width:1000px;font-size:30px;color:#14213D">
+<tr><th style="width:46%;text-align:left">Split</th><th style="width:27%;text-align:right">Failures</th><th style="width:27%;text-align:right">Accepted</th></tr>
+<tr><td>Drop onto floor (contact)</td><td style="text-align:right">50</td><td style="text-align:right">0</td></tr>
+<tr><td>Softer material</td><td style="text-align:right">32</td><td style="text-align:right">0</td></tr>
+<tr><td>3× drag force</td><td style="text-align:right">36</td><td style="text-align:right">0</td></tr>
+<tr><td>Stiffer material</td><td style="text-align:right">5</td><td style="text-align:right">1</td></tr>
+<tr><td>In distribution</td><td style="text-align:right">22</td><td style="text-align:right">3</td></tr>
+</table>
+<div style="flex:1;display:flex;flex-direction:column;gap:20px;background:#EEF1F4;border-radius:16px;padding:44px">
+<p style="font-size:30px;line-height:1.35;color:#14213D"><b>The model's own uncertainty</b> (seed spread) accepts <span style="color:#D9762B"><b>all 50</b></span> drop failures.</p>
+<p style="font-size:28px;line-height:1.35;color:#4A5568">The certificate is valid: false-accept rate 0.084 against a target of ≤ 0.11.</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#6A7280">Phase 4a, object-level conformal certificate; 2,400 calibration trajectories, 100 held-out objects, 500 object splits; ε = α = 0.10</p>
+<aside>Failure = mean error above 0.10. The threshold was calibrated in distribution only, then applied unchanged to the shifted splits. Limitation: in distribution, the certificate is not reliably more powerful than seed spread (pre-registered test P2′ failed: +0.11 on average, but the 2.5th percentile over splits is negative). Its value is robustness under shift.</aside>
+</section>

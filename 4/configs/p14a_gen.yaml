@@ -1,0 +1,24 @@
+# Phase 14a (pre-registered Oct 22, 2026; PLAN.md "Phase 14"): base generations (8 samples) of the candidate pool, for the certificate.
+paths:
+  data_root: ${DATA_ROOT}
+  ckpt_dir: ${DATA_ROOT}/checkpoints/checkpoints
+  testset_dir: ${DATA_ROOT}/testset
+  ood_dir: ${BIG_ROOT}/datasets/p14a
+  gen_dir: ${BIG_ROOT}/generations
+generate_run_name: p14a_generate
+run_name: p14a_errors
+include_test_id: false
+query_runs: [p14a_build]
+n_id_queries: 0
+n_ood_per_split: 100
+models: [base]
+n_samples: 8
+seed: 0
+probe:
+  strategies: []
+  n_windows: 3
+  m: 1
+  n_perturb: 0
+  lift: {k: 12, lam: 1.0e-6, use_F: false, use_C: true}
+  perturb: {pos_eps_dx: 0.05, vel_rel: 0.05, logE_sd: 0.05, sigma_floor: 1.0e-4}
+  seed: 0

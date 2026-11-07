@@ -1,0 +1,32 @@
+# Phase 4i: full-state restarts for the suffix repair (pre-registered Oct 13, 2026; PLAN.md "Phase 4i").
+# Everything not listed here is the Phase 4h protocol, read from configs/p4h_suffix.yaml values below.
+paths:
+  data_root: ${DATA_ROOT}
+  ckpt_dir: ${DATA_ROOT}/checkpoints/checkpoints
+  testset_dir: ${DATA_ROOT}/testset
+  ood_dir: ${DATA_ROOT}/ood
+  gen_dir: ${DATA_ROOT}/generations
+  fc_train_dir: ${DATA_ROOT}/fc_train      # 4g training objects (disjoint from evaluation); bounds only
+run_name: p4i_state
+summary_run_name: p4i_summary
+h4_run: p4h_suffix                  # the 4h rows: decision j / k_j, accept/full rows, 4h suffix baseline
+scan_run: p2c_scan
+probe_run: p2b_probe_v2
+n_id_queries: 100
+n_ood_per_split: 50
+window_spec: {fidelity: coarse_cfl, m: 4}
+chain_k: [3, 7, 11, 15, 19]
+tau: 0.02614
+cert_spec: {fidelity: coarse_cfl, m: 4, placement: spread_event}
+eps: 0.10
+# V1: stable F-lift; bounds from p4i_f_bounds.py (fixed rule, training objects only)
+F_bound_quantiles: [0.001, 0.999]
+bounds_run: p4i_f_bounds
+lift_v1: {k: 12, lam: 1.0e-6, use_F: true, use_C: true}
+# V2: coarse-shadow state from the true initial state (the Phase 4d coarse_cfl setting)
+shadow_fidelity: {substep_dt: 8.0e-4, n_grid: 64, cfl_target: 0.5}
+shadow_cost_run: p4d_fullsim         # measured A100 coarse_cfl full rollouts, per query
+# costs as in 4h (amendment): suffix = c_ref x substeps / full_substeps
+full_substeps: 20016
+alpha: 0.025                         # Bonferroni over the two variants
+n_boot: 2000

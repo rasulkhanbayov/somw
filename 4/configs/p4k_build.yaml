@@ -1,0 +1,13 @@
+# Phase 4k fresh queries (pre-registered Oct 14, 2026; PLAN.md "Phase 4k"): the 100 test objects x
+# 8 NEW in-distribution physics draws (id_new_12..19), same physics generator as the calibration
+# pool (p2_build_ood.py, seeded by qid). No analysis has touched these queries.
+paths:
+  data_root: ${DATA_ROOT}
+  ckpt_dir: ${DATA_ROOT}/checkpoints/checkpoints
+  testset_dir: ${DATA_ROOT}/testset
+  ood_dir: ${DATA_ROOT}/calib
+  gen_dir: ${DATA_ROOT}/generations
+run_name: p4k_build
+n_base_queries: 100
+splits: [id_new_12, id_new_13, id_new_14, id_new_15, id_new_16, id_new_17, id_new_18, id_new_19]
+mode: nosync

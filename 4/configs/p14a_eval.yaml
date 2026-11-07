@@ -1,0 +1,18 @@
+# Phase 14a (pre-registered Oct 22, 2026; PLAN.md "Phase 14"): sample 0 of PhysCtrl base and the four pilot
+# checkpoints on the development sets (test objects; seen before, so exploratory): Phase 4m shift (drop excluded,
+# base has no gravity input) and id_new_0/1 in distribution.
+paths:
+  data_root: ${DATA_ROOT}
+  ckpt_dir: ${DATA_ROOT}/checkpoints/checkpoints
+  testset_dir: ${DATA_ROOT}/testset
+run_name: p14a_eval
+query_runs: [p4m_build, p4_calib_build]
+splits: [ood2_E_low, ood2_E_high, ood2_force, id_new_0, id_new_1]
+out_dir: ${BIG_ROOT}/generations_p14a
+seed: 0
+models:
+  base: null
+  ACT_F: ${BIG_ROOT}/checkpoints/p14a_ACT_F/final.pt
+  ACT_L: ${BIG_ROOT}/checkpoints/p14a_ACT_L/final.pt
+  RND_F: ${BIG_ROOT}/checkpoints/p14a_RND_F/final.pt
+  RND_L: ${BIG_ROOT}/checkpoints/p14a_RND_L/final.pt

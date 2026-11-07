@@ -1,0 +1,12 @@
+# Phase 15a (pre-registered Oct 22, 2026; PLAN.md "Phase 15"): development-scene generations (sample 0, seed 0) of
+# composed PhysCtrl, base on the joint input, and the fine-tuned model. Verdict: python code/p15a_summary.py
+paths:
+  data_root: ${DATA_ROOT}
+  ckpt_dir: ${DATA_ROOT}/checkpoints/checkpoints
+  testset_dir: ${DATA_ROOT}/testset
+run_name: p15a_eval
+build_run: p15a_build
+out_dir: ${BIG_ROOT}/generations_p15a
+seed: 0
+models:
+  FT: ${BIG_ROOT}/checkpoints/p15a_FT/final.pt

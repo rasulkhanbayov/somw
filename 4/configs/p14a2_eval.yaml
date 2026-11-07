@@ -1,0 +1,24 @@
+# Pilot 14a-v2 (pre-registered Oct 24, 2026; PLAN.md "Phase 14"): sample 0 of the four 14a-v2 checkpoints on the 14a
+# development sets. base's sample 0 is the stored 14a generation (same out_dir, same seed; skipped if present).
+# Verdict: errors before the reference's first wall frame (p10e rule), thresholds as 14a.
+paths:
+  data_root: ${DATA_ROOT}
+  ckpt_dir: ${DATA_ROOT}/checkpoints/checkpoints
+  testset_dir: ${DATA_ROOT}/testset
+run_name: p14a2_eval
+query_runs: [p4m_build, p4_calib_build]
+splits: [ood2_E_low, ood2_E_high, ood2_force, id_new_0, id_new_1]
+out_dir: ${BIG_ROOT}/generations_p14a
+seed: 0
+models:
+  base: null
+  ACT_Ld: ${BIG_ROOT}/checkpoints/p14a2_ACT_Ld/final.pt
+  ACT_Ltd: ${BIG_ROOT}/checkpoints/p14a2_ACT_Ltd/final.pt
+  RND_Ld: ${BIG_ROOT}/checkpoints/p14a2_RND_Ld/final.pt
+  RND_Ltd: ${BIG_ROOT}/checkpoints/p14a2_RND_Ltd/final.pt
+summary:
+  run_name: p14a2_summary
+  title: "Pilot 14a-v2: wall-free simulator distillation with replay distillation (pre-registered Oct 24, 2026; development data, exploratory)"
+  variants: [Ld, Ltd]
+  tie: Ltd
+  truncate_at_wall: true

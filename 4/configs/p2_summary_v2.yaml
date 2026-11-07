@@ -1,0 +1,13 @@
+# Phase 2 decision rules for the v2 probe rerun (see p2b_v2.yaml). Thresholds identical to v1;
+# only the probe run and the matching lift-floor variant change.
+run_name: p2_summary_v2
+probe_run: p2b_probe_v2
+floor_variant: lift_noF     # G2a compares the floor of the lift the probes actually use
+m: 1                        # must match p2b_v2.yaml probe.m
+primary_model: large        # the only checkpoint that takes gravity (needed for ood_gravity_drop)
+floor_reference_strategy: uniform
+strategies: [uniform, random, event, disagree, proposal, oracle]
+floor_ratio_max: 0.25       # G2a: lift floor <= 25% of the defect on generated trajectories
+rho_min: 0.5                # G2b: pooled Spearman with true error
+cost_max: 0.2               # G2b: simulator substeps <= 20% of a full rollout
+n_boot: 2000

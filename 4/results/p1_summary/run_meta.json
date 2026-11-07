@@ -1,0 +1,43 @@
+{
+  "run_name": "p1_summary",
+  "synthetic": false,
+  "shard": null,
+  "start_utc": "2026-10-10T16:00:03.433115+00:00",
+  "host": "crimv3mgpu015",
+  "platform": "Linux-5.15.0-170-generic-x86_64-with-glibc2.35",
+  "python": "3.10.22 (main, Oct  1 2026, 20:14:04) [GCC 14.3.0]",
+  "argv": [
+    "code/p1_summarize.py",
+    "--config",
+    "configs/p1_summary.yaml"
+  ],
+  "slurm_job_id": null,
+  "slurm_array_task_id": null,
+  "gpus": [
+    "Tesla P100-PCIE-16GB"
+  ],
+  "project_git_commit": null,
+  "physctrl_git_commit": "eaebd534719ce209436a610ea583ee7aee38943b",
+  "config": {
+    "hardware": [
+      "A100",
+      "H200"
+    ],
+    "go_ratio": 10,
+    "realistic_regimes": [
+      "physctrl",
+      "dense10x",
+      "multiobj2",
+      "multiobj3"
+    ],
+    "models_for_verdict": [
+      "base",
+      "large"
+    ]
+  },
+  "torch": "2.5.1+cu121",
+  "warp": "1.5.0",
+  "end_utc": "2026-10-10T16:00:08.087874+00:00",
+  "status": "ok",
+  "verdict": "GO"
+}

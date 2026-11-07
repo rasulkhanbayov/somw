@@ -1,0 +1,14 @@
+# Phase 4o: V2 restarts at the chain points, k_e, the generation-timed k_s (4n) and the shadow-timed k_sw.
+paths:
+  data_root: ${DATA_ROOT}
+  ckpt_dir: ${DATA_ROOT}/checkpoints/checkpoints
+  testset_dir: ${DATA_ROOT}/testset
+  gen_dir: ${BIG_ROOT}/generations
+run_name: p4o_allk
+entry_sets:
+  - {include_test_id: false, query_runs: [p4o_scene_build], n_id_queries: 0, n_ood_per_split: 50}
+chain_k: [3, 7, 11, 15, 19]
+event_restart: true
+fidelity_restart_dist: 0.46875      # 3 coarse cells (10/64): where the coarse grid couples the objects
+shadow_fidelity: {substep_dt: 8.0e-4, n_grid: 64, cfl_target: 0.5}
+shadow_switch_dist: 0.46875         # Phase 4o: switch where the SHADOW's objects come within 3 coarse cells

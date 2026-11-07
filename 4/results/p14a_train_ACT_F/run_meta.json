@@ -1,0 +1,59 @@
+{
+  "run_name": "p14a_train_ACT_F",
+  "synthetic": false,
+  "shard": null,
+  "start_utc": "2026-10-23T22:02:28.680578+00:00",
+  "host": "crirdchpxd003",
+  "platform": "Linux-5.19.0-45-generic-x86_64-with-glibc2.35",
+  "python": "3.10.22 (main, Oct  1 2026, 20:14:04) [GCC 14.3.0]",
+  "argv": [
+    "code/p14_train.py",
+    "--config",
+    "configs/p14a_train_ACT_F.yaml",
+    "--resume"
+  ],
+  "slurm_job_id": "433604",
+  "slurm_array_task_id": "0",
+  "gpus": [
+    "NVIDIA H200"
+  ],
+  "project_git_commit": null,
+  "physctrl_git_commit": "eaebd534719ce209436a610ea583ee7aee38943b",
+  "config": {
+    "paths": {
+      "data_root": "/export/home/rakh90100/cvpr_physics_plausibility/data",
+      "ckpt_dir": "/export/home/rakh90100/cvpr_physics_plausibility/data/checkpoints/checkpoints",
+      "ckpt_root": "/export/hbku-research/rakh90100/somw/checkpoints",
+      "testset_dir": "/export/home/rakh90100/cvpr_physics_plausibility/data/testset",
+      "ood_dir": "/export/home/rakh90100/cvpr_physics_plausibility/data/fc_train",
+      "gen_dir": "/export/hbku-research/rakh90100/somw/generations"
+    },
+    "run_name": "p14a_train_ACT_F",
+    "ckpt_name": "p14a_ACT_F",
+    "arm_list": "/export/home/rakh90100/cvpr_physics_plausibility/4/results/p14a_acquire/arm_ACT.json",
+    "replay_build_runs": [
+      "p4g_train_build"
+    ],
+    "base_manifest": "/export/home/rakh90100/cvpr_physics_plausibility/4/results/p4g_sample_manifest/manifest.json",
+    "seed": 0,
+    "train": {
+      "mode": "full",
+      "steps": 5000,
+      "batch_size": 8,
+      "lr": 1e-05,
+      "warmup": 100,
+      "lambda_vel": 1.0,
+      "val_frac": 0.05,
+      "val_samples": 64,
+      "num_workers": 6,
+      "log_every": 100,
+      "val_every": 1000,
+      "ckpt_every": 2500
+    }
+  },
+  "torch": "2.5.1+cu121",
+  "warp": "1.5.0",
+  "end_utc": "2026-10-23T23:18:03.355031+00:00",
+  "status": "ok",
+  "final": "/export/hbku-research/rakh90100/somw/checkpoints/p14a_ACT_F/final.pt"
+}

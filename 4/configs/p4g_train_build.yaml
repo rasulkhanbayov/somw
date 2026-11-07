@@ -1,0 +1,17 @@
+# Phase 4g training data (pre-registered Oct 12, 2026): PhysCtrl's 100 sample/ objects (no
+# overlap with the evaluation objects) x 30 fresh in-distribution physics draws, simulated at
+# the reference setting. In-distribution only, so OOD gains cannot come from training data.
+paths:
+  data_root: ${DATA_ROOT}
+  ckpt_dir: ${DATA_ROOT}/checkpoints/checkpoints
+  testset_dir: ${DATA_ROOT}/testset
+  ood_dir: ${DATA_ROOT}/fc_train
+  gen_dir: ${DATA_ROOT}/generations
+run_name: p4g_train_build
+base_manifest: ${PROJECT_ROOT}/results/p4g_sample_manifest/manifest.json
+base_split: train_obj
+n_base_queries: 100
+splits: [id_new_0, id_new_1, id_new_2, id_new_3, id_new_4, id_new_5, id_new_6, id_new_7, id_new_8, id_new_9,
+         id_new_10, id_new_11, id_new_12, id_new_13, id_new_14, id_new_15, id_new_16, id_new_17, id_new_18, id_new_19,
+         id_new_20, id_new_21, id_new_22, id_new_23, id_new_24, id_new_25, id_new_26, id_new_27, id_new_28, id_new_29]
+mode: nosync

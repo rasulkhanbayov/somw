@@ -1,0 +1,25 @@
+# Pilot E1 analysis (+ E3 latency) (Oct 18, 2026; EXPLORATORY; PLAN.md "Pilots E1-E3"). CPU, after jobs 81-83
+# and the probe errors (python code/p2b_probe.py --config configs/p8e_gen.yaml on a dev server).
+paths:
+  data_root: ${DATA_ROOT}
+  ckpt_dir: ${DATA_ROOT}/checkpoints/checkpoints
+  testset_dir: ${DATA_ROOT}/testset
+  ood_dir: ${BIG_ROOT}/datasets/stiff_e1
+  gen_dir: ${BIG_ROOT}/generations
+summary_run_name: p8e_stiff
+model: base
+defect_spec: {fidelity: coarse_cfl, m: 4, placement: spread_event}
+chain_k: [3, 7, 11, 15, 19]
+scan_run: p8e_scan
+run_name: p8e_allk
+probe_run: p8e_errors
+build_runs: [p8e_build]
+only_splits: [stiff_0, stiff_1]
+full_run: p8e_full
+reference_cfl: 0.3
+tau: 0.02614
+eps: 0.10
+cost_fit_scan_run: p2c_scan
+shadow_rate_run: p4d_fullsim
+shadow_rate_splits_prefix: id_new_
+full_substeps: 20016

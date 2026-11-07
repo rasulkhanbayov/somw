@@ -1,0 +1,23 @@
+# Phase 4h: certified-prefix repair (pre-registered Oct 13, 2026; see code/p4h_suffix_repair.py).
+paths:
+  data_root: ${DATA_ROOT}
+  ckpt_dir: ${DATA_ROOT}/checkpoints/checkpoints
+  testset_dir: ${DATA_ROOT}/testset
+  ood_dir: ${DATA_ROOT}/ood
+  gen_dir: ${DATA_ROOT}/generations
+run_name: p4h_suffix
+summary_run_name: p4h_summary
+scan_run: p2c_scan                  # per-window defects and A100 seconds
+probe_run: p2b_probe_v2             # generation error (sample 0)
+n_id_queries: 100                   # the Phase 2c queries
+n_ood_per_split: 50
+window_spec: {fidelity: coarse_cfl, m: 4}
+chain_k: [3, 7, 11, 15, 19]         # model frames where the chain windows start (after the anchor)
+tau: 0.02614                        # Phase 4a object-level lambda
+lift: {k: 12, lam: 1.0e-6, use_F: false, use_C: true}
+# comparator: certify-or-simulate with reference fallback (Phase 4d/4f), same lambda
+cert_spec: {fidelity: coarse_cfl, m: 4, placement: spread_event}
+eps: 0.10
+suffix_cost: ref_fraction      # Oct 13, before any result: suffix = c_ref x substeps / full_substeps (same scale as a full fallback)
+full_substeps: 20016           # 48 frames x 417 substeps at the reference setting
+n_boot: 2000

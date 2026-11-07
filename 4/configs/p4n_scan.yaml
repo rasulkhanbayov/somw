@@ -1,0 +1,19 @@
+# Phase 4n: the coarse_cfl m = 4 exhaustive scan, base source (certificate + chain windows).
+paths:
+  data_root: ${DATA_ROOT}
+  ckpt_dir: ${DATA_ROOT}/checkpoints/checkpoints
+  testset_dir: ${DATA_ROOT}/testset
+  gen_dir: ${BIG_ROOT}/generations
+run_name: p4n_scan
+include_test_id: false
+query_runs: [p4n_scene_build]
+n_id_queries: 0
+n_ood_per_split: 50
+models: [base]
+include_gt: false
+ms: [4]
+fidelities:
+  coarse_cfl: {substep_dt: 8.0e-4, n_grid: 64, cfl_target: 0.5}
+lift: {k: 12, lam: 1.0e-6, use_F: false, use_C: true}
+cfl_gate: 1.15
+seed: 0

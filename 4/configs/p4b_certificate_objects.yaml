@@ -1,0 +1,24 @@
+# Phase 4a object-level certificate (pre-registered Oct 11, 2026, before id_new_4..11 existed).
+paths:
+  data_root: ${DATA_ROOT}
+  gen_dir: ${DATA_ROOT}/generations
+run_name: p4b_certificate_objects
+calib_build_runs: [p4_calib_build, p4_calib2_build]
+calib_scan_runs: [p4_calib_scan, p4_calib2_scan]
+calib_probe_runs: [p4_calib_errors, p4_calib2_errors]
+shift_scan_run: p2c_scan
+shift_probe_run: p2b_probe_v2
+models: [base, large]
+defect_specs:                     # frozen in PLAN.md "Phase 4a"
+  base_cfl_m4_spread: {fidelity: coarse_cfl, m: 4, placement: spread_event}
+  large_ref_m4_spread: {fidelity: ref, m: 4, placement: spread_event}
+certificates:
+  - {name: base_defect, model: base, score: base_cfl_m4_spread}             # primary
+  - {name: large_seed_spread, model: large, score: seed_spread}
+  - {name: large_fused, model: large, score: "fused:large_ref_m4_spread"}
+primary: base_defect
+eps: [0.05, 0.10, 0.20]
+alpha: [0.05, 0.10]
+primary_eps: 0.10
+primary_alpha: 0.10
+n_replicates: 500

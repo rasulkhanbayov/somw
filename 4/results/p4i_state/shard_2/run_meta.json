@@ -1,0 +1,84 @@
+{
+  "run_name": "p4i_state",
+  "synthetic": false,
+  "shard": "2",
+  "start_utc": "2026-10-13T16:34:54.461377+00:00",
+  "host": "crirdchpxd002",
+  "platform": "Linux-5.19.0-45-generic-x86_64-with-glibc2.35",
+  "python": "3.10.22 (main, Oct  1 2026, 20:14:04) [GCC 14.3.0]",
+  "argv": [
+    "code/p4i_state_repair.py",
+    "--config",
+    "configs/p4i_state.yaml",
+    "--shard",
+    "2",
+    "--num-shards",
+    "4"
+  ],
+  "slurm_job_id": "423195",
+  "slurm_array_task_id": "2",
+  "gpus": [
+    "NVIDIA H200"
+  ],
+  "project_git_commit": null,
+  "physctrl_git_commit": "eaebd534719ce209436a610ea583ee7aee38943b",
+  "config": {
+    "paths": {
+      "data_root": "/export/home/rakh90100/cvpr_physics_plausibility/data",
+      "ckpt_dir": "/export/home/rakh90100/cvpr_physics_plausibility/data/checkpoints/checkpoints",
+      "testset_dir": "/export/home/rakh90100/cvpr_physics_plausibility/data/testset",
+      "ood_dir": "/export/home/rakh90100/cvpr_physics_plausibility/data/ood",
+      "gen_dir": "/export/home/rakh90100/cvpr_physics_plausibility/data/generations",
+      "fc_train_dir": "/export/home/rakh90100/cvpr_physics_plausibility/data/fc_train"
+    },
+    "run_name": "p4i_state",
+    "summary_run_name": "p4i_summary",
+    "h4_run": "p4h_suffix",
+    "scan_run": "p2c_scan",
+    "probe_run": "p2b_probe_v2",
+    "n_id_queries": 100,
+    "n_ood_per_split": 50,
+    "window_spec": {
+      "fidelity": "coarse_cfl",
+      "m": 4
+    },
+    "chain_k": [
+      3,
+      7,
+      11,
+      15,
+      19
+    ],
+    "tau": 0.02614,
+    "cert_spec": {
+      "fidelity": "coarse_cfl",
+      "m": 4,
+      "placement": "spread_event"
+    },
+    "eps": 0.1,
+    "F_bound_quantiles": [
+      0.001,
+      0.999
+    ],
+    "bounds_run": "p4i_f_bounds",
+    "lift_v1": {
+      "k": 12,
+      "lam": 1e-06,
+      "use_F": true,
+      "use_C": true
+    },
+    "shadow_fidelity": {
+      "substep_dt": 0.0008,
+      "n_grid": 64,
+      "cfl_target": 0.5
+    },
+    "shadow_cost_run": "p4d_fullsim",
+    "full_substeps": 20016,
+    "alpha": 0.025,
+    "n_boot": 2000
+  },
+  "torch": "2.5.1+cu121",
+  "warp": "1.5.0",
+  "end_utc": "2026-10-13T16:41:47.795629+00:00",
+  "status": "ok"
+}

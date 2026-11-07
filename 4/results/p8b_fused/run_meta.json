@@ -1,0 +1,72 @@
+{
+  "run_name": "p8b_fused",
+  "synthetic": false,
+  "shard": null,
+  "start_utc": "2026-10-17T13:51:47.580256+00:00",
+  "host": "crimv3mgpu015",
+  "platform": "Linux-5.15.0-170-generic-x86_64-with-glibc2.35",
+  "python": "3.10.22 (main, Oct  1 2026, 20:14:04) [GCC 14.3.0]",
+  "argv": [
+    "code/p8b_fused.py",
+    "--config",
+    "configs/p8b_fused.yaml"
+  ],
+  "slurm_job_id": null,
+  "slurm_array_task_id": null,
+  "gpus": [
+    "Tesla P100-PCIE-16GB"
+  ],
+  "project_git_commit": null,
+  "physctrl_git_commit": "eaebd534719ce209436a610ea583ee7aee38943b",
+  "config": {
+    "paths": {
+      "data_root": "/export/home/rakh90100/cvpr_physics_plausibility/data",
+      "ckpt_dir": "/export/home/rakh90100/cvpr_physics_plausibility/data/checkpoints/checkpoints",
+      "testset_dir": "/export/home/rakh90100/cvpr_physics_plausibility/data/testset",
+      "gen_dir": "/export/home/rakh90100/cvpr_physics_plausibility/data/generations"
+    },
+    "summary_run_name": "p8b_fused",
+    "defect_spec": {
+      "fidelity": "coarse_cfl",
+      "m": 4,
+      "placement": "spread_event"
+    },
+    "eps": 0.1,
+    "alpha": 0.1,
+    "calibration_pool": {
+      "build_runs": [
+        "p4_calib_build",
+        "p4_calib2_build"
+      ],
+      "scan_runs": [
+        "p4_calib_scan",
+        "p4_calib2_scan"
+      ],
+      "probe_runs": [
+        "p4_calib_errors",
+        "p4_calib2_errors"
+      ]
+    },
+    "shift_pool": {
+      "build_runs": [
+        "p2_build_ood"
+      ],
+      "scan_runs": [
+        "p2c_scan"
+      ],
+      "probe_runs": [
+        "p2b_probe_v2"
+      ],
+      "splits": [
+        "ood_E_high",
+        "ood_E_low",
+        "ood_force_x3",
+        "ood_gravity_drop"
+      ]
+    }
+  },
+  "torch": "2.5.1+cu121",
+  "warp": "1.5.0",
+  "end_utc": "2026-10-17T13:55:26.446097+00:00",
+  "status": "ok"
+}

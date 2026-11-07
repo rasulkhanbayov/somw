@@ -1,0 +1,18 @@
+# Pilot E2 (Oct 18, 2026; EXPLORATORY; PLAN.md "Pilots E1-E3"): cheaper verification. CPU.
+paths:
+  data_root: ${DATA_ROOT}
+  ckpt_dir: ${DATA_ROOT}/checkpoints/checkpoints
+  testset_dir: ${DATA_ROOT}/testset
+  gen_dir: ${DATA_ROOT}/generations
+summary_run_name: p8f_cheapcheck
+eps: 0.10
+alpha: 0.10
+cost_fit_scan_run: p2c_scan
+calibration_pool:
+  build_runs: [p4_calib_build, p4_calib2_build]
+  scan_runs: [p4_calib_scan, p4_calib2_scan]
+  probe_runs: [p4_calib_errors, p4_calib2_errors]
+dev_pool:
+  build_runs: [p2_build_ood]
+  scan_runs: [p2c_scan]
+  probe_runs: [p2b_probe_v2]

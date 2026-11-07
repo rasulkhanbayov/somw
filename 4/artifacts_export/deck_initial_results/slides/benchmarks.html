@@ -1,0 +1,32 @@
+<section id="benchmarks" data-transition="fade" style="background:#FBFBF8;color:#14213D;font-family:'IBM Plex Sans', Arial, sans-serif;padding:96px 128px 160px;display:flex;flex-direction:column;gap:36px">
+<h2 style="font-family:'Source Serif 4', Georgia, serif;font-size:64px;font-weight:600;line-height:1.1">Benchmarks: ours now, the field's next</h2>
+<div style="display:flex;flex-direction:row;gap:56px;align-items:start">
+<div style="flex:1;display:flex;flex-direction:column;gap:16px">
+<p style="font-size:26px;letter-spacing:2px;text-transform:uppercase;color:#2F6FB0">Ours, in use</p>
+<table style="width:820px;font-size:24px;color:#14213D">
+<tr><th style="width:42%;text-align:left">Split</th><th style="width:40%;text-align:left">What changes</th><th style="width:18%;text-align:right">Queries</th></tr>
+<tr><td>PhysCtrl test set</td><td>nothing (100 objects)</td><td style="text-align:right">100</td></tr>
+<tr><td>Calibration pool</td><td>new physics draws</td><td style="text-align:right">1,200</td></tr>
+<tr><td>Fresh test</td><td>untouched draws</td><td style="text-align:right">800</td></tr>
+<tr><td>Softer material</td><td>E = 10^3.5 Pa</td><td style="text-align:right">50</td></tr>
+<tr><td>Stiffer material</td><td>E = 10^7.5 Pa</td><td style="text-align:right">50</td></tr>
+<tr><td>3× drag force</td><td>force × 3</td><td style="text-align:right">50</td></tr>
+<tr><td>Drop onto floor</td><td>gravity, contact</td><td style="text-align:right">50</td></tr>
+</table>
+<p style="font-size:24px;line-height:1.4;color:#6A7280">Ground truth from the same simulator PhysCtrl was trained on; training range E = 10^4–10^7 Pa.</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:16px">
+<p style="font-size:26px;letter-spacing:2px;text-transform:uppercase;color:#D9762B">The field's, planned</p>
+<table style="width:760px;font-size:24px;color:#14213D">
+<tr><th style="width:34%;text-align:left">Benchmark</th><th style="width:66%;text-align:left">Why it matters for us</th></tr>
+<tr><td>Physics-IQ</td><td>real videos; best model scores 29.5%</td></tr>
+<tr><td>RigidBench</td><td>higher SSIM goes with larger 3D error (r = 0.89)</td></tr>
+<tr><td>StEvo-Bench</td><td>every model under 10%</td></tr>
+<tr><td>VideoPhy-2</td><td>video-level physics judgement (ICLR 2026)</td></tr>
+</table>
+<p style="font-size:24px;line-height:1.4;color:#6A7280">Takeaway from the field: visual quality does not track physical correctness, so we measure 3D trajectories.</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#6A7280">Field numbers as reported in the literature (cited in the proposal); not yet run by us</p>
+<aside>Baselines already run: always generate, always simulate, coarse simulation only, certify or simulate, random fallback at the same rate, the model's seed spread as a certificate, shuffled restart times. Still to run from the proposal: uniform and random windows at a matched budget across all splits, ANCHOR-style threshold gating, best-of-N, oracle placement, and video-level comparisons (PhysFlow, RealWonder, 3DPhysVideo) with a VLM judge. The next experiment (multi-object contact) follows RigidBench's approach of measuring 3D error against a simulated reference, in our own simulator. The proposal also listed a real multi-object collision dataset (gs_physics), but it could not be verified, so it is left out.</aside>
+</section>

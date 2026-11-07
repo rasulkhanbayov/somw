@@ -1,0 +1,11 @@
+# Phase 4n (pre-registered Oct 16, 2026; PLAN.md "Phase 4n"): components for FRESH draws 8..15.
+paths:
+  data_root: ${DATA_ROOT}
+  ckpt_dir: ${DATA_ROOT}/checkpoints/checkpoints
+  testset_dir: ${DATA_ROOT}/testset
+  ood_dir: ${BIG_ROOT}/datasets/mo_comp
+  gen_dir: ${BIG_ROOT}/generations
+run_name: p4n_comp_build
+n_base_queries: 100
+splits: [mo_comp_8, mo_comp_9, mo_comp_10, mo_comp_11, mo_comp_12, mo_comp_13, mo_comp_14, mo_comp_15]
+mode: nosync
