@@ -2,8 +2,10 @@
 
 Run everything on **crimv3mgpu015** (a dev server with internet), not on panther-login (no Python there).
 
-**Status on Nov 7, 2026.** Steps 1–4 are done or run by Claude (`freeze/prepare.log` ends with `PREPARE EXIT 0`). Nothing
-has been pushed or uploaded yet, so **nothing may be deleted yet**. Step 9 refuses to delete until steps 5–8 are verified.
+**Status on Nov 8, 2026.** Steps 1–7 are done. GitHub `somw` is pushed; all three Hugging Face repos are uploaded, public and
+verified against the manifests (`freeze/REMOTE_OK.json`). **Left: 6b (private repo), 8, 9.** Step 9 refuses to delete until
+6b and 8 are pushed. If an upload or download of `somw-data` crawls on xet, `export HF_HUB_DISABLE_XET=1` (about 15 MB/s here
+instead of 0.2–1 MB/s; Hugging Face's free-account rate limit causes pauses, which the tool retries automatically).
 
 Setup, in every new terminal:
 
@@ -102,7 +104,8 @@ for v in r["repos"].values():
     print(f"| {v['repo_id']} | {v['repo_type']} | {v['revision']} | {v['files_ok']} |")
 PY
 cat freeze/RELEASE.md
-git add -A freeze && git commit -m "Record the verified Hugging Face revisions of the freeze" && git push
+git add -A && git status --short      # expect: CLAUDE.md, freeze/COMMANDS.md, freeze/REMOTE_OK.json, freeze/RELEASE.md
+git commit -m "Record the verified Hugging Face revisions of the freeze" && git push
 ```
 
 ## 9. Free the storage (only now)

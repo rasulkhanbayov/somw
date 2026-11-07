@@ -1,0 +1,24 @@
+{
+ "checked_utc": "2026-11-07T22:42:57Z",
+ "repos": {
+  "results": {
+   "repo_id": "rasulkhanbayov/somw-results",
+   "repo_type": "dataset",
+   "revision": "fd4ec4f7c11eb61a1a6fba72e51a1cf3e2777591",
+   "files_ok": 2281
+  },
+  "data": {
+   "repo_id": "rasulkhanbayov/somw-data",
+   "repo_type": "dataset",
+   "revision": "ab8dbaf7bae7317c8065eacf8d491b9e36473222",
+   "files_ok": 38259
+  },
+  "ckpt": {
+   "repo_id": "rasulkhanbayov/somw-checkpoints",
+   "repo_type": "model",
+   "revision": "a302b3fcf576d9bff6e604c480f03748fcc21a8d",
+   "files_ok": 26
+  }
+ },
+ "manifest_sha256": "74e65d4aee0dcfe63ada8eb570d69118184216c0835618ec6cc236481d165514"
+}
