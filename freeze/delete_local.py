@@ -89,6 +89,23 @@ def guards():
         bad.append(f"{PRIVATE_REPO} not found: private material not pushed (COMMANDS.md step 6b)")
     elif remote_head(PRIVATE_REPO) != git("rev-parse", "HEAD", cwd=PRIVATE_REPO).stdout.strip():
         bad.append("somw-private is not pushed")
+    else:                                          # it must not be readable by a stranger (added Nov 8: it was public)
+        import re
+        import urllib.error
+        import urllib.request
+        url = git("remote", "get-url", "origin", cwd=PRIVATE_REPO).stdout.strip()
+        m = re.search(r"github\.com[:/]([^/]+)/([^/]+?)(?:\.git)?$", url)
+        if not m:
+            bad.append(f"cannot tell whether {url} is private")
+        else:
+            try:
+                urllib.request.urlopen(f"https://api.github.com/repos/{m[1]}/{m[2]}", timeout=30)
+                bad.append(f"github.com/{m[1]}/{m[2]} is PUBLIC: make it private (Settings > Danger Zone)")
+            except urllib.error.HTTPError as ex:
+                if ex.code != 404:                 # 404 without a token = private (or gone; the push check covers that)
+                    bad.append(f"cannot tell whether {m[1]}/{m[2]} is private (HTTP {ex.code})")
+            except OSError as ex:
+                bad.append(f"cannot tell whether {m[1]}/{m[2]} is private ({type(ex).__name__})")
     return bad
 
 

@@ -80,6 +80,7 @@ cp ~/cvpr_physics_plausibility/freeze/cards/private.md README.md
 sha256sum claude_session.tar.zst p11_study_codes/* > SHA256SUMS
 git init -b main && git add -A && git commit -m "Private material of the SOMW freeze"
 git remote add origin git@github.com:$GH_USER/somw-private.git && git push -u origin main
+curl -s -o /dev/null -w "%{http_code}\n" https://api.github.com/repos/$GH_USER/somw-private   # must print 404 (= private)
 cd ~/cvpr_physics_plausibility
 ```
 
